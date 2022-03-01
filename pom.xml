@@ -1,0 +1,108 @@
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--                                                                                                                 -->
+<!--  © 2011-2021 Telenav, Inc.                                                                                      -->
+<!--  Licensed under Apache License, Version 2.0                                                                     -->
+<!--                                                                                                                 -->
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<project xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.telenav.kivakit</groupId>
+        <artifactId>superpom</artifactId>
+        <version>1.3.1-SNAPSHOT</version>
+        <relativePath>../kivakit/superpom</relativePath>
+    </parent>
+
+    <artifactId>kivakit-stuff</artifactId>
+    <version>1.3.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <!-- Project -->
+    <description>A collection of modules that extend KivaKit</description>
+    <url>https://www.kivakit.org</url>
+    <inceptionYear>2011</inceptionYear>
+    <organization>
+        <name>Telenav</name>
+        <url>https://www.telenav.com</url>
+    </organization>
+
+    <!-- Licensing -->
+
+    <licenses>
+
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+
+    </licenses>
+
+    <!-- Contributors -->
+
+    <developers>
+
+        <developer>
+            <id>jonathanl</id>
+            <name>Jonathan Locke (Luo Shibo)</name>
+            <email>jonathanl@telenav.com</email>
+            <organization>Telenav</organization>
+            <organizationUrl>https://www.telenav.com/</organizationUrl>
+            <roles>
+                <role>lead</role>
+                <role>administrator</role>
+            </roles>
+        </developer>
+
+        <developer>
+            <id>haifeng</id>
+            <name>Haifeng Zhu</name>
+            <email>hfzhu@telenav.com</email>
+            <organization>Telenav</organization>
+            <organizationUrl>https://www.telenav.com/</organizationUrl>
+            <roles>
+                <role>developer</role>
+                <role>administrator</role>
+            </roles>
+        </developer>
+
+    </developers>
+
+    <!-- Source Code -->
+
+    <scm>
+
+        <connection>scm:git:https://Telenav/kivakit.git</connection>
+        <developerConnection>scm:git:https://Telenav/kivakit.git</developerConnection>
+        <url>https://Telenav/kivakit.git</url>
+
+    </scm>
+
+    <!-- Issue Tracking -->
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/Telenav/kivakit/issues</url>
+    </issueManagement>
+
+    <!-- Modules -->
+
+    <modules>
+
+        <module>kivakit-remote-log</module>
+        <module>kivakit-hdfs-filesystem</module>
+        <module>kivakit-primitive-collections</module>
+        <module>kivakit-math</module>
+        <module>kivakit-security</module>
+        <module>kivakit-ui</module>
+        <module>kivakit-data</module>
+        <module>kivakit-service</module>
+
+    </modules>
+
+</project>
+
