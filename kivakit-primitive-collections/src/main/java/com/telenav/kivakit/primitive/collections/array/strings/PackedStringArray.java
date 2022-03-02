@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.collections.map.CacheMap;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.strings.AsciiArt;
 import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

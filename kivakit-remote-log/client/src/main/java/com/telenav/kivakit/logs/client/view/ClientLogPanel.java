@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.language.threading.KivaKitThread;
 import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.language.version.VersionedObject;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.messaging.Broadcaster;

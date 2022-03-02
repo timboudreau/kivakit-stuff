@@ -3,7 +3,7 @@ package com.telenav.kivakit.logs.server.session;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.language.progress.ProgressReporter;
 import com.telenav.kivakit.core.language.strings.Strings;
 import com.telenav.kivakit.language.time.LocalTime;

@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.data.compression;
 
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.coreproject.Project;
 
 /**

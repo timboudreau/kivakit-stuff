@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.language.threading.KivaKitThread;
 import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.language.vm.OperatingSystem;
 import com.telenav.kivakit.core.language.monads.Result;
 import com.telenav.kivakit.network.core.Port;

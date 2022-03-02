@@ -24,7 +24,7 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
-import com.telenav.kivakit.core.language.object.Objects;
+import com.telenav.kivakit.core.language.Objects;
 import com.telenav.kivakit.core.language.progress.ProgressReporter;
 import com.telenav.kivakit.language.count.Count;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;

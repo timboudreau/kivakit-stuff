@@ -42,7 +42,7 @@ import com.telenav.kivakit.language.count.Countable;
 import com.telenav.kivakit.language.count.Estimate;
 import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.Message;

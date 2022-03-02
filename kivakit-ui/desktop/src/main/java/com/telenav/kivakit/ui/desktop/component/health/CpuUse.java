@@ -1,6 +1,6 @@
 package com.telenav.kivakit.ui.desktop.component.health;
 
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 

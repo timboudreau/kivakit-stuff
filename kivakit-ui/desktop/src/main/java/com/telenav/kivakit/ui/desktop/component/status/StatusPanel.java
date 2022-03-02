@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.component.status;
 
 import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.messages.status.Announcement;

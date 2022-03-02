@@ -22,7 +22,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.core.language.object.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.progress.ProgressReporter;
 import com.telenav.kivakit.core.language.progress.reporters.Progress;
 import com.telenav.kivakit.core.language.strings.Indent;

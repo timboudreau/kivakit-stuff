@@ -26,7 +26,7 @@ import com.telenav.kivakit.filesystem.spi.FileSystemService;
 import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;

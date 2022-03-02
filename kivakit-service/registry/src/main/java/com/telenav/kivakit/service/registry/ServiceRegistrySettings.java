@@ -27,7 +27,7 @@ import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.language.time.Frequency;
 import com.telenav.kivakit.language.time.FrequencyConverter;
 import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;

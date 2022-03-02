@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.filesystems.hdfs;
 
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.coreproject.Project;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 

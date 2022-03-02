@@ -19,7 +19,7 @@
 package com.telenav.kivakit.service.registry.server;
 
 import com.telenav.kivakit.settings.settings.Settings;
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.language.version.Version;
 import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;

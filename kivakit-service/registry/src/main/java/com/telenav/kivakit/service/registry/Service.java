@@ -26,7 +26,7 @@ import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
 import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.network.core.Host;

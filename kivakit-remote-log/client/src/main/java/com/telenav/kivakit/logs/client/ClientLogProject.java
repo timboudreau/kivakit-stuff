@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.logs.client;
 
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;

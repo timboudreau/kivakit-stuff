@@ -20,7 +20,7 @@ package com.telenav.kivakit.service.registry;
 
 import com.telenav.kivakit.collections.CollectionsProject;
 import com.telenav.kivakit.collections.set.ObjectSet;
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;

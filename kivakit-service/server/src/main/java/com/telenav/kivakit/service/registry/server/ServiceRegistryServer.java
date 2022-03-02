@@ -22,7 +22,7 @@ import com.telenav.kivakit.application.Server;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParsers;
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.resource.ResourceFolder;
 import com.telenav.kivakit.resource.resources.packaged.Package;

@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.iteration;
 
-import com.telenav.kivakit.core.language.object.Hash;
+import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveCollection;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

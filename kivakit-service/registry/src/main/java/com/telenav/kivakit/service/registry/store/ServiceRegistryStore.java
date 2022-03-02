@@ -24,7 +24,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.language.primitive.Booleans;
 import com.telenav.kivakit.core.language.strings.CaseFormat;
 import com.telenav.kivakit.language.version.VersionedObject;
-import com.telenav.kivakit.core.language.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.serialization.core.SerializationSession;

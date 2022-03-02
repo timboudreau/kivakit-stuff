@@ -23,7 +23,7 @@ import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.core.language.object.Lazy;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.language.time.Time;
 import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
