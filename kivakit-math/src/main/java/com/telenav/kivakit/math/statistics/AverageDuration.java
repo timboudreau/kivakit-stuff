@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.math.statistics;
 
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

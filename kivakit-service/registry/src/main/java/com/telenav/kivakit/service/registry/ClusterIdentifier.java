@@ -16,26 +16,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.security.authentication.passwords;
+package com.telenav.kivakit.service.registry;
 
-import com.telenav.kivakit.security.project.lexakai.DiagramSecurity;
+import com.telenav.kivakit.core.value.identifier.StringIdentifier;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
-import com.telenav.lexakai.annotations.UmlClassDiagram;
-
-import java.util.Base64;
 
 /**
- * A message-digested password created with the {@link Base64} encoder in *java.util*. This is not at all secure, but
- * can make it difficult to memorize a password on seeing it briefly.
+ * Identifies a cluster of servers that work together.
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramSecurity.class)
 @LexakaiJavadoc(complete = true)
-public class DigestPassword extends PlainTextPassword
+public class ClusterIdentifier extends StringIdentifier
 {
-    public DigestPassword(String password)
+    public ClusterIdentifier(String identifier)
     {
-        super(Base64.getEncoder().encodeToString(password.getBytes()));
+        super(identifier);
+    }
+
+    protected ClusterIdentifier()
+    {
     }
 }

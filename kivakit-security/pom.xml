@@ -19,4 +19,17 @@
     <artifactId>kivakit-security</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-conversion</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

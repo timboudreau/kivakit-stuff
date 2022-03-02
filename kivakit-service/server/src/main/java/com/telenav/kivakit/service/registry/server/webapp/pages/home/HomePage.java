@@ -19,11 +19,11 @@
 package com.telenav.kivakit.service.registry.server.webapp.pages.home;
 
 import com.telenav.kivakit.core.language.collections.Collections;
+import com.telenav.kivakit.core.language.monads.Result;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.language.monads.Result;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
-import com.telenav.kivakit.network.core.cluster.ClusterIdentifier;
+import com.telenav.kivakit.service.registry.ClusterIdentifier;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.Service;
 import com.telenav.kivakit.service.registry.client.ServiceRegistryClient;
