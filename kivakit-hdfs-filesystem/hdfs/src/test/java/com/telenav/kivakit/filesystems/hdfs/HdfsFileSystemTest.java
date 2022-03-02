@@ -50,7 +50,7 @@ public class HdfsFileSystemTest extends UnitTest
         var settings = new HdfsSettings()
                 .clusterName("cluster1ns")
                 .configurationFolder(Package.packageFrom(this, getClass(), "settings/cluster1ns"))
-                .contactEmail(EmailAddress.parse(this, "jonathanl@telenav.com"))
+                .contactEmail(EmailAddress.parseEmail(this, "jonathanl@telenav.com"))
                 .username("automation")
                 .proxyJar(new HttpNetworkLocation(NetworkPath.parseNetworkPath(this,
                         "https://www.kivakit.org/" + kivakitVersion + "/applications/kivakit-hdfs-proxy-" + kivakitVersion + ".jar")).get());

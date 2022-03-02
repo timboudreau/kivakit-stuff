@@ -21,11 +21,11 @@
 
 package com.telenav.kivakit.ui.desktop.graphics.drawing.style;
 
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.core.language.strings.Align;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Align;
+import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.language.primitive.Ints;
 
 import javax.swing.JList;
 import javax.swing.JTable;

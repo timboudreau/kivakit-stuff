@@ -23,12 +23,12 @@ import com.telenav.kivakit.conversion.string.primitive.IntegerConverter;
 import com.telenav.kivakit.core.language.reflection.populator.KivaKitPropertyConverter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.language.time.Duration;
 import com.telenav.kivakit.language.time.Frequency;
 import com.telenav.kivakit.language.time.FrequencyConverter;
 import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -131,7 +131,7 @@ public class ServiceRegistrySettings
 
         if (port != null)
         {
-            return Port.parse(Listener.console(), port);
+            return Port.parsePort(Listener.console(), port);
         }
 
         return networkServiceRegistryPort();
