@@ -19,10 +19,10 @@
 package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
 import com.telenav.kivakit.core.collections.map.CountMap;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.Minimum;
 
 /**
  * A helper class for building character {@link Symbols}.

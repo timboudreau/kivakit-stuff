@@ -21,12 +21,12 @@ package com.telenav.kivakit.data.compression.codecs.huffman;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,6 +41,7 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
      * 123,869,689 per second
      */
     // @Test
+    @SuppressWarnings("JUnit3StyleTestMethodInJUnit4Class")
     public void testBenchmark()
     {
         var symbols = new Symbols<>(new CountMap<String>()

@@ -18,13 +18,13 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.list;
 
+import com.telenav.kivakit.core.value.mutable.MutableIndex;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.StringCodec;
 import com.telenav.kivakit.data.compression.codecs.StringListCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
-import com.telenav.kivakit.core.language.values.mutable.MutableIndex;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 
 /**

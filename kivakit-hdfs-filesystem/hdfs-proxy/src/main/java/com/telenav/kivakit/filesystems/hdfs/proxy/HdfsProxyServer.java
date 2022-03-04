@@ -19,19 +19,18 @@
 package com.telenav.kivakit.filesystems.hdfs.proxy;
 
 import com.telenav.kivakit.application.Server;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.commandline.SwitchParsers;
+import com.telenav.kivakit.core.io.IO;
+import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.Monitor;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.proxy.converters.UserGroupInformationConverter;
 import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
-import com.telenav.kivakit.core.thread.Monitor;
-import com.telenav.kivakit.coreKernelProject;
-import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.collections.set.ObjectSet;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -61,7 +60,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * This server application is compiled into an executable JAR file that is launched by the *kivakit-filesystems-hdfs*

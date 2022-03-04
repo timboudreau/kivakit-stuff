@@ -18,17 +18,17 @@
 
 package com.telenav.kivakit.logs.client.view;
 
-import com.telenav.kivakit.core.language.io.ProgressiveInput;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.version.VersionedObject;
-import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.io.ProgressiveInput;
 import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.messaging.Broadcaster;
 import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.logs.client.ClientLog;
 import com.telenav.kivakit.logs.client.ClientLogFrame;
 import com.telenav.kivakit.logs.client.network.Connection;

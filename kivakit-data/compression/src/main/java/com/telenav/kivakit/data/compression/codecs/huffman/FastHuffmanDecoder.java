@@ -18,16 +18,16 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman;
 
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.StringTo;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolConsumer.Directive;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.CodedSymbol;
 import com.telenav.kivakit.interfaces.string.Stringable;
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
@@ -69,6 +69,12 @@ public final class FastHuffmanDecoder<Symbol>
             /** The table that owns this entry */
             private Table<Symbol> table;
 
+            /** The list of values for this table entry, if any */
+            final List<Symbol> values = new ArrayList<>();
+
+            /** The next table to look in, possibly the root table if there are no bits left */
+            Table<Symbol> next;
+
             protected Entry()
             {
             }
@@ -81,7 +87,7 @@ public final class FastHuffmanDecoder<Symbol>
             @Override
             public String asString(Format format)
             {
-                return Message.format("[Entry next = '$', values = $]", next.prefix,
+                return Formatter.format("[Entry next = '$', values = $]", next.prefix,
                         new StringList(values).join(", "));
             }
 
@@ -132,12 +138,6 @@ public final class FastHuffmanDecoder<Symbol>
                 // root table if there are no bits left)
                 next = table.prefixToTable(remainder, bitsLeft);
             }
-
-            /** The list of values for this table entry, if any */
-            final List<Symbol> values = new ArrayList<>();
-
-            /** The next table to look in, possibly the root table if there are no bits left */
-            Table<Symbol> next;
         }
 
         /** The outer decoder */
@@ -145,6 +145,11 @@ public final class FastHuffmanDecoder<Symbol>
 
         /** Prefix for this table */
         private String prefix;
+
+        /** The list of entries in this table */
+        @SuppressWarnings("unchecked")
+        final
+        Entry<Symbol>[] byteToEntry = new Entry[256];
 
         Table(FastHuffmanDecoder<Symbol> decoder, String prefix)
         {
@@ -167,7 +172,7 @@ public final class FastHuffmanDecoder<Symbol>
                 var entry = byteToEntry[index];
                 entries.append(StringTo.binary(index, 8) + " = " + entry.asString());
             }
-            return Message.format("[Table prefix = '$']\n    ", prefix) + entries.join("\n    ");
+            return Formatter.format("[Table prefix = '$']\n    ", prefix) + entries.join("\n    ");
         }
 
         @Override
@@ -225,11 +230,6 @@ public final class FastHuffmanDecoder<Symbol>
 
             return table;
         }
-
-        /** The list of entries in this table */
-        @SuppressWarnings("unchecked")
-        final
-        Entry<Symbol>[] byteToEntry = new Entry[256];
     }
 
     /** The codec */
@@ -240,6 +240,9 @@ public final class FastHuffmanDecoder<Symbol>
 
     /** Root lookup table for fast Huffman decoding */
     private Table<Symbol> root;
+
+    /** A map from prefixes to tables */
+    final Map<String, Table<Symbol>> prefixToTable = new HashMap<>();
 
     /**
      * Creates a table-driven decoder for the given codec
@@ -305,7 +308,7 @@ public final class FastHuffmanDecoder<Symbol>
                 }
                 else
                 {
-                    // otherwise call the consumer
+                    // otherwise, call the consumer
                     if (consumer.next(ordinal++, symbol) == STOP)
                     {
                         // unless they want to stop
@@ -318,7 +321,4 @@ public final class FastHuffmanDecoder<Symbol>
             table = entry.next;
         }
     }
-
-    /** A map from prefixes to tables */
-    final Map<String, Table<Symbol>> prefixToTable = new HashMap<>();
 }

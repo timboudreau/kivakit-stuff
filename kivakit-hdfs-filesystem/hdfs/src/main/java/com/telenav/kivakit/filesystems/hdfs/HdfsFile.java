@@ -22,10 +22,10 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
-import com.telenav.kivakit.core.language.threading.Retry;
+import com.telenav.kivakit.core.thread.Retry;
 import com.telenav.kivakit.language.code.UncheckedCode;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.kivakit.resource.writing.BaseWritableResource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -38,7 +38,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.attribute.PosixFilePermission;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * <b>Not public API</b>

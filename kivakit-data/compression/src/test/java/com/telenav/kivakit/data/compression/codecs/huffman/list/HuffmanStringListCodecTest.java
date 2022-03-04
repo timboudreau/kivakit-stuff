@@ -18,19 +18,19 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.list;
 
+import com.telenav.kivakit.core.collections.Lists;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.data.compression.Codec;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
-import com.telenav.kivakit.core.language.collections.list.Lists;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.Minimum;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class HuffmanStringListCodecTest extends DataCompressionUnitTest
     public void testDecode()
     {
         var string = HuffmanStringCodec.from(properties("string.codec"));
-        var character = HuffmanCharacterCodec.from(properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
+        var character = HuffmanCharacterCodec.from(this, properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
         var codec = new HuffmanStringListCodec(string, character);
 
         test(codec, Lists.arrayList("bicycle", "barrier", "highway", "banana"));

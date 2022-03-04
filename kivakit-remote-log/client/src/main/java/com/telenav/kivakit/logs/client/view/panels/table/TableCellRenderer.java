@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.client.view.panels.table;
 
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.messages.status.Information;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;

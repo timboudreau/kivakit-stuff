@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.client.view.panels.search;
 
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Frequency;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;

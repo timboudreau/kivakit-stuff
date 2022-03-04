@@ -19,16 +19,16 @@
 package com.telenav.kivakit.service.registry.registries;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.collections.set.MultiSet;
-import com.telenav.kivakit.collections.set.Sets;
+import com.telenav.kivakit.core.collections.set.MultiSet;
+import com.telenav.kivakit.core.collections.set.Sets;
 import com.telenav.kivakit.core.language.monads.Result;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
+import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.thread.locks.ReadWriteLock;
 import com.telenav.kivakit.interfaces.lifecycle.Startable;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Time;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.Service;

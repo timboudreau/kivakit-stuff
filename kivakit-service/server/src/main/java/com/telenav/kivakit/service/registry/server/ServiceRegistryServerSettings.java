@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.service.registry.server;
 
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Frequency;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

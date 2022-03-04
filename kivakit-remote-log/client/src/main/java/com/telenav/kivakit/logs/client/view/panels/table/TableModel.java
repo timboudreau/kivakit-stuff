@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.client.view.panels.table;
 
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.LoggerCodeContext;
 import com.telenav.kivakit.core.messaging.Message;
@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * @author jonathanl (shibo)

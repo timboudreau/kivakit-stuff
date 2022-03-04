@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
+import com.telenav.kivakit.core.progress.reporters.Progress;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
 import org.junit.Test;
 
 import java.util.List;
@@ -32,9 +32,10 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
      * 69,458,915 per second
      */
     // @Test
+    @SuppressWarnings("JUnit3StyleTestMethodInJUnit4Class")
     public void testBenchmark()
     {
-        var codec = HuffmanCharacterCodec.from(properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
+        var codec = HuffmanCharacterCodec.from(this, properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
 
         var encoded = encode(codec,
                 List.of("this is a test", "whatever", "banana", "cherry",
@@ -51,7 +52,7 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
     @Test
     public void testDecode()
     {
-        var codec = HuffmanCharacterCodec.from(properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
+        var codec = HuffmanCharacterCodec.from(this, properties("character.codec"), HuffmanCharacterCodec.ESCAPE);
 
         test(codec, List.of("880號州際公路'"));
         test(codec, List.of("z"));

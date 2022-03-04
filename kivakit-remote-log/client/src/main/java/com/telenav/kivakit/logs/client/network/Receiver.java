@@ -1,17 +1,17 @@
 package com.telenav.kivakit.logs.client.network;
 
-import com.telenav.kivakit.interfaces.lifecycle.Stoppable;
-import com.telenav.kivakit.interfaces.time.LengthOfTime;
-import com.telenav.kivakit.core.thread.latches.CompletionLatch;
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.version.VersionedObject;
-import com.telenav.kivakit.logs.server.session.Session;
-import com.telenav.kivakit.logs.server.session.SessionStore;
+import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.thread.latches.CompletionLatch;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.interfaces.lifecycle.Stoppable;
+import com.telenav.kivakit.interfaces.time.LengthOfTime;
+import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.logs.server.session.Session;
+import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 
 import java.util.ArrayList;

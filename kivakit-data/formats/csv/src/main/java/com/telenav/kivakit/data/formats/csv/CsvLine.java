@@ -18,18 +18,18 @@
 
 package com.telenav.kivakit.data.formats.csv;
 
-import com.telenav.kivakit.conversion.string.StringConverter;
-import com.telenav.kivakit.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.StringConverter;
 import com.telenav.kivakit.conversion.core.language.object.ObjectPopulator;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.language.reflection.property.Property;
 import com.telenav.kivakit.core.language.reflection.property.PropertyValueSource;
-import com.telenav.kivakit.core.language.strings.Strings;
 import com.telenav.kivakit.core.messaging.repeaters.RepeaterMixin;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
-import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
@@ -108,7 +108,7 @@ public class CsvLine extends StringList implements PropertyValueSource, Repeater
     /**
      * @return The value of the given column
      */
-    public <T> ObjectList<T> get(CsvColumn<T> column, BaseListConverter<T> converter)
+    public <T> ObjectList<T> get(CsvColumn<T> column, BaseStringConverter<T> converter)
     {
         var text = string(column);
         return text == null ? null : column.asType(text, converter);
@@ -133,7 +133,7 @@ public class CsvLine extends StringList implements PropertyValueSource, Repeater
     {
         try
         {
-            return new ObjectPopulator(this, new CsvPropertyFilter(schema()), this)
+            return new ObjectPopulator(new CsvPropertyFilter(schema()), this)
                     .populate(Type.forClass(type).newInstance());
         }
         catch (Exception e)

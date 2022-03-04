@@ -26,12 +26,12 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
- * A Huffman coding tree, composed of {@link Node} and {@link Leaf} sub-trees. Symbols in the tree are assigned a code
+ * A Huffman coding tree, composed of {@link Node} and {@link Leaf} subtrees. Symbols in the tree are assigned a code
  * with {@link #encode()} and the encoded symbols can be retrieved with {@link #codedSymbols()}. Symbols can be decoded
- * with {@link #decode(BitReader)}, which reads compressed data with {@link BitReader} and walks the tree until if finds
+ * with {@link #decode(BitReader)}, which reads compressed data with {@link BitReader} and walks the tree until it finds
  * the code symbol.
  *
  * @author jonathanl (shibo)
@@ -68,11 +68,11 @@ public abstract class Tree<Symbol> implements Comparable<Tree<Symbol>>
         return queue.poll();
     }
 
-    /** Frequency of this tree or sub-tree */
+    /** Frequency of this tree or subtree */
     private long frequency;
 
     /**
-     * @param frequency The frequency of this sub-tree
+     * @param frequency The frequency of this subtree
      */
     Tree(long frequency)
     {
@@ -105,7 +105,7 @@ public abstract class Tree<Symbol> implements Comparable<Tree<Symbol>>
     public abstract CodedSymbol<Symbol> decode(BitReader bits);
 
     /**
-     * Walks the tree, assigning Huffman codes to symbols based on the path through the tree
+     * Walks the tree, assigning a Huffman code to each symbol based on the path through the tree
      *
      * @return A map from symbol to code for the symbols in this tree
      */

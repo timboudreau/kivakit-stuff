@@ -1,6 +1,6 @@
 package com.telenav.kivakit.logs.client.view.panels.session;
 
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
+import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;

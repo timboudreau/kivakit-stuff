@@ -18,13 +18,13 @@
 
 package com.telenav.kivakit.logs.client;
 
-import com.telenav.kivakit.collections.map.string.VariableMap;
-import com.telenav.kivakit.core.thread.latches.CompletionLatch;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.logs.server.ServerLogProject;
-import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.collections.map.VariableMap;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.logs.BaseLog;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.thread.latches.CompletionLatch;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.logs.server.ServerLogProject;
 
 import javax.swing.SwingUtilities;
 import java.awt.Image;

@@ -1,11 +1,11 @@
 package com.telenav.kivakit.logs.client.view.panels.table;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.core.language.strings.Align;
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Frequency;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.string.Align;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;

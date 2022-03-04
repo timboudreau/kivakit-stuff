@@ -18,11 +18,11 @@
 
 package com.telenav.kivakit.service.registry.client;
 
-import com.telenav.kivakit.coreKivaKit;
+import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.populator.KivaKitPropertyConverter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.network.core.NetworkLocation;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
 import com.telenav.kivakit.resource.Resource;

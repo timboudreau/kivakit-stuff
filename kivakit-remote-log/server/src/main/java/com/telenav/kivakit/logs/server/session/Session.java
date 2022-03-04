@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.server.session;
 
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.language.count.Bytes;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.resource.path.FileName;
 import org.jetbrains.annotations.NotNull;

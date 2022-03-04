@@ -18,6 +18,11 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.string;
 
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
@@ -25,11 +30,6 @@ import com.telenav.kivakit.data.compression.codecs.StringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
 
@@ -115,7 +115,7 @@ public class HuffmanStringCodec implements StringCodec
     }
 
     /**
-     * @return This codec's symbols as a property map
+     * @return This symbols for this codec as a property map
      */
     public PropertyMap asProperties()
     {

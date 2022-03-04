@@ -1,8 +1,8 @@
 package com.telenav.kivakit.data.formats.xml.stax;
 
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.interfaces.function.BooleanFunction;
-import com.telenav.kivakit.core.language.io.IO;
 import com.telenav.kivakit.resource.Resource;
 
 import javax.xml.stream.XMLEventReader;
@@ -16,11 +16,11 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.Closeable;
 import java.io.InputStream;
 
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.data.formats.xml.stax.StaxReader.Match.FOUND;
 import static com.telenav.kivakit.data.formats.xml.stax.StaxReader.Match.NOT_FOUND;
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.ensure.Ensure.fail;
 
 /**
  * <p>

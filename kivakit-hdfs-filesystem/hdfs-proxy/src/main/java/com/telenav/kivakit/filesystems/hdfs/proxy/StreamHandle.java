@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.filesystems.hdfs.proxy;
 
-import com.telenav.kivakit.core.language.values.identifier.Identifier;
-import com.telenav.kivakit.core.language.values.identifier.IdentifierFactory;
+import com.telenav.kivakit.core.value.identifier.Identifier;
+import com.telenav.kivakit.core.value.identifier.IdentifierFactory;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 import java.util.Objects;

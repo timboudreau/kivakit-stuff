@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.client.view.panels.table;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.value.count.Maximum;
 
 import javax.swing.RowFilter;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.logs.client.view.panels.search.SearchPanel.ALL_CONTEXTS;
 import static com.telenav.kivakit.logs.client.view.panels.search.SearchPanel.ALL_THREADS;
 import static com.telenav.kivakit.logs.client.view.panels.search.SearchPanel.ALL_TYPES;

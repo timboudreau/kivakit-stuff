@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.string;
 
-import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -28,6 +28,7 @@ import java.util.List;
 
 public class HuffmanStringCodecTest extends DataCompressionUnitTest
 {
+    @SuppressWarnings("SpellCheckingInspection")
     @Test
     public void testDecode()
     {

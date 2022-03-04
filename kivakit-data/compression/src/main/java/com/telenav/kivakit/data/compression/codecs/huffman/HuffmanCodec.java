@@ -18,6 +18,11 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman;
 
+import com.telenav.kivakit.conversion.StringConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.Codec;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolProducer;
@@ -25,11 +30,6 @@ import com.telenav.kivakit.data.compression.codecs.huffman.tree.Code;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.CodedSymbol;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Tree;
-import com.telenav.kivakit.conversion.string.StringConverter;
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
@@ -41,7 +41,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A general-purpose Huffman coder implementing {@link Codec} which works for any arbitrary symbol type. This design
@@ -132,7 +132,7 @@ public class HuffmanCodec<Symbol> implements Codec<Symbol>
     }
 
     /**
-     * @return This codec's symbols as a property map
+     * @return This symbols for this codec as a property map
      */
     public PropertyMap asProperties(StringConverter<Symbol> converter)
     {

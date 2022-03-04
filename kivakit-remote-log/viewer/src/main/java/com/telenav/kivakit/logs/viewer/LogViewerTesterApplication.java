@@ -19,7 +19,7 @@
 package com.telenav.kivakit.logs.viewer;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.logs.server.ServerLog;
 import com.telenav.kivakit.logs.server.ServerLogProject;
 

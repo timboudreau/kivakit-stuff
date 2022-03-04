@@ -1,8 +1,8 @@
 package com.telenav.kivakit.logs.client.network;
 
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.core.language.threading.conditions.StateMachine;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.conditions.StateMachine;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.network.core.Port;
 

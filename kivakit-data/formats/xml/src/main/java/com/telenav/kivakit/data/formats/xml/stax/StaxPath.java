@@ -1,6 +1,6 @@
 package com.telenav.kivakit.data.formats.xml.stax;
 
-import com.telenav.kivakit.core.language.collections.list.StringList;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.path.StringPath;
 
 import java.util.List;

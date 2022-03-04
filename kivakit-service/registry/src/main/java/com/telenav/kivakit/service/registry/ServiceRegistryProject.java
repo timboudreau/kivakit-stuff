@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.service.registry;
 
-import com.telenav.kivakit.collections.CollectionsProject;
-import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.collections.CollectionsProject;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;

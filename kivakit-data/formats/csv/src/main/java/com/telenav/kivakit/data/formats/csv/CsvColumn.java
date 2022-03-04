@@ -18,15 +18,15 @@
 
 package com.telenav.kivakit.data.formats.csv;
 
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.conversion.StringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.value.name.Name;
 import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
-import com.telenav.kivakit.conversion.string.StringConverter;
-import com.telenav.kivakit.conversion.string.collection.BaseListConverter;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.core.language.values.name.Name;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * A typesafe model of a CSV column that belongs to a {@link CsvSchema} and can convert values for the column between
@@ -92,10 +92,10 @@ public class CsvColumn<Type> extends Name
     /**
      * @return The value of the given text if it is in this column
      */
-    public ObjectList<Type> asType(String text, BaseListConverter<Type> converter)
+    public ObjectList<Type> asType(String text, BaseStringConverter<Type> converter)
     {
         ensureNotNull(converter);
-        return converter.convert(text);
+        return converter.convertToList(text, ",");
     }
 
     /**

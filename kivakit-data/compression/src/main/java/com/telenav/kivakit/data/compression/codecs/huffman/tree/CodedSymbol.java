@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.tree;
 
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.value.count.Count;
 
 /**
  * An encoded symbol in a Huffman {@link Tree}, having a symbol value, a frequency and a {@link Code}.
@@ -106,7 +106,7 @@ public class CodedSymbol<Symbol>
     @Override
     public String toString()
     {
-        return Message.format("[Symbol value = '$', frequency = $, code = $]", StringTo.string(symbol), frequency, code);
+        return Formatter.format("[Symbol value = '$', frequency = $, code = $]", StringTo.string(symbol), frequency, code);
     }
 
     public Symbol value()

@@ -20,7 +20,7 @@ package com.telenav.kivakit.data.compression.codecs;
 
 import com.telenav.kivakit.data.compression.Codec;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A string codec compresses entire strings as symbols. Frequent strings in map data input, like "highway" can be

@@ -18,19 +18,19 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.language.primitive.Ints;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolProducer;
 import com.telenav.kivakit.data.compression.codecs.CharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.language.primitive.Ints;
-import com.telenav.kivakit.language.primitive.Longs;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.MutableCount;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
@@ -46,15 +46,15 @@ import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.CONT
  * <p>
  * A Huffman character codec can be created by calling {@link #from(Symbols, Maximum)} with a set of symbols and their
  * frequencies and a maximum number of bits for the longest allowable code. A codec can also be loaded from a .codec
- * file containing string frequencies with {@link #from(PropertyMap, Character)}. For details on how to create codec
- * files, see {@link Symbols}.
+ * file containing string frequencies with {@link #from(Listener, PropertyMap, Character)}. For details on how to create
+ * codec files, see {@link Symbols}.
  *
  * @author jonathanl (shibo)
  * @see Symbols
  * @see HuffmanCodec
  * @see ByteArray
  */
-public class HuffmanCharacterCodec implements CharacterCodec
+public class HuffmanCharacterCodec extends BaseRepeater implements CharacterCodec
 {
     /** Character used for end of string */
     public static final char END_OF_STRING = 0;
@@ -70,9 +70,9 @@ public class HuffmanCharacterCodec implements CharacterCodec
     /**
      * @return A codec from the symbol frequencies in the given properties object
      */
-    public static HuffmanCharacterCodec from(PropertyMap frequencies, Character escape)
+    public static HuffmanCharacterCodec from(Listener listener, PropertyMap frequencies, Character escape)
     {
-        return from(Symbols.load(frequencies, escape, new Converter(LOGGER)));
+        return from(Symbols.load(frequencies, escape, new Converter(listener)));
     }
 
     /**
@@ -110,7 +110,7 @@ public class HuffmanCharacterCodec implements CharacterCodec
         @Override
         protected Character onToValue(String value)
         {
-            return (char) Longs.parseHex(this, value);
+            return (char) Long.parseLong(value, 16);
         }
     }
 

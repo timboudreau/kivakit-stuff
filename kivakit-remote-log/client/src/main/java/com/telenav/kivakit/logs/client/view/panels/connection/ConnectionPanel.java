@@ -1,9 +1,9 @@
 package com.telenav.kivakit.logs.client.view.panels.connection;
 
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.collections.set.Sets;
-import com.telenav.kivakit.core.language.threading.KivaKitThread;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.collections.set.Sets;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.logs.client.network.Connector;

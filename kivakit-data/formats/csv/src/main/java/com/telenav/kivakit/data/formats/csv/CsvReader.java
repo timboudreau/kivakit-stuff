@@ -18,12 +18,12 @@
 
 package com.telenav.kivakit.data.formats.csv;
 
+import com.telenav.kivakit.core.collections.iteration.BaseIterator;
+import com.telenav.kivakit.core.io.LookAheadReader;
+import com.telenav.kivakit.core.messaging.repeaters.RepeaterMixin;
+import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
 import com.telenav.kivakit.interfaces.io.Closeable;
-import com.telenav.kivakit.core.language.io.LookAheadReader;
-import com.telenav.kivakit.core.collections.iteration.BaseIterator;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.messaging.repeaters.RepeaterMixin;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

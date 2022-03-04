@@ -18,15 +18,15 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.tree;
 
-import com.telenav.kivakit.conversion.string.StringConverter;
+import com.telenav.kivakit.conversion.StringConverter;
+import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.count.Minimum;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.WritableResource;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
@@ -37,7 +37,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.function.Function;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 
 /**
  * A set of {@link CodedSymbol}s, optionally including an escape symbol, that can be used to construct a {@link
@@ -96,7 +96,8 @@ public class Symbols<Symbol>
      * @param converter A converter that converts key values in the properties object into symbols
      * @return A set of symbols
      */
-    public static <Symbol> Symbols<Symbol> load(PropertyMap properties, Symbol escape,
+    public static <Symbol> Symbols<Symbol> load(PropertyMap properties,
+                                                Symbol escape,
                                                 StringConverter<Symbol> converter)
     {
         var counts = new CountMap<Symbol>();
@@ -234,7 +235,7 @@ public class Symbols<Symbol>
     @Override
     public String toString()
     {
-        return Message.format("[Symbols escape = $, size = $]\n    $", escape(), size(),
+        return Formatter.format("[Symbols escape = $, size = $]\n    $", escape(), size(),
                 ObjectList.objectList(encoded).join("\n    "));
     }
 

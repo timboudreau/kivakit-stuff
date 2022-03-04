@@ -20,7 +20,7 @@ package com.telenav.kivakit.service.registry.server;
 
 import com.telenav.kivakit.application.Server;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.collections.set.ObjectSet;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParsers;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.language.reflection.Type;
@@ -48,7 +48,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.UmlNote;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * Service registry server, including Wicket, REST and Swagger resources. Accepts these switches from the command line:
