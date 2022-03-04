@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.array;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;

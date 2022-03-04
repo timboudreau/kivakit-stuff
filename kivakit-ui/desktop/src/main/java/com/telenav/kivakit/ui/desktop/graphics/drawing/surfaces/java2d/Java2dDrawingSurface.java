@@ -44,7 +44,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.util.HashMap;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 
 /**
  * A Java2D {@link DrawingSurface} with x, y coordinates in a {@link DrawingCoordinateSystem}. The drawing area on the
@@ -72,6 +72,7 @@ public class Java2dDrawingSurface extends DrawingCoordinateSystem implements Dra
     /** The graphics surface to draw on */
     private final Graphics2D graphics;
 
+    @SuppressWarnings("SpellCheckingInspection")
     protected Java2dDrawingSurface(String name, Graphics2D graphics, DrawingRectangle area)
     {
         super(name);

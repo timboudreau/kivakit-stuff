@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.array.packed;
 
-import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
@@ -66,7 +66,7 @@ public class PackedArrayTest extends PrimitiveCollectionsUnitTest
         {
             trace("Testing " + bits + " bit array");
 
-            // Create packed array with given bit length
+            // Create packed array with given bit-length
             var count = BitCount.bitCount(bits);
 
             var values = new PackedArray("test");

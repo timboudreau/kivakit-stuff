@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static java.awt.font.TextAttribute.FAMILY;
 import static java.awt.font.TextAttribute.SIZE;
 import static java.awt.font.TextAttribute.WEIGHT;
@@ -50,6 +50,7 @@ public class Fonts
         return Font.getFont(attributes);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static Font fixedWidth(int style, int size)
     {
         var fonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames());

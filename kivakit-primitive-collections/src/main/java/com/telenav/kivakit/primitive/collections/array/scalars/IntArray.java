@@ -22,12 +22,12 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.conversion.string.BaseStringConverter;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.core.language.strings.formatting.Separators;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.conversion.BaseStringConverter;
+import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.messaging.Listener;
+import com.telenav.kivakit.core.string.Separators;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.list.IntList;
@@ -51,7 +51,6 @@ import java.util.Arrays;
  * @see PrimitiveCollection
  * @see IntList
  * @see KryoSerializable
- * @see CompressibleCollection
  * @see CompressibleCollection
  */
 @UmlClassDiagram(diagram = DiagramPrimitiveArray.class)

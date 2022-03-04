@@ -22,11 +22,11 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMap;
@@ -35,7 +35,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
 
 /**
  * A map from String keys to int values. Supports typical map functions:
@@ -343,7 +343,7 @@ public final class StringToObjectMap<T> extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -356,7 +356,7 @@ public final class StringToObjectMap<T> extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

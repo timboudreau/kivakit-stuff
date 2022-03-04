@@ -21,16 +21,16 @@ package com.telenav.kivakit.primitive.collections.map;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.core.language.Hash;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.core.language.progress.reporters.Progress;
-import com.telenav.kivakit.core.language.strings.Indent;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.level.Percent;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.string.Indent;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.level.Percent;
+import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.iteration.ByteIterator;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
@@ -43,9 +43,9 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import static com.telenav.kivakit.ensure.Ensure.fail;
-import static com.telenav.kivakit.ensure.Ensure.illegalState;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.ensure.Ensure.illegalState;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 @SuppressWarnings("UnusedReturnValue")
 @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
@@ -296,10 +296,10 @@ public abstract class PrimitiveMap extends PrimitiveCollection
                 return tombstoneIndex != -1 ? tombstoneIndex : at;
             }
 
-            // If we haven't already found a tombstone and we're looking at one,
+            // If we haven't already found a tombstone, and we're looking at one,
             if (tombstoneIndex == -1 && isTombstone(current))
             {
-                // save the index so we can return it later as an empty slot
+                // save the index, so we can return it later as an empty slot
                 tombstoneIndex = at;
             }
         }
@@ -340,10 +340,10 @@ public abstract class PrimitiveMap extends PrimitiveCollection
                 return tombstoneIndex != -1 ? tombstoneIndex : at;
             }
 
-            // If we haven't already found a tombstone and we're looking at one,
+            // If we haven't already found a tombstone, and we're looking at one,
             if (tombstoneIndex == -1 && isTombstone(current))
             {
-                // save the index so we can return it later as an empty slot
+                // save the index, so we can return it later as an empty slot
                 tombstoneIndex = at;
             }
         }
@@ -378,10 +378,10 @@ public abstract class PrimitiveMap extends PrimitiveCollection
                 return tombstoneIndex != -1 ? tombstoneIndex : at;
             }
 
-            // If we haven't already found a tombstone and we're looking at one,
+            // If we haven't already found a tombstone, and we're looking at one,
             if (tombstoneIndex == -1 && isTombstone(current))
             {
-                // save the index so we can return it later as an empty slot
+                // save the index, so we can return it later as an empty slot
                 tombstoneIndex = at;
             }
         }
@@ -718,6 +718,7 @@ public abstract class PrimitiveMap extends PrimitiveCollection
         return builder.toString();
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private void rehash(HashingStrategy hasher)
     {
         // Create a new map and assign a hashing strategy with increased capacity,
@@ -732,7 +733,9 @@ public abstract class PrimitiveMap extends PrimitiveCollection
 
         // then copy the entries from this object into the copy
         copy.initialize();
-        var progress = size() > 10_000_000 ? Progress.create(LOGGER, "entries") : Progress.NULL;
+        var progress = size() > 10_000_000
+                ? Progress.create(LOGGER, "entries")
+                : ProgressReporter.none();
         progress.steps(count().asMaximum());
         progress.start("Rehashing " + objectName());
         copy.copyEntries(this, progress);

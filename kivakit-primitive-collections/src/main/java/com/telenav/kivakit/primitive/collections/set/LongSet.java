@@ -22,8 +22,8 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.LongCollection;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
@@ -266,6 +266,7 @@ public final class LongSet extends PrimitiveSet implements LongCollection
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -277,6 +278,7 @@ public final class LongSet extends PrimitiveSet implements LongCollection
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

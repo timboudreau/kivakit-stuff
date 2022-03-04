@@ -36,7 +36,7 @@ public abstract class BaseBitWriter implements BitWriter
     /** The current bit mask */
     private int mask = 0x80;
 
-    /** The location of the write cursor */
+    /** The location of the write-cursor */
     private long cursor;
 
     /**

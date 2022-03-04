@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop;
 
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.core.project.Project;
 
 /**
  * @author jonathanl (shibo)

@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.list.store;
 
-import com.telenav.kivakit.core.language.values.mutable.MutableValue;
+import com.telenav.kivakit.core.value.mutable.MutableValue;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 

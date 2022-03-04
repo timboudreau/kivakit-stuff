@@ -21,12 +21,12 @@ package com.telenav.kivakit.primitive.collections.array.packed;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Estimate;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
@@ -34,7 +34,7 @@ import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.ALLOW_OVERFLOW;
 import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW;
 
@@ -150,6 +150,7 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public void copyConfiguration(PrimitiveCollection uncast)
     {
@@ -360,7 +361,7 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
         value = Math.min(maximumAllowedValue, value);
 
         // Normally we wouldn't want to check method parameters like this in Java, but this method
-        // is a hot spot so we want to be able to lift the assertion check completely when -ea is
+        // is a hot spot, so we want to be able to lift the assertion check completely when -ea is
         // not specified
         ensureIndexInRange(index);
 

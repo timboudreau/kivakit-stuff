@@ -22,7 +22,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
@@ -40,7 +40,9 @@ import java.util.List;
  * A map from long -&gt; list of longs.
  */
 @UmlClassDiagram(diagram = DiagramPrimitiveMultiMap.class)
-public final class LongToLongMultiMap extends PrimitiveMultiMap implements LongMultiMap, PrimitiveScalarMultiMap
+public final class LongToLongMultiMap extends PrimitiveMultiMap implements
+        LongMultiMap,
+        PrimitiveScalarMultiMap
 {
     /** The array of arrays */
     private LongLinkedListStore values;

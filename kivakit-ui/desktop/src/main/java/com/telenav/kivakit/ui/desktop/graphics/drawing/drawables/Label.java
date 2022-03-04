@@ -12,7 +12,7 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
 
 import java.awt.Shape;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A {@link Drawable} text label with an underlying {@link Box}

@@ -18,13 +18,12 @@
 
 package com.telenav.kivakit.primitive.collections.map.split;
 
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.List;
-
-import static com.telenav.kivakit.core.language.collections.CompressibleCollection.Method;
 
 public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
 {
@@ -72,7 +71,7 @@ public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
             var b = map();
             putAll(b, keys, values);
             ensureEqual(a, b);
-            b.compress(Method.FREEZE);
+            b.compress(CompressibleCollection.Method.FREEZE);
             ensureEqual(a, b);
         });
         withPopulatedMap((a, keys, values) ->
@@ -81,7 +80,7 @@ public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
             putAll(b, keys, values);
             putAll(b, keys, values);
             ensureEqual(a, b);
-            b.compress(Method.FREEZE);
+            b.compress(CompressibleCollection.Method.FREEZE);
             ensureEqual(a, b);
         });
     }

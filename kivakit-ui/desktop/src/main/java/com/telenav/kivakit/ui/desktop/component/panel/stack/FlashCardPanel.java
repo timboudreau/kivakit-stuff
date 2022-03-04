@@ -1,6 +1,6 @@
 package com.telenav.kivakit.ui.desktop.component.panel.stack;
 
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;

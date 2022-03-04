@@ -1,6 +1,6 @@
 package com.telenav.kivakit.ui.desktop.component.version;
 
-import com.telenav.kivakit.coreKivaKit;
+import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 
 import java.awt.BorderLayout;

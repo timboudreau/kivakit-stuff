@@ -29,13 +29,13 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A collection of primitive short values. All primitive collections have a name that can be retrieved with {@link
- * #objectName()} ()} and a size retrieved with {@link Sized#size()} and they can be emptied with {@link #clear()}.
- * Values in this collection can be iterated with an {@link ShortIterator} returned by the {@link
- * ShortIterable#iterator()} method.
+ * #objectName()} and a size retrieved with {@link Sized#size()} and they can be emptied with {@link #clear()}. Values
+ * in this collection can be iterated with an {@link ShortIterator} returned by the {@link ShortIterable#iterator()}
+ * method.
  * <p>
  * A null value can be assigned to the collection with {@link #nullShort()} and a value can be tested for nullity with
  * {@link #isNull(short)}. In the case where null values may not be desired, {@link #hasNullShort(boolean)} can be used

@@ -22,15 +22,15 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterable;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A set of primitive long values. Supports typical set functions:
@@ -294,7 +294,7 @@ public final class SplitLongSet extends PrimitiveSet implements LongIterable
     }
 
     /**
-     * @return The submap for the given value
+     * @return The sub-map for the given value
      */
     private LongSet set(long value)
     {

@@ -22,16 +22,17 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.telenav.kivakit.core.collections.map.CacheMap;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.strings.AsciiArt;
-import com.telenav.kivakit.core.language.strings.Strings;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
+import com.telenav.kivakit.core.string.AsciiArt;
+import com.telenav.kivakit.core.string.Strings;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitCharArray;
@@ -39,7 +40,7 @@ import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiv
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
- * An store of strings that can be added to that is packed according to information content, using 8 or 16 bit storage
+ * A store of strings that can be added to that is packed according to information content, using 8 or 16 bit storage
  * for ASCII and Unicode characters, respectively. Strings are added with {@link #add(String)}, which returns an
  * identifier that can be used to retrieve the string again with {@link #get(int)} or {@link #safeGet(int)}.
  * <p>
@@ -116,7 +117,7 @@ public class PackedStringArray extends PrimitiveArray
      * compresses the input ala LZW.
      */
     @JavaVirtualMachine.KivaKitExcludeFromSizeOf
-    private transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._65536);
+    private transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._65536, Duration.MAXIMUM);
 
     public PackedStringArray(String objectName)
     {

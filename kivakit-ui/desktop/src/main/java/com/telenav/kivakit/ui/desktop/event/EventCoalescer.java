@@ -18,10 +18,11 @@
 
 package com.telenav.kivakit.ui.desktop.event;
 
-import com.telenav.kivakit.language.time.Frequency;
+import com.telenav.kivakit.core.time.Frequency;
 
 import javax.swing.Timer;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class EventCoalescer
 {
     private Timer timer;

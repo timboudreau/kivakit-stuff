@@ -21,7 +21,7 @@
 
 package com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements;
 
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Coordinated;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 

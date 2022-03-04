@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.component.health;
 
+import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
-import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 
 import javax.swing.JProgressBar;
@@ -34,7 +34,7 @@ public class MemoryUse extends KivaKitPanel
         memoryUse.setMaximum((int) maximumMemory.asKilobytes());
         memoryUse.setValue((int) usedMemory.asKilobytes());
         memoryUse.setStringPainted(true);
-        memoryUse.setString(Message.format
+        memoryUse.setString(Formatter.format
                 (
                         "$ ($%) of $",
                         usedMemory,

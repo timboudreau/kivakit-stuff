@@ -1,6 +1,6 @@
 package com.telenav.kivakit.primitive.collections.list.adapters;
 
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.list.IntList;
 

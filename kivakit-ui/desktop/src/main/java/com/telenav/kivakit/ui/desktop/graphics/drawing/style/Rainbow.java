@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A sequence of colors with varying hues in the order of the rainbow.

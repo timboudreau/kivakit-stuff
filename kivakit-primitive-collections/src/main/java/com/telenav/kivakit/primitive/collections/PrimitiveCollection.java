@@ -22,35 +22,35 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.telenav.kivakit.collections.map.ConcurrentCountMap;
+import com.telenav.kivakit.core.KivaKit;
+import com.telenav.kivakit.core.collections.list.ObjectList;
+import com.telenav.kivakit.core.language.Classes;
+import com.telenav.kivakit.core.language.primitive.Booleans;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.logging.logs.BaseLog;
+import com.telenav.kivakit.core.messaging.Debug;
+import com.telenav.kivakit.core.messaging.context.CallStack;
+import com.telenav.kivakit.core.messaging.messages.status.activity.Activity;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Indent;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Frequency;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Countable;
+import com.telenav.kivakit.core.value.count.Estimate;
+import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.ShutdownHook;
+import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.Named;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
-import com.telenav.kivakit.coreKivaKit;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.collections.list.ObjectList;
-import com.telenav.kivakit.collections.map.ConcurrentCountMap;
-import com.telenav.kivakit.language.primitive.Booleans;
-import com.telenav.kivakit.core.language.strings.Indent;
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.language.time.Frequency;
-import com.telenav.kivakit.language.time.Time;
-import com.telenav.kivakit.core.language.types.Classes;
-import com.telenav.kivakit.language.count.Bytes;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.language.count.Countable;
-import com.telenav.kivakit.language.count.Estimate;
-import com.telenav.kivakit.language.count.Maximum;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.Message;
-import com.telenav.kivakit.core.messaging.context.CallStack;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.logging.logs.BaseLog;
-import com.telenav.kivakit.core.messaging.messages.status.activity.Activity;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArrayArray;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
@@ -76,9 +76,9 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.telenav.kivakit.core.language.vm.KivaKitShutdownHook.Order.FIRST;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.IMMEDIATE;
+import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 
 /**
  * Base class for all primitive collections, which come in two types:
@@ -156,7 +156,7 @@ import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.IMM
  * @see Debug
  * @see Sized
  */
-@SuppressWarnings({ "UnusedReturnValue" })
+@SuppressWarnings({ "UnusedReturnValue", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramPrimitiveCollection.class)
 public abstract class PrimitiveCollection implements
         KryoSerializable,
@@ -192,7 +192,7 @@ public abstract class PrimitiveCollection implements
 
     static
     {
-        KivaKitShutdownHook.register(FIRST, () ->
+        ShutdownHook.register(FIRST, () ->
         {
             compressionRecords = compressionRecords.uniqued();
             Collections.sort(compressionRecords);
@@ -291,7 +291,7 @@ public abstract class PrimitiveCollection implements
         @Override
         public String toString()
         {
-            return Message.format("${double}% ($) - ${class} $ $ -> $",
+            return Formatter.format("${double}% ($) - ${class} $ $ -> $",
                     percentage(), delta(), type, objectName, before, after);
         }
 
@@ -445,7 +445,7 @@ public abstract class PrimitiveCollection implements
     {
         assert initialized : "Collection " + objectName() + " not initialized";
 
-        // If the collection has been initialized and it has not already been compressed,
+        // If the collection has been initialized, and it has not already been compressed,
         if (isInitialized() && !isCompressed())
         {
             // get the capacity in elements before compressing
@@ -978,12 +978,12 @@ public abstract class PrimitiveCollection implements
 
             // If we want to record stack traces, get a stack trace by creating a throwable (AllocationStackTrace)
             AllocationStackTrace stack = null;
-            if (Booleans.isTrue(JavaVirtualMachine.property("KIVAKIT_LOG_ALLOCATION_STACK_TRACES", "false")))
+            if (Booleans.isTrue(SystemProperties.property("KIVAKIT_LOG_ALLOCATION_STACK_TRACES", "false")))
             {
                 stack = new AllocationStackTrace();
             }
 
-            // If there is a child (as in a multi-map),
+            // If there is a child (as in a multimap),
             if (estimatedChildSize != -1)
             {
                 // show both dimensions of the primitive collection
@@ -1376,7 +1376,7 @@ public abstract class PrimitiveCollection implements
             var property = System.getProperty("KIVAKIT_LOG_ALLOCATIONS_MINIMUM_SIZE");
             if (property != null)
             {
-                logAllocationsMinimumSize = Bytes.parse(LOGGER, property).asInt();
+                logAllocationsMinimumSize = Objects.requireNonNull(Bytes.parseBytes(LOGGER, property)).asInt();
             }
             else
             {

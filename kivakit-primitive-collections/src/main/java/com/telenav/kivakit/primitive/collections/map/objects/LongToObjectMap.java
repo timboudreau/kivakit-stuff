@@ -21,9 +21,9 @@ package com.telenav.kivakit.primitive.collections.map.objects;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.progress.ProgressReporter;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMap;
@@ -251,7 +251,7 @@ public final class LongToObjectMap<T> extends PrimitiveMap
         kryo.writeClassAndObject(output, values);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -261,7 +261,7 @@ public final class LongToObjectMap<T> extends PrimitiveMap
         values = that.values;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

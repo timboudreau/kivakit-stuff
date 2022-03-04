@@ -22,7 +22,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.ByteCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;

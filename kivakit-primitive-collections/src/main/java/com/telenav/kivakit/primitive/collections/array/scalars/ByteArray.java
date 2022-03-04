@@ -22,8 +22,8 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.core.language.strings.StringTo;
+import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
@@ -37,7 +37,7 @@ import java.util.Arrays;
  * the array if you call {@link #set(int, byte)} or {@link #add(byte)} and the array is not big enough.
  * <p>
  * Constructors take the same name, maximum size and estimated capacity that all {@link PrimitiveCollection}s take. In
- * addition a {@link ByteArray} can construct from part or all of a primitive byte[].
+ * addition, a {@link ByteArray} can construct from part or all of a primitive byte[].
  * <p>
  * A sub-array can be retrieved by specifying the starting index and the length with {@link #sublist(int, int)}. The
  * sub-array is read only and will share data with the underlying parent array for efficiency.
@@ -46,7 +46,6 @@ import java.util.Arrays;
  * @see PrimitiveCollection
  * @see ByteList
  * @see KryoSerializable
- * @see CompressibleCollection
  * @see CompressibleCollection
  */
 @UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
@@ -58,7 +57,7 @@ public class ByteArray extends PrimitiveArray implements ByteList
     /** The index where {@link #add(byte)} will add values and {@link #next()} will read values */
     private int cursor;
 
-    /** True if this array is a read-only sub-array of some parent array */
+    /** True if this array is a read-only sub-array of a parent array */
     private boolean isSubArray;
 
     public ByteArray(String objectName)

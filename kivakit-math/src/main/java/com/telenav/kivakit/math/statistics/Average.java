@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.math.statistics;
 
+import com.telenav.kivakit.core.language.object.KivaKitFormatProperty;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.interfaces.lifecycle.Resettable;
-import com.telenav.kivakit.core.language.strings.formatting.KivaKitFormatProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

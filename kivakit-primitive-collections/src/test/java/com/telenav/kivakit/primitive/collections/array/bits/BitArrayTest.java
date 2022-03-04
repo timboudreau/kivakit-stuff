@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.primitive.collections.array.bits;
 
-import com.telenav.kivakit.core.language.bits.Bits;
-import com.telenav.kivakit.core.language.io.IO;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.bits.Bits;
+import com.telenav.kivakit.core.io.IO;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;

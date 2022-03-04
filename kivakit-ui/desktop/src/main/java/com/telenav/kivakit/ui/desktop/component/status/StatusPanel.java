@@ -1,13 +1,14 @@
 package com.telenav.kivakit.ui.desktop.component.status;
 
-import com.telenav.kivakit.language.time.Duration;
-import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.core.messaging.messages.status.Announcement;
 import com.telenav.kivakit.core.messaging.messages.status.Information;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.messaging.messages.status.Warning;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.ui.desktop.component.health.HealthPanel;
 import com.telenav.kivakit.ui.desktop.component.icon.logo.kivakit.KivaKitLogo;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Style;
@@ -27,7 +28,9 @@ import static com.telenav.kivakit.ui.desktop.layout.Spacing.MANUAL_SPACING;
 /**
  * @author jonathanl (shibo)
  */
-public class StatusPanel extends JPanel implements StatusDisplay, Listener
+public class StatusPanel extends JPanel implements
+        StatusDisplay,
+        Listener
 {
     public enum Display
     {
@@ -94,7 +97,7 @@ public class StatusPanel extends JPanel implements StatusDisplay, Listener
     public void status(Duration stayFor, Style color, String message, Object... arguments)
     {
         trace(message, arguments);
-        var formatted = Message.format(message, arguments);
+        var formatted = Formatter.format(message, arguments);
         if (!status.getText().equals(formatted))
         {
             color.apply(status);

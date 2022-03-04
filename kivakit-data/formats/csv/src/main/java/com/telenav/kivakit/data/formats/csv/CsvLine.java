@@ -22,7 +22,7 @@ import com.telenav.kivakit.conversion.string.StringConverter;
 import com.telenav.kivakit.conversion.string.collection.BaseListConverter;
 import com.telenav.kivakit.core.language.collections.list.ObjectList;
 import com.telenav.kivakit.core.language.collections.list.StringList;
-import com.telenav.kivakit.core.language.reflection.ObjectPopulator;
+import com.telenav.kivakit.conversion.core.language.object.ObjectPopulator;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.language.reflection.property.Property;
 import com.telenav.kivakit.core.language.reflection.property.PropertyValueSource;

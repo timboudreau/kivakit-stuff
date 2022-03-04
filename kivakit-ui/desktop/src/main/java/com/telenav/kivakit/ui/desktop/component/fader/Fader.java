@@ -1,6 +1,6 @@
 package com.telenav.kivakit.ui.desktop.component.fader;
 
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.ui.desktop.component.Components;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
 

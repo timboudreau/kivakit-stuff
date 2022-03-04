@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.primitive.collections.array.bits;
 
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.naming.Named;
-import com.telenav.kivakit.language.count.Count;
-import com.telenav.kivakit.core.messaging.Message;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
@@ -31,7 +31,7 @@ import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * An array of bits backed by a {@link ByteArray}.
@@ -145,7 +145,7 @@ public final class BitArray extends PrimitiveArray implements Named
     @Override
     public String toString()
     {
-        return Message.format("[BitArray name = '$', size = $, values = $]", name(), size(), toBitString());
+        return Formatter.format("[BitArray name = '$', size = $, values = $]", name(), size(), toBitString());
     }
 
     /**

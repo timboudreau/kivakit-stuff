@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.component.panel.output;
 
-import com.telenav.kivakit.core.language.strings.StringTo;
-import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.StringTo;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Fonts;
 import com.telenav.kivakit.ui.desktop.layout.Margins;
@@ -33,6 +33,7 @@ public class OutputPanel extends KivaKitPanel
 
     private final JTextPane output;
 
+    @SuppressWarnings("SpellCheckingInspection")
     public OutputPanel(Type type)
     {
         setMinimumSize(new Dimension(0, 200));
@@ -84,14 +85,14 @@ public class OutputPanel extends KivaKitPanel
     {
         SwingUtilities.invokeLater(() ->
         {
-            output.setText("<html><body>" + Message.format(html, arguments) + "</body></html>");
+            output.setText("<html><body>" + Formatter.format(html, arguments) + "</body></html>");
             output.setCaretPosition(0);
         });
     }
 
     public void text(String text, Object... arguments)
     {
-        html(StringTo.html(Message.format(text, arguments)));
+        html(StringTo.html(Formatter.format(text, arguments)));
     }
 
     private JScrollPane scrollPane()

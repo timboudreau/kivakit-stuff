@@ -22,8 +22,8 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveScalarMap;
 import com.telenav.kivakit.primitive.collections.map.SplitPrimitiveMap;
@@ -373,7 +373,7 @@ public final class SplitLongToLongMap extends SplitPrimitiveMap implements Primi
         // Get the child index from the key
         var childIndex = hash(key) % children.length;
 
-        // and if the child index is null and we should create a new child,
+        // and if the child index is null, and we should create a new child,
         var child = children[childIndex];
         if (child == null && create)
         {

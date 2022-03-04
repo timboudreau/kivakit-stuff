@@ -29,7 +29,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.List;
 
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * A collection of primitive long values. All primitive collections have a name that can be retrieved with {@link

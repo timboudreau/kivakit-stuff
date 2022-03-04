@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.graphics.drawing;
 
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.objects.DrawingPoint;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;

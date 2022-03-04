@@ -21,9 +21,9 @@
 
 package com.telenav.kivakit.ui.desktop.graphics.drawing.style;
 
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter;
-import com.telenav.kivakit.language.level.Percent;
+import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.Drawable;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.DrawingSurface;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;

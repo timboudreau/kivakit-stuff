@@ -18,9 +18,9 @@
 
 package com.telenav.kivakit.primitive.collections.array.packed;
 
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
@@ -30,9 +30,9 @@ import java.util.List;
 
 /**
  * {@link BigSplitPackedArray} maintains an array of packed arrays, indexing them as a single larger array. The purpose
- * in this is to avoid resizing as a very large packed array grows. Instead, when a write index is greater than the size
- * of the {@link BigSplitPackedArray}, a new {@link PackedArray} is allocated and added to the list. This design is
- * similar to the "rope" pattern for handling very large strings.
+ * in this is to avoid resizing as a very large packed array grows. Instead, when a write-index exceeds the size of the
+ * {@link BigSplitPackedArray}, a new {@link PackedArray} is allocated and added to the list. This design is similar to
+ * the "rope" pattern for handling very large strings.
  *
  * @author jonathanl (shibo)
  */

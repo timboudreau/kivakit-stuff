@@ -26,7 +26,7 @@ import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingObject;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingHeight;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.measurements.DrawingWidth;
 
-import static com.telenav.kivakit.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
 import static com.telenav.kivakit.ui.desktop.graphics.drawing.geometry.DrawingCoordinateSystem.PIXELS;
 
 /**

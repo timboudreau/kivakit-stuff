@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.filesystems.hdfs.proxy.spi;
 
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.project.lexakai.DiagramHdfsSpi;
-import com.telenav.kivakit.language.version.Version;
-import com.telenav.kivakit.core.messaging.logging.Logger;
-import com.telenav.kivakit.core.messaging.logging.LoggerFactory;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
@@ -45,9 +43,7 @@ public interface HdfsProxy extends Remote
     /** The RMI registry port being used */
     int RMI_REGISTRY_PORT = 1099;
 
-    Logger LOGGER = LoggerFactory.newLogger();
-
-    Version VERSION = Version.parse(LOGGER, "0.9");
+    Version VERSION = Version.parseVersion("0.9");
 
     boolean deleteFile(String path) throws RemoteException;
 

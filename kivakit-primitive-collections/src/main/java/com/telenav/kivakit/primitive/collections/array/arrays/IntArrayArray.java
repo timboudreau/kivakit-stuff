@@ -22,9 +22,9 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArrayArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterable;
@@ -33,7 +33,7 @@ import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiv
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
- * Optimized storage of two dimensional int arrays. A sequence of {@link IntArray} objects can be added by calling
+ * Optimized storage of two-dimensional int arrays. A sequence of {@link IntArray} objects can be added by calling
  * {@link #add(IntIterable)}. The stored array can be retrieved later by calling {@link #get(int)} passing in the
  * identifier that was returned by add. The number of int arrays can be retrieved with {@link #size()}
  * <p>

@@ -22,8 +22,8 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.KryoSerializable;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.LongCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.list.LongList;
@@ -37,11 +37,11 @@ import java.util.Arrays;
  * has an array of children each of which is a primitive array. This is a sort of sparse array that tends to perform
  * well when values cluster by index (which they tend to do with map data identifiers). In addition, allocation of child
  * arrays is quick and memory efficient versus trying to manage one very large array. This design also works around the
- * 2GB limitation of Java arrays (which can only be indexed by int values).
+ * 2 GB limitation of Java arrays (which can only be indexed by int values).
  * <p>
- * Supports the operations of {@link LongCollection}, with the exception of {@link #clear()}. Indexing operations in
- * {@link LongList} are supported just as in {@link LongArray}, but the values are distributed across an array of child
- * {@link LongArray} objects.
+ * Supports the operations of {@link LongCollection}, except {@link #clear()}. Indexing operations in {@link LongList}
+ * are supported just as in {@link LongArray}, but the values are distributed across an array of child {@link LongArray}
+ * objects.
  *
  * @author jonathanl (shibo)
  * @see PrimitiveSplitArray

@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.list;
 
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.ByteCollection;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.iteration.ByteIterator;
 import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -38,7 +38,10 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @see ByteCollection
  */
 @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
-public interface ByteList extends ByteCollection, PrimitiveList, CompressibleCollection
+public interface ByteList extends
+        ByteCollection,
+        PrimitiveList,
+        CompressibleCollection
 {
     /**
      * @return This byte list as an array (subclasses may provide a more efficient implementation)
@@ -274,7 +277,7 @@ public interface ByteList extends ByteCollection, PrimitiveList, CompressibleCol
     void set(int index, byte value);
 
     /**
-     * @return A sub-section of this byte list
+     * @return A subsection of this byte list
      */
     ByteList sublist(int offset, int size);
 

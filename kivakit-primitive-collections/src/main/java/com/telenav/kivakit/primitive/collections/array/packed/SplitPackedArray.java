@@ -21,11 +21,11 @@ package com.telenav.kivakit.primitive.collections.array.packed;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.telenav.kivakit.core.language.collections.CompressibleCollection;
 import com.telenav.kivakit.core.language.Hash;
 import com.telenav.kivakit.core.language.Objects;
-import com.telenav.kivakit.language.count.BitCount;
-import com.telenav.kivakit.language.count.Count;
+import com.telenav.kivakit.core.value.count.BitCount;
+import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
@@ -38,8 +38,8 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
 
-import static com.telenav.kivakit.ensure.Ensure.ensure;
-import static com.telenav.kivakit.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.core.ensure.Ensure.ensure;
+import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
 /**
  * {@link SplitPackedArray} maintains an array of packed arrays, indexing them as a single larger array. The purpose in
@@ -55,7 +55,9 @@ import static com.telenav.kivakit.ensure.Ensure.unsupported;
  * @see SplitLongArray
  */
 @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
-public final class SplitPackedArray extends PrimitiveSplitArray implements LongList, PackedPrimitiveArray
+public final class SplitPackedArray extends PrimitiveSplitArray implements
+        LongList,
+        PackedPrimitiveArray
 {
     // Bit count of packed arrays
     private BitCount bits;

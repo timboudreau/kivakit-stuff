@@ -1,8 +1,8 @@
 package com.telenav.kivakit.ui.desktop.component;
 
 import com.telenav.kivakit.core.thread.latches.CompletionLatch;
-import com.telenav.kivakit.language.count.MutableCount;
-import com.telenav.kivakit.language.time.Duration;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.ui.desktop.graphics.drawing.style.Color;
 import com.telenav.kivakit.ui.desktop.theme.KivaKitColors;
 

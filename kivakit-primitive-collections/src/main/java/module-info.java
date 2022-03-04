@@ -3,6 +3,7 @@ open module kivakit.primitive.collections
     // KivaKit
     requires transitive kivakit.serialization.kryo;
     requires transitive kivakit.collections;
+    requires transitive kivakit.conversion;
 
     // Module exports
     exports com.telenav.kivakit.primitive.collections;
@@ -21,7 +22,7 @@ open module kivakit.primitive.collections
     exports com.telenav.kivakit.primitive.collections.list.store;
     exports com.telenav.kivakit.primitive.collections.map;
     exports com.telenav.kivakit.primitive.collections.map.multi.dynamic;
-    exports com.telenav.kivakit.primitive.collections.map.multi.fixed;
+    exports com.telenav.kivakit.primitive.collections.map.scalars.fixed;
     exports com.telenav.kivakit.primitive.collections.map.objects;
     exports com.telenav.kivakit.primitive.collections.map.scalars;
     exports com.telenav.kivakit.primitive.collections.map.split;

@@ -18,11 +18,11 @@
 
 package com.telenav.kivakit.primitive.collections.array.packed;
 
-import com.telenav.kivakit.language.count.BitCount;
+import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
-import static com.telenav.kivakit.core.language.bits.Bits.oneBits;
+import static com.telenav.kivakit.core.bits.Bits.oneBits;
 
 public class SplitPackedArrayTest extends PrimitiveCollectionsUnitTest
 {
