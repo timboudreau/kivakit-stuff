@@ -45,7 +45,7 @@ public class Components
         var alphaVariable = new MutableCount(0);
         color.withAlpha(0).applyAsBackground(component);
         var completed = new CompletionLatch();
-        update.every(timer ->
+        update.repeat(timer ->
         {
             var alpha = alphaVariable.get();
             var newAlpha = Math.min(255, alpha + step);
@@ -65,7 +65,7 @@ public class Components
         var alphaVariable = new MutableCount(255);
         color.withAlpha(255).applyAsBackground(component);
         var completed = new CompletionLatch();
-        update.every(timer ->
+        update.repeat(timer ->
         {
             var alpha = alphaVariable.get();
             var newAlpha = Math.max(0, alpha - step);

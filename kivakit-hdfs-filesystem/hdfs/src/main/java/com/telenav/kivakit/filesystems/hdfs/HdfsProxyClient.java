@@ -20,12 +20,12 @@ package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.KivaKit;
-import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
@@ -45,6 +45,7 @@ import com.telenav.lexakai.annotations.visibility.UmlNotPublicApi;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
 import static com.telenav.kivakit.resource.resources.jar.launcher.JarLauncher.ProcessType.CHILD;
 
 /**
@@ -114,7 +115,7 @@ public class HdfsProxyClient extends BaseComponent
             }
             else
             {
-                // otherwise launch the proxy
+                // otherwise, launch the proxy
                 launchProxy();
 
                 // and wait until it is ready.
@@ -178,7 +179,7 @@ public class HdfsProxyClient extends BaseComponent
                     .processType(CHILD)
                     .run();
 
-            KivaKitShutdownHook.register(KivaKitShutdownHook.Order.LAST, process::destroyForcibly);
+            ShutdownHook.register(LAST, process::destroyForcibly);
         }
         else
         {

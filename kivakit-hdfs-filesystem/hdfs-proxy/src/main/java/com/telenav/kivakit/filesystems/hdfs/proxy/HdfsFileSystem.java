@@ -19,17 +19,16 @@
 package com.telenav.kivakit.filesystems.hdfs.proxy;
 
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.registry.InstanceIdentifier;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileSystemService;
 import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
-import com.telenav.kivakit.core.language.object.ObjectFormatter;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.resource.ResourceFolder;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -133,6 +132,7 @@ class HdfsFileSystem extends BaseComponent
     /**
      * @return The cluster name such as "navhacluster" from an HDFS path like hdfs://navhacluster
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private static String cluster(FilePath path)
     {
         var pattern = java.util.regex.Pattern.compile("hdfs://([^/]*)");
@@ -182,7 +182,7 @@ class HdfsFileSystem extends BaseComponent
     {
         // If the user defines KIVAKIT_HDFS_CONFIGURATION_FOLDER,
         ResourceFolder configurationFolder = null;
-        var property = JavaVirtualMachine.property("KIVAKIT_HDFS_CONFIGURATION_FOLDER");
+        var property = systemProperty("KIVAKIT_HDFS_CONFIGURATION_FOLDER");
         if (property != null)
         {
             // see if the folder exists or can be created

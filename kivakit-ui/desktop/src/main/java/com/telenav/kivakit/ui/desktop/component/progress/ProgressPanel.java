@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.component.progress;
 
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.interfaces.code.Callback;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
@@ -52,7 +52,7 @@ public class ProgressPanel extends KivaKitPanel
         {
             var percentComplete = (int) at.asZeroToOne();
             progressBar.setValue(percentComplete);
-            progressBar.setString(Formatter.format("$%", percentComplete));
+            progressBar.setString(Strings.format("$%", percentComplete));
             progressBar.setStringPainted(false);
             if (at.equals(Percent._100))
             {

@@ -22,8 +22,8 @@ import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.SymbolConsumer.Directive;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.CodedSymbol;
@@ -87,7 +87,7 @@ public final class FastHuffmanDecoder<Symbol>
             @Override
             public String asString(Format format)
             {
-                return Formatter.format("[Entry next = '$', values = $]", next.prefix,
+                return Strings.format("[Entry next = '$', values = $]", next.prefix,
                         new StringList(values).join(", "));
             }
 
@@ -172,7 +172,7 @@ public final class FastHuffmanDecoder<Symbol>
                 var entry = byteToEntry[index];
                 entries.append(StringTo.binary(index, 8) + " = " + entry.asString());
             }
-            return Formatter.format("[Table prefix = '$']\n    ", prefix) + entries.join("\n    ");
+            return Strings.format("[Table prefix = '$']\n    ", prefix) + entries.join("\n    ");
         }
 
         @Override

@@ -20,6 +20,6 @@ public class FlashCardPanel extends JPanel
 
     public void start(Duration delay)
     {
-        delay.every(timer -> cardLayout.next(this));
+        delay.repeat(timer -> cardLayout.next(this));
     }
 }

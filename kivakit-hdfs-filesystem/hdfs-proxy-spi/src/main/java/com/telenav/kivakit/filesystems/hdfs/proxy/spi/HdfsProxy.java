@@ -43,7 +43,7 @@ public interface HdfsProxy extends Remote
     /** The RMI registry port being used */
     int RMI_REGISTRY_PORT = 1099;
 
-    Version VERSION = Version.parseVersion("0.9");
+    Version VERSION = Version.version("0.9");
 
     boolean deleteFile(String path) throws RemoteException;
 

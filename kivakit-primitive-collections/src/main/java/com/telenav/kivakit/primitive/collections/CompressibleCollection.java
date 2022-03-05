@@ -62,7 +62,7 @@ public interface CompressibleCollection
             Map<Object, Boolean> compressed = new IdentityHashMap<>();
             for (var value : values)
             {
-                // and if we haven't already compressed it and it can be compressed,
+                // and if we haven't already compressed it, and it can be compressed,
                 if (compressed.get(value) != Boolean.TRUE)
                 {
                     // compress it using the given method,
@@ -75,7 +75,7 @@ public interface CompressibleCollection
                         receiver.receive(new CompressionEvent(compressible, methodUsed));
                     }
 
-                    // then mark it as compressed so we don't try it again.
+                    // then mark it as compressed, so we don't try it again.
                     compressed.put(value, Boolean.TRUE);
                 }
             }
@@ -90,7 +90,7 @@ public interface CompressibleCollection
         NONE,
 
         /**
-         * Resize the collection to its minimal size but retain its mutability. For example, an map might reduce its
+         * Resize the collection to its minimal size but retain its mutability. For example, a map might reduce its
          * capacity by resizing to an optimal number of buckets or slots, while an array might trim off excess elements
          * that aren't occupied.
          */

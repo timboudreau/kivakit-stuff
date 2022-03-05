@@ -1,9 +1,9 @@
 package com.telenav.kivakit.logs.client.network;
 
-import com.telenav.kivakit.core.thread.KivaKitThread;
-import com.telenav.kivakit.core.thread.conditions.StateMachine;
-import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.StateMachine;
+import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.network.core.Port;
 
 import java.io.InputStream;
@@ -155,7 +155,7 @@ public class Connector extends BaseRepeater
         connectingTo = port;
         autoConnectThread = listenTo(KivaKitThread.run("LogAutoConnector", () ->
         {
-            // Loop while we are not yet connected and we haven't been told to give up
+            // Loop while we are not yet connected, and we haven't been told to give up
             while (state.isNot(CONNECTED) && state.isNot(STOP_CONNECTING))
             {
                 // get a connection to the given port,

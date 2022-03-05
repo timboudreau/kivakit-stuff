@@ -18,17 +18,18 @@
 
 package com.telenav.kivakit.service.registry;
 
+import com.telenav.kivakit.conversion.core.language.object.KivaKitPropertyConverter;
 import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
-import com.telenav.kivakit.conversion.language.VersionConverter;
+import com.telenav.kivakit.conversion.core.time.DurationConverter;
+import com.telenav.kivakit.conversion.core.time.FrequencyConverter;
+import com.telenav.kivakit.conversion.core.value.VersionConverter;
 import com.telenav.kivakit.core.language.object.ObjectFormatter;
-import com.telenav.kivakit.core.language.reflection.populator.KivaKitPropertyConverter;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
-import com.telenav.kivakit.core.time.FrequencyConverter;
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -123,7 +124,8 @@ public class ServiceRegistrySettings
      */
     public Port network()
     {
-        var port = JavaVirtualMachine.property
+        @SuppressWarnings("SpellCheckingInspection")
+        var port = SystemProperties.property
                 (
                         "KIVAKIT_NETWORK_SERVICE_REGISTRY_PORT",
                         "kivakit-network-service-registry.mypna.com:23575"
@@ -156,7 +158,7 @@ public class ServiceRegistrySettings
         return portReservationExpirationTime;
     }
 
-    @KivaKitPropertyConverter(Duration.Converter.class)
+    @KivaKitPropertyConverter(DurationConverter.class)
     public ServiceRegistrySettings portReservationExpirationTime(Duration portReservationExpirationTime)
     {
         this.portReservationExpirationTime = portReservationExpirationTime;
@@ -195,7 +197,7 @@ public class ServiceRegistrySettings
         return serviceRegistrationExpirationTime;
     }
 
-    @KivaKitPropertyConverter(Duration.Converter.class)
+    @KivaKitPropertyConverter(DurationConverter.class)
     public ServiceRegistrySettings serviceRegistrationExpirationTime(Duration registrationExpirationTime)
     {
         serviceRegistrationExpirationTime = registrationExpirationTime;
@@ -208,7 +210,7 @@ public class ServiceRegistrySettings
         return serviceRegistryStoreExpirationTime;
     }
 
-    @KivaKitPropertyConverter(Duration.Converter.class)
+    @KivaKitPropertyConverter(DurationConverter.class)
     public ServiceRegistrySettings serviceRegistryStoreExpirationTime(Duration serviceRegistryStoreExpirationTime)
     {
         this.serviceRegistryStoreExpirationTime = serviceRegistryStoreExpirationTime;

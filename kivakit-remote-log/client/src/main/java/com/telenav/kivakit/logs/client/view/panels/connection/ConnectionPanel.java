@@ -1,11 +1,12 @@
 package com.telenav.kivakit.logs.client.view.panels.connection;
 
+import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.kivakit.core.collections.list.ObjectList;
-import com.telenav.kivakit.core.collections.set.Sets;
-import com.telenav.kivakit.core.thread.KivaKitThread;
-import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.thread.KivaKitThread;
+import com.telenav.kivakit.core.thread.RepeatingThread;
+import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.logs.client.network.Connector;
 import com.telenav.kivakit.logs.server.ServerLog;
 import com.telenav.kivakit.service.registry.Scope;
@@ -57,7 +58,7 @@ public class ConnectionPanel extends KivaKitPanel
                 updatingComboBox = false;
             });
 
-            KivaKitThread.run("LogConnectionRefresher", () -> Duration.seconds(15).loop(this, this::refreshConnections));
+            RepeatingThread.run(this, "LogConnectionRefresher", Frequency.EVERY_15_SECONDS, this::refreshConnections);
         }
 
         return connectComboBox;

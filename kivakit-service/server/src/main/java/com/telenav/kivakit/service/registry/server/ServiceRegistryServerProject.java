@@ -18,11 +18,11 @@
 
 package com.telenav.kivakit.service.registry.server;
 
-import com.telenav.kivakit.settings.settings.Settings;
 import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.coreproject.Project;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
+import com.telenav.kivakit.settings.settings.Settings;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

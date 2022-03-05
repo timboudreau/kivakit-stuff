@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.service.registry;
 
-import com.telenav.kivakit.core.collections.CollectionsProject;
-import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.coreproject.Project;
+import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
@@ -47,11 +45,5 @@ public class ServiceRegistryProject extends Project
     private ServiceRegistryProject()
     {
         SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
-    }
-
-    @Override
-    public ObjectSet<Project> dependencies()
-    {
-        return ObjectSet.objectSet(CollectionsProject.get());
     }
 }

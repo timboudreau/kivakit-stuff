@@ -9,6 +9,7 @@ open module kivakit.service.registry
 
     // JSON
     requires gson;
+    requires kivakit.serialization.kryo;
 
     // Module exports
     exports com.telenav.kivakit.service.registry;

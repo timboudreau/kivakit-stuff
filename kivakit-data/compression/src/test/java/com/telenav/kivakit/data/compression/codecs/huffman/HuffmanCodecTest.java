@@ -21,7 +21,7 @@ package com.telenav.kivakit.data.compression.codecs.huffman;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
@@ -63,7 +63,7 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
 
         var encoded = encode(codec, List.of("a", "b", "a", "c", "a", "a", "a", "a", "last"));
 
-        var progress = Progress.create(LOGGER);
+        var progress = BroadcastingProgressReporter.create(LOGGER);
         for (int i = 0; i < 1_000_000_000; i++)
         {
             codec.decode(encoded, (ordinal, next) -> "last".equals(next) ? SymbolConsumer.Directive.STOP : SymbolConsumer.Directive.CONTINUE);
@@ -187,7 +187,7 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
     @Test
     public void testRandom()
     {
-        var progress = Progress.create();
+        var progress = BroadcastingProgressReporter.create();
 
         // For each random codec
         loop(10, codecNumber ->

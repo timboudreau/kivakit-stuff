@@ -22,7 +22,7 @@ import com.telenav.kivakit.conversion.StringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.map.CountMap;
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.Minimum;
@@ -235,7 +235,7 @@ public class Symbols<Symbol>
     @Override
     public String toString()
     {
-        return Formatter.format("[Symbols escape = $, size = $]\n    $", escape(), size(),
+        return Strings.format("[Symbols escape = $, size = $]\n    $", escape(), size(),
                 ObjectList.objectList(encoded).join("\n    "));
     }
 

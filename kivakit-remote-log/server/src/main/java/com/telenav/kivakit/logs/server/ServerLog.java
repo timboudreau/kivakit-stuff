@@ -19,24 +19,26 @@
 package com.telenav.kivakit.logs.server;
 
 import com.telenav.kivakit.application.Application;
+import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.collections.map.VariableMap;
-import com.telenav.kivakit.core.io.ProgressiveInput;
-import com.telenav.kivakit.core.io.ProgressiveOutput;
-import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.loggers.ConsoleLogger;
 import com.telenav.kivakit.core.logging.logs.text.BaseTextLog;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.ProgressiveInputStream;
+import com.telenav.kivakit.core.progress.reporters.ProgressiveOutputStream;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Monitor;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.network.socket.server.ConnectionListener;
@@ -52,11 +54,12 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.telenav.kivakit.core.language.vm.KivaKitShutdownHook.Order.LAST;
+import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.CLIENT;
 import static com.telenav.kivakit.serialization.core.SerializationSession.Type.SERVER;
 
-public class ServerLog extends BaseTextLog
+public class ServerLog extends BaseTextLog implements ProjectTrait
 {
     public static final ServiceType SERVER_LOG = new ServiceType("kivakit-server-log");
 
@@ -95,15 +98,15 @@ public class ServerLog extends BaseTextLog
 
     public ServerLog()
     {
-        KivaKitShutdownHook.register(LAST, () -> SessionStore.get().save(session.get()));
+        ShutdownHook.register(LAST, () -> SessionStore.get().save(session.get()));
 
         ServerLogProject.get().initialize();
 
         var client = LOGGER.listenTo(new ServiceRegistryClient());
         var metadata = new ServiceMetadata()
-                .kivakitVersion(KivaKit.get().kivakitVersion())
+                .kivakitVersion(kivakitVersion())
                 .description("KivaKit server log")
-                .version(KivaKit.get().projectVersion());
+                .version(projectVersion());
         var service = client.register(Scope.network(), SERVER_LOG, metadata);
         if (service.failed())
         {
@@ -125,7 +128,7 @@ public class ServerLog extends BaseTextLog
         {
             maximumEntries = Maximum.parseMaximum(Listener.console(), maximum);
         }
-        listen(Progress.create(LOGGER, "bytes"));
+        listen(BroadcastingProgressReporter.create(LOGGER, "bytes"));
     }
 
     public ServerLog listen(ProgressReporter reporter)
@@ -169,7 +172,7 @@ public class ServerLog extends BaseTextLog
                         entry.formattedMessage();
 
                         // and send the entry
-                        serializer.write(new VersionedObject<>(entry));
+                        serializer.write(new VersionedObject<>(projectVersion(), entry));
                         serializer.flush();
                     }
                     catch (Exception e)
@@ -194,7 +197,7 @@ public class ServerLog extends BaseTextLog
     public void synchronizeSessions(SerializationSession serializationSession, ProgressReporter reporter)
     {
         // Send the sessions we have to the client
-        serializationSession.write(new VersionedObject<>(SessionStore.get().sessions()));
+        serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), SessionStore.get().sessions()));
 
         // then read back the sessions that the client wants sent
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
@@ -202,7 +205,7 @@ public class ServerLog extends BaseTextLog
         // then send each desired session back to the client
         for (var session : sessionsToSend.get())
         {
-            serializationSession.write(new VersionedObject<>(SessionStore.get().read(session, reporter)));
+            serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), SessionStore.get().read(session, reporter)));
         }
     }
 
@@ -236,8 +239,8 @@ public class ServerLog extends BaseTextLog
             if (input != null && output != null)
             {
                 // layer in progress reporting
-                input = new ProgressiveInput(input, reporter);
-                output = new ProgressiveOutput(output, reporter);
+                input = new ProgressiveInputStream(input, reporter);
+                output = new ProgressiveOutputStream(output, reporter);
 
                 // get the set of sessions the log has stored,
                 var store = SessionStore.get();
@@ -251,7 +254,7 @@ public class ServerLog extends BaseTextLog
                     serializer.open(SERVER, KivaKit.get().kivakitVersion(), output);
 
                     // then send the client our application name
-                    serializer.write(new VersionedObject<>(Application.get().name()));
+                    serializer.write(new VersionedObject<>(Application.get().projectVersion(), Application.get().name()));
 
                     // and synchronize sessions with it
                     synchronizeSessions(serializer, reporter);
@@ -278,7 +281,7 @@ public class ServerLog extends BaseTextLog
                                 synchronized (serializationLock)
                                 {
                                     // sends a health report on the JVM
-                                    serializer.write(new VersionedObject<>(new JavaVirtualMachineHealth()));
+                                    serializer.write(new VersionedObject<>(Application.get().projectVersion(), new JavaVirtualMachineHealth()));
                                 }
                             }
                             catch (Exception e)

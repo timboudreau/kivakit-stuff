@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.string.Indent;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.level.Percent;
@@ -734,7 +734,7 @@ public abstract class PrimitiveMap extends PrimitiveCollection
         // then copy the entries from this object into the copy
         copy.initialize();
         var progress = size() > 10_000_000
-                ? Progress.create(LOGGER, "entries")
+                ? BroadcastingProgressReporter.create(LOGGER, "entries")
                 : ProgressReporter.none();
         progress.steps(count().asMaximum());
         progress.start("Rehashing " + objectName());

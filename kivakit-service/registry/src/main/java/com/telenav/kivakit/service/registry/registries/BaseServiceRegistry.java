@@ -19,16 +19,16 @@
 package com.telenav.kivakit.service.registry.registries;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.core.collections.set.MultiSet;
-import com.telenav.kivakit.core.collections.set.Sets;
-import com.telenav.kivakit.core.language.monads.Result;
-import com.telenav.kivakit.core.thread.KivaKitThread;
-import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
+import com.telenav.kivakit.collections.set.MultiSet;
+import com.telenav.kivakit.core.collections.Sets;
+import com.telenav.kivakit.core.function.Result;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.locks.ReadWriteLock;
-import com.telenav.kivakit.interfaces.lifecycle.Startable;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.vm.ShutdownHook;
+import com.telenav.kivakit.interfaces.lifecycle.Startable;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.Service;
@@ -51,7 +51,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.telenav.kivakit.core.language.vm.KivaKitShutdownHook.Order.FIRST;
+import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 
 /**
  * <b>Not public API</b>
@@ -324,7 +324,7 @@ public abstract class BaseServiceRegistry extends BaseRepeater implements Servic
             running = true;
 
             // Save the service registry on shutdown
-            KivaKitShutdownHook.register(FIRST, () -> store.save(this));
+            ShutdownHook.register(FIRST, () -> store.save(this));
 
             // and also every 30 seconds, in case we go down.
             KivaKitThread.repeat(this, "ServiceRegistrySaver", Duration.seconds(30).asFrequency(), () -> store.save(this));

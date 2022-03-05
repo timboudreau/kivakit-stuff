@@ -1,12 +1,12 @@
 package com.telenav.kivakit.logs.client.view.panels.table;
 
 import com.telenav.kivakit.core.collections.list.StringList;
+import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.string.Align;
 import com.telenav.kivakit.core.string.StringTo;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 import com.telenav.kivakit.ui.desktop.event.EventCoalescer;
@@ -25,9 +25,9 @@ import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
 import static com.telenav.kivakit.core.logging.logs.text.formatters.ColumnarLogFormatter.DEFAULT;
 import static com.telenav.kivakit.core.string.Formatter.Format.WITHOUT_EXCEPTION;
+import static com.telenav.kivakit.interfaces.string.Stringable.Format.USER_LABEL;
 import static com.telenav.kivakit.logs.client.view.panels.table.TableModel.CONTEXT;
 import static com.telenav.kivakit.logs.client.view.panels.table.TableModel.ELAPSED;
 import static com.telenav.kivakit.logs.client.view.panels.table.TableModel.MESSAGE;
@@ -42,6 +42,7 @@ import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
  */
 public class TablePanel extends KivaKitPanel
 {
+    @SuppressWarnings("SpellCheckingInspection")
     private final EventCoalescer addCoalescer;
 
     private volatile int firstSelectedIndex = -1;
@@ -60,6 +61,7 @@ public class TablePanel extends KivaKitPanel
 
     private final List<LogEntry> toAdd = new ArrayList<>();
 
+    @SuppressWarnings("SpellCheckingInspection")
     public TablePanel(ClientLogPanel parent)
     {
         assert parent != null;

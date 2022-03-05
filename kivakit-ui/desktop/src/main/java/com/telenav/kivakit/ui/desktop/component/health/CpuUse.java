@@ -1,6 +1,6 @@
 package com.telenav.kivakit.ui.desktop.component.health;
 
-import com.telenav.kivakit.core.string.Formatter;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 
@@ -26,7 +26,7 @@ public class CpuUse extends KivaKitPanel
 
     public CpuUse update(JavaVirtualMachineHealth health)
     {
-        cpuUse.setString(Formatter.format("$% cpu", (int) health.cpuUse()));
+        cpuUse.setString(Strings.format("$% cpu", (int) health.cpuUse()));
         cpuUse.setStringPainted(true);
         cpuUse.setMaximum((int) health.elapsed().asSeconds());
         cpuUse.setValue((int) health.elapsedCpuTime().asSeconds());

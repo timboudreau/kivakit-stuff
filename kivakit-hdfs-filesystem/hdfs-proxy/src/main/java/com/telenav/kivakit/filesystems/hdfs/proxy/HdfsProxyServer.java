@@ -19,11 +19,11 @@
 package com.telenav.kivakit.filesystems.hdfs.proxy;
 
 import com.telenav.kivakit.application.Server;
-import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.commandline.SwitchParsers;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.io.IO;
-import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Monitor;
 import com.telenav.kivakit.core.time.Duration;
@@ -109,10 +109,8 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
 
     public HdfsProxyServer()
     {
-        super(KernelProject.get());
-
         // Shut the proxy server down when it hasn't been used in a while to prevent stuck proxy servers
-        Duration.minutes(1).every(timer ->
+        Duration.minutes(1).repeat(timer ->
         {
             if (lastRequest.elapsedSince().isGreaterThan(Duration.minutes(5)))
             {
@@ -591,6 +589,6 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
             Exception cause, String message, Object... arguments) throws RemoteException
     {
         problem(cause, message, arguments);
-        throw new RemoteException(Message.format(message, arguments), cause);
+        throw new RemoteException(Strings.format(message, arguments), cause);
     }
 }

@@ -18,17 +18,17 @@
 
 package com.telenav.kivakit.logs.client.view;
 
-import com.telenav.kivakit.core.io.ProgressiveInput;
-import com.telenav.kivakit.core.language.vm.KivaKitShutdownHook;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.messaging.Broadcaster;
-import com.telenav.kivakit.core.messaging.Message;
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
+import com.telenav.kivakit.core.progress.reporters.ProgressiveInputStream;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.Count;
-import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.version.VersionedObject;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.logs.client.ClientLog;
 import com.telenav.kivakit.logs.client.ClientLogFrame;
 import com.telenav.kivakit.logs.client.network.Connection;
@@ -61,7 +61,7 @@ import java.awt.Toolkit;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.telenav.kivakit.core.language.vm.KivaKitShutdownHook.Order.FIRST;
+import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 import static com.telenav.kivakit.ui.desktop.component.panel.output.OutputPanel.Type.FIXED_WIDTH;
 import static com.telenav.kivakit.ui.desktop.component.progress.ProgressPanel.CompletionStatus.CANCELLED;
 import static com.telenav.kivakit.ui.desktop.component.status.StatusPanel.Display.SHOW_HEALTH_PANEL;
@@ -106,7 +106,7 @@ public class ClientLogPanel extends KivaKitPanel
         this.frame = frame;
         this.log = log;
 
-        KivaKitShutdownHook.register(FIRST, this::saveConnectedSession);
+        ShutdownHook.register(FIRST, this::saveConnectedSession);
 
         receiver = statusPanel().listenTo(new Receiver());
 
@@ -237,7 +237,7 @@ public class ClientLogPanel extends KivaKitPanel
     {
         var currentSession = sessionPanel().currentSession();
         var entries = currentSession != null ? currentSession.entries().size() : 0;
-        frame.title(Message.format("MesaKit Log Viewer ($) - Viewing $ Entries",
+        frame.title(Strings.format("MesaKit Log Viewer ($) - Viewing $ Entries",
                 connector().isConnected() ? connector().connectedPort() : "Disconnected", entries));
     }
 
@@ -285,8 +285,8 @@ public class ClientLogPanel extends KivaKitPanel
     {
         return connection ->
         {
-            var reporter = Progress.create();
-            var progressiveInput = new ProgressiveInput(connection.input(), reporter);
+            var reporter = BroadcastingProgressReporter.create();
+            var progressiveInput = new ProgressiveInputStream(connection.input(), reporter);
             var progress = new ProgressPanel(reporter, 150, status ->
             {
                 if (status == CANCELLED)

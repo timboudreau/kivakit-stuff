@@ -19,16 +19,14 @@
 package com.telenav.kivakit.service.viewer;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParser;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.list.StringList;
-import com.telenav.kivakit.core.messaging.Debug;
-import com.telenav.kivakit.core.messaging.Message;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.string.AsciiArt;
-import com.telenav.kivakit.network.core.NetworkProject;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.Scope.Type;
 import com.telenav.kivakit.service.registry.ServiceMetadata;
@@ -53,13 +51,6 @@ public class ServiceRegistryViewerApplication extends Application
 
     private final SwitchParser<Type> SCOPE_TYPE = scopeTypeSwitchParser(this).build();
 
-    private final Debug DEBUG = new Debug(this);
-
-    private ServiceRegistryViewerApplication()
-    {
-        super(NetworkProject.get());
-    }
-
     @Override
     protected void onRun()
     {
@@ -69,7 +60,7 @@ public class ServiceRegistryViewerApplication extends Application
         var client = listenTo(new ServiceRegistryClient());
 
         // register a server log
-        if (DEBUG.isDebugOn())
+        if (isDebugOn())
         {
             var metadata = new ServiceMetadata()
                     .description("Server log for " + identifier())
@@ -83,7 +74,7 @@ public class ServiceRegistryViewerApplication extends Application
         var services = client.discoverServices(Scope.scope(get(SCOPE_TYPE)));
         if (services.failed())
         {
-            Message.println("\nUnable to find services: $\n", services.messages().find(Problem.class).formatted(WITH_EXCEPTION));
+            Console.println("\nUnable to find services: $\n", services.messages().find(Problem.class).formatted(WITH_EXCEPTION));
         }
         else
         {

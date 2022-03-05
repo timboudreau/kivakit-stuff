@@ -19,21 +19,20 @@
 package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.core.code.UncheckedCode;
+import com.telenav.kivakit.core.logging.Logger;
+import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.thread.Monitor;
+import com.telenav.kivakit.core.thread.Retry;
+import com.telenav.kivakit.core.time.Duration;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystem.spi.FolderService;
 import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.core.thread.Monitor;
-import com.telenav.kivakit.core.language.matchers.AnythingMatcher;
-import com.telenav.kivakit.core.thread.Retry;
-import com.telenav.kivakit.language.code.UncheckedCode;
-import com.telenav.kivakit.core.value.count.Bytes;
-import com.telenav.kivakit.core.time.Duration;
-import com.telenav.kivakit.core.time.Time;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -124,7 +123,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     @Override
     public List<FileService> files()
     {
-        return retry(() -> matching(proxy().files(pathAsString()), new AnythingMatcher<>())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
+        return retry(() -> matching(proxy().files(pathAsString()), Matcher.anything())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
     }
 
     @Override
@@ -148,7 +147,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     @Override
     public List<FolderService> folders()
     {
-        return folders(new AnythingMatcher<>());
+        return folders(Matcher.anything());
     }
 
     @Override
@@ -229,7 +228,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
 
     public List<FileService> nestedFiles()
     {
-        return retry(() -> matching(proxy().nestedFiles(pathAsString()), new AnythingMatcher<>())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
+        return retry(() -> matching(proxy().nestedFiles(pathAsString()), Matcher.anything())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
     }
 
     @Override

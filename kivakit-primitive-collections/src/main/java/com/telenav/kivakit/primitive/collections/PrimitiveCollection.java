@@ -33,8 +33,8 @@ import com.telenav.kivakit.core.logging.logs.BaseLog;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.context.CallStack;
 import com.telenav.kivakit.core.messaging.messages.status.activity.Activity;
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.Indent;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.time.Time;
@@ -291,7 +291,7 @@ public abstract class PrimitiveCollection implements
         @Override
         public String toString()
         {
-            return Formatter.format("${double}% ($) - ${class} $ $ -> $",
+            return Strings.format("${double}% ($) - ${class} $ $ -> $",
                     percentage(), delta(), type, objectName, before, after);
         }
 

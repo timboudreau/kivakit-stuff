@@ -19,8 +19,8 @@
 package com.telenav.kivakit.service.registry.protocol.discover;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.network.core.Port;
@@ -29,7 +29,7 @@ import com.telenav.kivakit.service.registry.protocol.BaseRequest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter.Format.MULTILINE;
+import static com.telenav.kivakit.core.language.object.ObjectFormatter.Format.MULTILINE;
 import static com.telenav.kivakit.service.registry.protocol.ServiceRegistryProtocol.DISCOVER_PORT_SERVICE;
 
 /**

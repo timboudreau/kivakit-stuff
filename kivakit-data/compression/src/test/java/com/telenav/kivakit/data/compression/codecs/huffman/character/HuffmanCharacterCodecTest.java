@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
-import com.telenav.kivakit.core.progress.reporters.Progress;
+import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
                 List.of("this is a test", "whatever", "banana", "cherry",
                         "apple", "coconut", "cookie", "whatever", "last"));
 
-        var progress = Progress.create();
+        var progress = BroadcastingProgressReporter.create();
         for (int i = 0; i < 1_000_000_000; i++)
         {
             codec.decode(encoded, (ordinal, next) -> "last".equals(next) ? SymbolConsumer.Directive.STOP : SymbolConsumer.Directive.CONTINUE);
@@ -68,7 +68,7 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
             var symbols = randomCharacterSymbols(2, 26);
             var codec = HuffmanCharacterCodec.from(symbols);
 
-            var progress = Progress.create();
+            var progress = BroadcastingProgressReporter.create();
             loop(100, () ->
             {
                 var random = randomStringSymbols(1, 64, 1, 32);

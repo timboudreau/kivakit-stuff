@@ -46,7 +46,7 @@ public class HdfsFileSystemTest extends UnitTest
     @Before
     public void testBefore()
     {
-        var kivakitVersion = KivaKit.get().kivakitVersion();
+        var kivakitVersion = kivakitVersion();
         var settings = new HdfsSettings()
                 .clusterName("cluster1ns")
                 .configurationFolder(Package.packageFrom(this, getClass(), "settings/cluster1ns"))

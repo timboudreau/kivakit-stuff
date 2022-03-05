@@ -7,9 +7,9 @@ import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.thread.latches.CompletionLatch;
 import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.interfaces.lifecycle.Stoppable;
 import com.telenav.kivakit.interfaces.time.LengthOfTime;
-import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.serialization.core.SerializationSession;
@@ -133,7 +133,7 @@ public class Receiver extends BaseRepeater implements Stoppable
         }
 
         // tell the server which sessions we desire,
-        serializationSession.write(new VersionedObject<>(desiredSessions));
+        serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), desiredSessions));
 
         // then add each session to the cache
         for (var session : desiredSessions)

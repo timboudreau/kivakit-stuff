@@ -19,8 +19,8 @@
 package com.telenav.kivakit.service.registry.protocol.register;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.service.registry.Service;
@@ -28,7 +28,7 @@ import com.telenav.kivakit.service.registry.protocol.BaseRequest;
 import com.telenav.kivakit.service.registry.protocol.ServiceRegistryProtocol;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
-import static com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter.Format.MULTILINE;
+import static com.telenav.kivakit.core.language.object.ObjectFormatter.Format.MULTILINE;
 
 /**
  * A request from an application (usually a server) to register a service and begin leasing a port for it.

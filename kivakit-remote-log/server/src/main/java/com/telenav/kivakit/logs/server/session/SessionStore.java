@@ -1,5 +1,7 @@
 package com.telenav.kivakit.logs.server.session;
 
+import com.telenav.kivakit.component.BaseComponent;
+import com.telenav.kivakit.conversion.core.time.LocalDateTimeConverter;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.Logger;
@@ -8,10 +10,9 @@ import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.time.LocalTime;
+import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 
@@ -31,7 +32,7 @@ import static com.telenav.kivakit.serialization.core.SerializationSession.Type.R
 /**
  * @author jonathanl (shibo)
  */
-public class SessionStore
+public class SessionStore extends BaseComponent
 {
     private static final Logger LOGGER = LoggerFactory.newLogger();
 
@@ -127,7 +128,7 @@ public class SessionStore
             if (parts.length == 2)
             {
                 var name = parts[0];
-                var time = LocalTime.parseDateTime(parts[1]);
+                var time = new LocalDateTimeConverter(this).convert(parts[1]);
                 if (!Strings.isEmpty(name) && time != null)
                 {
                     sessions.add(new Session(name, time, file.sizeInBytes()));
@@ -149,8 +150,8 @@ public class SessionStore
             try (var output = sessionFile(session, Extension.KRYO).openForWriting())
             {
                 var serializer = session();
-                serializer.open(RESOURCE, KivaKit.get().kivakitVersion(), output);
-                serializer.write(new VersionedObject<>(entries));
+                serializer.open(RESOURCE, kivakitVersion(), output);
+                serializer.write(new VersionedObject<>(projectVersion(), entries));
                 serializer.close();
             }
             catch (IOException ignored)

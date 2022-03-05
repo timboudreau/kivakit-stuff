@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.service.registry.server.webapp.pages.home;
 
-import com.telenav.kivakit.core.language.collections.Collections;
-import com.telenav.kivakit.core.language.monads.Result;
+import com.telenav.kivakit.core.collections.Collections;
+import com.telenav.kivakit.core.function.Result;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
@@ -153,7 +153,7 @@ public class HomePage extends ServiceRegistryWebPage
             case "network":
             {
                 // If we are a local registry, search the network scope remotely, otherwise we are the network
-                // registry so we search our own local information.
+                // registry, so we search our own local information.
                 scope = isLocal() ? Scope.network() : Scope.localhost();
                 break;
             }
@@ -181,7 +181,7 @@ public class HomePage extends ServiceRegistryWebPage
         }
         else
         {
-            // otherwise have the client access the remote scope
+            // otherwise, have the client access the remote scope
             var client = LOGGER.listenTo(new ServiceRegistryClient());
             return client.discoverServices(scope);
         }

@@ -18,8 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.array.bits.io.input;
 
-import com.telenav.kivakit.core.string.Formatter;
 import com.telenav.kivakit.core.string.StringTo;
+import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
@@ -214,7 +214,7 @@ public abstract class BaseBitReader implements BitReader
     @Override
     public String toString()
     {
-        return Formatter.format("[BitReader cursor = $, size = $, hasNext = $, current = $, mask = $]",
+        return Strings.format("[BitReader cursor = $, size = $, hasNext = $, current = $, mask = $]",
                 cursor(), size(), hasNext(), StringTo.binary(current, 8), mask);
     }
 

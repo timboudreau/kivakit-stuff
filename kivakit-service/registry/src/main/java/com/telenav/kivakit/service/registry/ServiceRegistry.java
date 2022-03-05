@@ -20,7 +20,7 @@ package com.telenav.kivakit.service.registry;
 
 import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.component.ComponentMixin;
-import com.telenav.kivakit.core.language.monads.Result;
+import com.telenav.kivakit.core.function.Result;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.service.registry.project.lexakai.DiagramRegistry;

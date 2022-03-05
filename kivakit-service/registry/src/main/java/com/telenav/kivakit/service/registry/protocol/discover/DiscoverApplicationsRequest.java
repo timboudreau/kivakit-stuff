@@ -28,7 +28,7 @@ import com.telenav.kivakit.service.registry.protocol.BaseRequest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
-import static com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter.Format.MULTILINE;
+import static com.telenav.kivakit.core.language.object.ObjectFormatter.Format.MULTILINE;
 import static com.telenav.kivakit.service.registry.protocol.ServiceRegistryProtocol.DISCOVER_APPLICATIONS;
 
 /**

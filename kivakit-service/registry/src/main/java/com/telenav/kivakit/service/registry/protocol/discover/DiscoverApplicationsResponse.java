@@ -20,8 +20,8 @@ package com.telenav.kivakit.service.registry.protocol.discover;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.service.registry.project.lexakai.DiagramRest;
@@ -32,7 +32,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter.Format.MULTILINE;
+import static com.telenav.kivakit.core.language.object.ObjectFormatter.Format.MULTILINE;
 
 /**
  * The set of applications found for an {@link DiscoverApplicationsRequest}.

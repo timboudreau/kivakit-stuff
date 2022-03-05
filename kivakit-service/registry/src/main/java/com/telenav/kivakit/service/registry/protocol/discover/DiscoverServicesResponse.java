@@ -19,9 +19,9 @@
 package com.telenav.kivakit.service.registry.protocol.discover;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.telenav.kivakit.core.collections.set.Sets;
-import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
+import com.telenav.kivakit.core.collections.Sets;
 import com.telenav.kivakit.core.language.object.ObjectFormatter;
+import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.service.registry.Service;
@@ -33,7 +33,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.telenav.kivakit.core.language.strings.formatting.ObjectFormatter.Format.MULTILINE;
+import static com.telenav.kivakit.core.language.object.ObjectFormatter.Format.MULTILINE;
 
 /**
  * The set of services that were found for a {@link DiscoverServicesRequest}.
