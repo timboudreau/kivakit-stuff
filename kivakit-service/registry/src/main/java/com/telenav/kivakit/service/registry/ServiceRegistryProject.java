@@ -21,7 +21,7 @@ package com.telenav.kivakit.service.registry;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
 
@@ -33,7 +33,7 @@ import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
 public class ServiceRegistryProject extends Project
 {
     private static final KryoTypes KRYO_TYPES = new ServiceRegistryKryoTypes()
-            .mergedWith(new CoreKernelKryoTypes());
+            .mergedWith(new CoreKryoTypes());
 
     private static final Lazy<ServiceRegistryProject> project = Lazy.of(ServiceRegistryProject::new);
 

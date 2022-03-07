@@ -46,7 +46,7 @@ public class KryoUnitTest extends UnitTest
 
     protected KryoTypes kryoTypes()
     {
-        return new CoreKernelKryoTypes();
+        return new CoreKryoTypes();
     }
 
     protected void serializationTest(Object object)

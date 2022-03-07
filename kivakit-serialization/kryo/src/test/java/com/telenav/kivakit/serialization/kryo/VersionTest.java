@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.serialization.kryo.kernel;
+package com.telenav.kivakit.serialization.kryo;
 
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;

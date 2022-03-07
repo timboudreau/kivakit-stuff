@@ -4,7 +4,7 @@ import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.logs.server.project.LogsServerKryoTypes;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 
 /**
@@ -12,7 +12,7 @@ import com.telenav.kivakit.serialization.kryo.KryoTypes;
  */
 public class ServerLogProject extends Project
 {
-    private static final KryoTypes KRYO_TYPES = new CoreKernelKryoTypes()
+    private static final KryoTypes KRYO_TYPES = new CoreKryoTypes()
             .mergedWith(new LogsServerKryoTypes());
 
     private static final Lazy<ServerLogProject> singleton = Lazy.of(ServerLogProject::new);

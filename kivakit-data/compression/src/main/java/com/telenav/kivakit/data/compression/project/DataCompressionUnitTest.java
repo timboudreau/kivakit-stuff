@@ -32,7 +32,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.resource.resources.other.PropertyMap;
 import com.telenav.kivakit.resource.resources.packaged.PackageResource;
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +64,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKernelKryoTypes().mergedWith(new DataCompressionKryoTypes());
+        return new CoreKryoTypes().mergedWith(new DataCompressionKryoTypes());
     }
 
     protected PropertyMap properties(String name)

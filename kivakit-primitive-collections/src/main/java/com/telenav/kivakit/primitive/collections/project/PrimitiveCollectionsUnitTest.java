@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.project;
 
-import com.telenav.kivakit.serialization.kryo.CoreKernelKryoTypes;
+import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 
@@ -32,6 +32,6 @@ public abstract class PrimitiveCollectionsUnitTest extends KryoUnitTest
     @Override
     protected KryoTypes kryoTypes()
     {
-        return new CoreKernelKryoTypes().mergedWith(new PrimitiveCollectionsKryoTypes());
+        return new CoreKryoTypes().mergedWith(new PrimitiveCollectionsKryoTypes());
     }
 }

@@ -18,8 +18,6 @@
 
 package com.telenav.kivakit.serialization.kryo;
 
-import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
-import com.telenav.kivakit.core.vm.ThreadStatus;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.LoggerCodeContext;
 import com.telenav.kivakit.core.messaging.context.CodeContext;
@@ -54,6 +52,8 @@ import com.telenav.kivakit.core.value.level.Level;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.core.version.Release;
 import com.telenav.kivakit.core.version.Version;
+import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
+import com.telenav.kivakit.core.vm.ThreadStatus;
 import com.telenav.kivakit.serialization.kryo.project.lexakai.DiagramKryo;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -65,19 +65,19 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
- * Kryo types to register for kivakit-core-kernel
+ * Kryo types to register for kivakit-core
  *
  * @author jonathanl (shibo)
  */
 @LexakaiJavadoc(complete = true)
 @UmlClassDiagram(diagram = DiagramKryo.class)
-public class CoreKernelKryoTypes extends KryoTypes
+public class CoreKryoTypes extends KryoTypes
 {
-    public CoreKernelKryoTypes()
+    public CoreKryoTypes()
     {
         //----------------------------------------------------------------------------------------------
         // NOTE: To maintain backward compatibility, classes are assigned identifiers by KryoSerialization.
-        // If classes are appended to groups and no classes are removed, older data can always be read.
+        // If classes are appended to a group, and no classes are removed, older data can always be read.
         //----------------------------------------------------------------------------------------------
 
         group("primitives", () ->
