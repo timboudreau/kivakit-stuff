@@ -67,7 +67,7 @@ public class Receiver extends BaseRepeater implements Stoppable
             narrate("Handshaking with $", port);
 
             // read the server's application name,
-            var application = serializationSession.read().get().toString();
+            var application = serializationSession.read().object().toString();
 
             // create a new session for the application and give it to the listener
             var session = new Session(application, Time.now(), null);
@@ -120,7 +120,7 @@ public class Receiver extends BaseRepeater implements Stoppable
     public void synchronizeSessions(SerializationSession serializationSession)
     {
         // Read the sessions that the server has,
-        Set<Session> serverSessions = (Set<Session>) serializationSession.read().get();
+        Set<Session> serverSessions = (Set<Session>) serializationSession.read().object();
 
         // determine which sessions the server has that we still need to download,
         var desiredSessions = new ArrayList<Session>();
@@ -139,7 +139,7 @@ public class Receiver extends BaseRepeater implements Stoppable
         for (var session : desiredSessions)
         {
             VersionedObject<byte[]> bytes = serializationSession.read();
-            SessionStore.get().add(session, bytes.get(), ProgressReporter.none());
+            SessionStore.get().add(session, bytes.object(), ProgressReporter.none());
         }
     }
 }

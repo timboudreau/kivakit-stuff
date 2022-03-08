@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.logs.client.ClientLog;
 import com.telenav.kivakit.logs.server.ServerLog;
 import com.telenav.kivakit.logs.server.ServerLogProject;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 import com.telenav.kivakit.ui.desktop.graphics.image.ImageResource;
 
 import java.awt.Taskbar;

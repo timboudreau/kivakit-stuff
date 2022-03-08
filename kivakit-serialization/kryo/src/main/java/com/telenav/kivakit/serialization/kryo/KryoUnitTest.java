@@ -83,9 +83,9 @@ public class KryoUnitTest extends UnitTest
                     for (var index = 0; index < 3; index++)
                     {
                         var deserialized = session.read();
-                        trace("version $ after deserialization = $", deserialized.version(), deserialized.get());
+                        trace("version $ after deserialization = $", deserialized.version(), deserialized.object());
                         ensureEqual(deserialized.version(), version);
-                        ensureEqual(deserialized.get(), object);
+                        ensureEqual(deserialized.object(), object);
                     }
                 }
                 catch (IOException e)

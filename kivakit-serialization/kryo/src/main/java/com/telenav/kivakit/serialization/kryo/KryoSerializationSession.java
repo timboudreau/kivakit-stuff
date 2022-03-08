@@ -410,7 +410,7 @@ public final class KryoSerializationSession extends BaseRepeater implements
         try
         {
             writeVersion(object.version());
-            kryo.writeClassAndObject(output, object.get());
+            kryo.writeClassAndObject(output, object.object());
         }
         catch (Exception e)
         {

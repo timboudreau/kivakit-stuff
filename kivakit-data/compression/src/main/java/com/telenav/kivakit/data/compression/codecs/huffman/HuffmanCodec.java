@@ -33,7 +33,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.tree.Tree;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.resources.properties.PropertyMap;
 
 import java.util.ArrayList;
 import java.util.Comparator;

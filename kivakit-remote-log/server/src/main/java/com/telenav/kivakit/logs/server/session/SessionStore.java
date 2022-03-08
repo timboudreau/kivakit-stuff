@@ -100,7 +100,7 @@ public class SessionStore extends BaseComponent
                     var serializationSession = session();
                     var version = serializationSession.open(RESOURCE, KivaKit.get().kivakitVersion(), input);
                     DEBUG.trace("Loaded session '$' (KivaKit version $)", session, version);
-                    entries = (LinkedList<LogEntry>) serializationSession.read().get();
+                    entries = (LinkedList<LogEntry>) serializationSession.read().object();
                     sessionNameToEntries.put(session, entries);
                 }
                 catch (IOException ignored)

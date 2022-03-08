@@ -83,11 +83,11 @@ public class ServiceRegistryStore extends BaseComponent
 
                     // then unregister the loaded class with the Debug class so the debug flag
                     // is re-considered for the newly loaded instance
-                    Debug.unregister(object.get().getClass());
+                    Debug.unregister(object.object().getClass());
 
                     // and add the listener to the registry.
                     trace("Loaded service registry");
-                    return listenTo(object.get());
+                    return listenTo(object.object());
                 }
                 catch (Exception e)
                 {

@@ -203,7 +203,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
 
         // then send each desired session back to the client
-        for (var session : sessionsToSend.get())
+        for (var session : sessionsToSend.object())
         {
             serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), SessionStore.get().read(session, reporter)));
         }

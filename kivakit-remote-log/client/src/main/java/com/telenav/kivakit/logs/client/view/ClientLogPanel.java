@@ -311,7 +311,7 @@ public class ClientLogPanel extends KivaKitPanel
     {
         return versionedObject ->
         {
-            var object = versionedObject.get();
+            var object = versionedObject.object();
             if (object instanceof LogEntry)
             {
                 log.log((LogEntry) object);
