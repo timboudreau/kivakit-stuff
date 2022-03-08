@@ -22,7 +22,7 @@ import com.telenav.kivakit.conversion.core.language.primitive.DoubleConverter;
 import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import org.junit.Test;
 
 public class UnquotedCsvReaderTest extends UnitTest

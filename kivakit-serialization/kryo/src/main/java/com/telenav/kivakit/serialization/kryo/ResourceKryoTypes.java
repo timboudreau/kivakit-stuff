@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.serialization.kryo;
 
-import com.telenav.kivakit.resource.resources.other.PropertyMap;
+import com.telenav.kivakit.resource.PropertyMap;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

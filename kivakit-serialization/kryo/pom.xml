@@ -27,6 +27,10 @@
             <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-serialization-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-resource</artifactId>
+        </dependency>
 
         <!-- Kryo -->
 

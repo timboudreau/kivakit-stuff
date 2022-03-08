@@ -1,7 +1,7 @@
 package com.telenav.kivakit.ui.desktop.graphics.image;
 
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.resources.PackageResource;
 
 import javax.imageio.ImageIO;
 import java.awt.Image;

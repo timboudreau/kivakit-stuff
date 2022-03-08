@@ -22,6 +22,10 @@ import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.interfaces.naming.NamedObject;
+import com.telenav.kivakit.resource.compression.archive.FieldArchive;
+import com.telenav.kivakit.resource.compression.archive.KivaKitArchivedField;
+import com.telenav.kivakit.resource.compression.archive.ZipArchive;
+import com.telenav.kivakit.resource.serialization.serializers.PropertyMapSerializer;
 import org.junit.Test;
 
 import java.io.Serializable;
@@ -62,25 +66,27 @@ public class FieldArchiveTest extends KryoUnitTest
 
         var sessionFactory = sessionFactory();
 
-        try (var archive = listenTo(new FieldArchive(file, sessionFactory, ProgressReporter.none(), ZipArchive.Mode.WRITE)))
+        var serializer = new PropertyMapSerializer();
+
+        try (var archive = listenTo(new FieldArchive(file, ProgressReporter.none(), ZipArchive.Mode.WRITE)))
         {
             var test = new TestClass();
-            archive.saveFieldsOf(test, Version.parseVersion(this, "1.0"));
+            archive.saveFieldsOf(serializer, test, Version.parseVersion(this, "1.0"));
         }
 
-        try (var archive = listenTo(new FieldArchive(file, sessionFactory, ProgressReporter.none(), ZipArchive.Mode.READ)))
+        try (var archive = listenTo(new FieldArchive(file, ProgressReporter.none(), ZipArchive.Mode.READ)))
         {
             var test = new TestClass();
-            archive.loadFieldOf(test, "x");
+            archive.loadFieldOf(serializer, test, "x");
             ensureEqual(test.x, "this is a test of the emergency broadcasting system");
-            archive.loadFieldOf(test, "y");
+            archive.loadFieldOf(serializer, test, "y");
             ensureEqual(test.y, 5);
         }
 
-        try (var archive = listenTo(new FieldArchive(file, sessionFactory, ProgressReporter.none(), ZipArchive.Mode.READ)))
+        try (var archive = listenTo(new FieldArchive(file, ProgressReporter.none(), ZipArchive.Mode.READ)))
         {
             var test = new TestClass();
-            archive.loadFieldsOf(test);
+            archive.loadFieldsOf(serializer, test);
             ensureEqual(test.x, "this is a test of the emergency broadcasting system");
             ensureEqual(test.y, 5);
         }

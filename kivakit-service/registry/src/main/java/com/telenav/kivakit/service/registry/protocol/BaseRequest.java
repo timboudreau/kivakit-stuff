@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.service.registry.protocol;
 
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;

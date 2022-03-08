@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.WritableResource;
-import com.telenav.kivakit.resource.resources.properties.PropertyMap;
+import com.telenav.kivakit.resource.PropertyMap;
 
 import java.util.Comparator;
 import java.util.HashSet;

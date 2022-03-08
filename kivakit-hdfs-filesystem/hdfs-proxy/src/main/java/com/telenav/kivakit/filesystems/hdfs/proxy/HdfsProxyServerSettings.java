@@ -18,11 +18,11 @@
 
 package com.telenav.kivakit.filesystems.hdfs.proxy;
 
-import com.telenav.kivakit.conversion.core.language.object.KivaKitPropertyConverter;
+import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
 import com.telenav.kivakit.filesystems.hdfs.proxy.converters.UserGroupInformationConverter;
 import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
 import com.telenav.kivakit.resource.ResourceFolder;
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.apache.hadoop.security.UserGroupInformation;
 
@@ -50,7 +50,7 @@ public class HdfsProxyServerSettings
         return configurationFolder;
     }
 
-    @KivaKitPropertyConverter(ResourceFolder.Converter.class)
+    @KivaKitConverted(ResourceFolder.Converter.class)
     public HdfsProxyServerSettings configurationFolder(ResourceFolder configuration)
     {
         configurationFolder = configuration;
@@ -62,7 +62,7 @@ public class HdfsProxyServerSettings
         return user;
     }
 
-    @KivaKitPropertyConverter(UserGroupInformationConverter.class)
+    @KivaKitConverted(UserGroupInformationConverter.class)
     public HdfsProxyServerSettings user(UserGroupInformation user)
     {
         this.user = user;

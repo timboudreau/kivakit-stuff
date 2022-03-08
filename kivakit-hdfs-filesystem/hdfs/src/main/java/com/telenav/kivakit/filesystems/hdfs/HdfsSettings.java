@@ -18,12 +18,12 @@
 
 package com.telenav.kivakit.filesystems.hdfs;
 
-import com.telenav.kivakit.conversion.core.language.object.KivaKitPropertyConverter;
+import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
 import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.network.core.EmailAddress;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.ResourceFolder;
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlNotPublicApi;
 
@@ -66,35 +66,35 @@ public class HdfsSettings
         return clusterName;
     }
 
-    @KivaKitPropertyConverter
+    @KivaKitConverted
     public HdfsSettings clusterName(String clusterName)
     {
         this.clusterName = clusterName;
         return this;
     }
 
-    @KivaKitPropertyConverter(ResourceFolder.Converter.class)
+    @KivaKitConverted(ResourceFolder.Converter.class)
     public HdfsSettings configurationFolder(ResourceFolder configuration)
     {
         configurationFolder = configuration;
         return this;
     }
 
-    @KivaKitPropertyConverter(EmailAddress.Converter.class)
+    @KivaKitConverted(EmailAddress.Converter.class)
     public HdfsSettings contactEmail(EmailAddress contactEmail)
     {
         this.contactEmail = contactEmail;
         return this;
     }
 
-    @KivaKitPropertyConverter(Resource.Converter.class)
+    @KivaKitConverted(Resource.Converter.class)
     public HdfsSettings proxyJar(Resource proxyJar)
     {
         this.proxyJar = proxyJar;
         return this;
     }
 
-    @KivaKitPropertyConverter
+    @KivaKitConverted
     public HdfsSettings username(String username)
     {
         this.username = username;

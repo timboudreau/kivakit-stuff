@@ -25,7 +25,7 @@ import com.telenav.kivakit.commandline.SwitchParsers;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.resource.ResourceFolder;
-import com.telenav.kivakit.resource.resources.packaged.Package;
+import com.telenav.kivakit.resource.Package;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
 import com.telenav.kivakit.service.registry.ServiceRegistryProject;

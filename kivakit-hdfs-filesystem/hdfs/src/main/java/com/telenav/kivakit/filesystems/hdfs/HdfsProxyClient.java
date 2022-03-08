@@ -31,7 +31,7 @@ import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.resources.jar.launcher.JarLauncher;
+import com.telenav.kivakit.resource.JarLauncher;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceMetadata;
 import com.telenav.kivakit.service.registry.ServiceType;
@@ -46,7 +46,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
-import static com.telenav.kivakit.resource.resources.jar.launcher.JarLauncher.ProcessType.CHILD;
+import static com.telenav.kivakit.resource.JarLauncher.ProcessType.CHILD;
 
 /**
  * <b>Not public API</b>

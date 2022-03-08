@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.service.registry;
 
-import com.telenav.kivakit.conversion.core.language.object.KivaKitPropertyConverter;
+import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
 import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
 import com.telenav.kivakit.conversion.core.time.DurationConverter;
 import com.telenav.kivakit.conversion.core.time.FrequencyConverter;
@@ -104,7 +104,7 @@ public class ServiceRegistrySettings
         return port(Host.loopback());
     }
 
-    @KivaKitPropertyConverter(IntegerConverter.class)
+    @KivaKitConverted(IntegerConverter.class)
     public ServiceRegistrySettings localServiceRegistryPort(int localServiceRegistryPort)
     {
         this.localServiceRegistryPort = localServiceRegistryPort;
@@ -145,7 +145,7 @@ public class ServiceRegistrySettings
         return networkServiceRegistryPort;
     }
 
-    @KivaKitPropertyConverter(Port.Converter.class)
+    @KivaKitConverted(Port.Converter.class)
     public ServiceRegistrySettings networkServiceRegistryPort(Port networkServiceRegistryPort)
     {
         this.networkServiceRegistryPort = networkServiceRegistryPort;
@@ -158,7 +158,7 @@ public class ServiceRegistrySettings
         return portReservationExpirationTime;
     }
 
-    @KivaKitPropertyConverter(DurationConverter.class)
+    @KivaKitConverted(DurationConverter.class)
     public ServiceRegistrySettings portReservationExpirationTime(Duration portReservationExpirationTime)
     {
         this.portReservationExpirationTime = portReservationExpirationTime;
@@ -171,7 +171,7 @@ public class ServiceRegistrySettings
         return restApiPath;
     }
 
-    @KivaKitPropertyConverter
+    @KivaKitConverted
     public ServiceRegistrySettings restApiPath(String restApiPath)
     {
         this.restApiPath = restApiPath;
@@ -184,7 +184,7 @@ public class ServiceRegistrySettings
         return serviceLeaseRenewalFrequency;
     }
 
-    @KivaKitPropertyConverter(FrequencyConverter.class)
+    @KivaKitConverted(FrequencyConverter.class)
     public ServiceRegistrySettings serviceLeaseRenewalFrequency(Frequency serviceRenewalFrequency)
     {
         serviceLeaseRenewalFrequency = serviceRenewalFrequency;
@@ -197,7 +197,7 @@ public class ServiceRegistrySettings
         return serviceRegistrationExpirationTime;
     }
 
-    @KivaKitPropertyConverter(DurationConverter.class)
+    @KivaKitConverted(DurationConverter.class)
     public ServiceRegistrySettings serviceRegistrationExpirationTime(Duration registrationExpirationTime)
     {
         serviceRegistrationExpirationTime = registrationExpirationTime;
@@ -210,7 +210,7 @@ public class ServiceRegistrySettings
         return serviceRegistryStoreExpirationTime;
     }
 
-    @KivaKitPropertyConverter(DurationConverter.class)
+    @KivaKitConverted(DurationConverter.class)
     public ServiceRegistrySettings serviceRegistryStoreExpirationTime(Duration serviceRegistryStoreExpirationTime)
     {
         this.serviceRegistryStoreExpirationTime = serviceRegistryStoreExpirationTime;
@@ -229,7 +229,7 @@ public class ServiceRegistrySettings
         return version;
     }
 
-    @KivaKitPropertyConverter(VersionConverter.class)
+    @KivaKitConverted(VersionConverter.class)
     public void version(Version version)
     {
         this.version = version;

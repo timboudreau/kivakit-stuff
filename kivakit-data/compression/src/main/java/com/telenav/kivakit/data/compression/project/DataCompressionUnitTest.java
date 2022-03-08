@@ -30,8 +30,8 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.resource.resources.properties.PropertyMap;
-import com.telenav.kivakit.resource.resources.packaged.PackageResource;
+import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.resource.resources.PackageResource;
 import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;

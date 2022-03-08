@@ -38,7 +38,7 @@ import com.telenav.kivakit.service.registry.protocol.update.NetworkRegistryUpdat
 import com.telenav.kivakit.service.registry.registries.LocalServiceRegistry;
 import com.telenav.kivakit.service.registry.registries.NetworkServiceRegistry;
 import com.telenav.kivakit.service.registry.server.ServiceRegistryServer;
-import com.telenav.kivakit.settings.settings.Settings;
+import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.web.jersey.BaseRestResource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
