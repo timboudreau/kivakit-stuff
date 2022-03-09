@@ -19,6 +19,7 @@
 package com.telenav.kivakit.math.statistics;
 
 import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.core.time.AverageDuration;
 import com.telenav.kivakit.core.time.Duration;
 import org.junit.Test;
 

@@ -19,11 +19,11 @@
 package com.telenav.kivakit.service.registry.serialization;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
+import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.network.core.Port;
+import com.telenav.kivakit.serialization.gson.DefaultGsonFactory;
 import com.telenav.kivakit.serialization.json.BaseGsonFactorySource;
-import com.telenav.kivakit.serialization.json.DefaultGsonFactory;
 import com.telenav.kivakit.serialization.json.GsonFactory;
 import com.telenav.kivakit.serialization.json.serializers.ProblemGsonSerializer;
 import com.telenav.kivakit.serialization.json.serializers.TimeInMillisecondsGsonSerializer;

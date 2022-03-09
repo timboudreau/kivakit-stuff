@@ -18,6 +18,8 @@
 
 package com.telenav.kivakit.math.statistics;
 
+import com.telenav.kivakit.core.math.Average;
+
 import java.util.ArrayList;
 import java.util.List;
 
