@@ -19,7 +19,7 @@
 package com.telenav.kivakit.service.registry.serialization;
 
 import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.web.jersey.JerseyGsonSerializer;
+import com.telenav.kivakit.web.jersey.JerseyJsonSerializer;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 import javax.ws.rs.Consumes;
@@ -36,7 +36,7 @@ import javax.ws.rs.ext.Provider;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @LexakaiJavadoc(complete = true)
-public class ServiceRegistryJerseySerializer<T> extends JerseyGsonSerializer<T>
+public class ServiceRegistryJerseySerializer<T> extends JerseyJsonSerializer<T>
 {
     public ServiceRegistryJerseySerializer(Listener listener)
     {

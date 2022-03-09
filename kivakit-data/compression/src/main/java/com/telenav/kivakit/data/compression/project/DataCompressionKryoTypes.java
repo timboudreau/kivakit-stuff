@@ -29,7 +29,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.tree.Leaf;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Node;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Tree;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 
 /**
  * @author jonathanl (shibo)

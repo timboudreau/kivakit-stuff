@@ -119,7 +119,7 @@ public class ServiceRegistryStore extends BaseComponent
                 {
                     var session = SerializationSession.threadLocal(this);
                     session.open(RESOURCE, settings().version(), output);
-                    session.write(new VersionedObject<>(settings().version(), registry));
+                    session.write(new VersionedObject<>(registry, settings().version()));
                     session.close();
                 }
                 catch (Exception e)

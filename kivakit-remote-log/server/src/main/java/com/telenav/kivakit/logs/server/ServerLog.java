@@ -172,7 +172,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
                         entry.formattedMessage();
 
                         // and send the entry
-                        serializer.write(new VersionedObject<>(projectVersion(), entry));
+                        serializer.write(new VersionedObject<>(entry, projectVersion()));
                         serializer.flush();
                     }
                     catch (Exception e)
@@ -197,7 +197,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
     public void synchronizeSessions(SerializationSession serializationSession, ProgressReporter reporter)
     {
         // Send the sessions we have to the client
-        serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), SessionStore.get().sessions()));
+        serializationSession.write(new VersionedObject<>(SessionStore.get().sessions(), KivaKit.get().projectVersion()));
 
         // then read back the sessions that the client wants sent
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
@@ -205,7 +205,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
         // then send each desired session back to the client
         for (var session : sessionsToSend.object())
         {
-            serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), SessionStore.get().read(session, reporter)));
+            serializationSession.write(new VersionedObject<>(SessionStore.get().read(session, reporter), KivaKit.get().projectVersion()));
         }
     }
 
@@ -254,7 +254,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
                     serializer.open(SERVER, KivaKit.get().kivakitVersion(), output);
 
                     // then send the client our application name
-                    serializer.write(new VersionedObject<>(Application.get().projectVersion(), Application.get().name()));
+                    serializer.write(new VersionedObject<>(Application.get().name(), Application.get().projectVersion()));
 
                     // and synchronize sessions with it
                     synchronizeSessions(serializer, reporter);
@@ -281,7 +281,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
                                 synchronized (serializationLock)
                                 {
                                     // sends a health report on the JVM
-                                    serializer.write(new VersionedObject<>(Application.get().projectVersion(), new JavaVirtualMachineHealth()));
+                                    serializer.write(new VersionedObject<>(new JavaVirtualMachineHealth(), Application.get().projectVersion()));
                                 }
                             }
                             catch (Exception e)

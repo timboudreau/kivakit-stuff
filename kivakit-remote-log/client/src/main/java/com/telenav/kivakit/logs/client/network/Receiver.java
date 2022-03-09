@@ -133,7 +133,7 @@ public class Receiver extends BaseRepeater implements Stoppable
         }
 
         // tell the server which sessions we desire,
-        serializationSession.write(new VersionedObject<>(KivaKit.get().projectVersion(), desiredSessions));
+        serializationSession.write(new VersionedObject<>(desiredSessions, KivaKit.get().projectVersion()));
 
         // then add each session to the cache
         for (var session : desiredSessions)

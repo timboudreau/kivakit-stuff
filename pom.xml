@@ -93,7 +93,6 @@
 
     <modules>
 
-        <module>kivakit-serialization</module>
         <module>kivakit-remote-log</module>
         <module>kivakit-hdfs-filesystem</module>
         <module>kivakit-primitive-collections</module>

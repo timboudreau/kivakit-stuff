@@ -63,7 +63,7 @@ import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToLongMap;
 import com.telenav.kivakit.primitive.collections.set.LongSet;
 import com.telenav.kivakit.primitive.collections.set.SplitLongSet;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

@@ -151,7 +151,7 @@ public class SessionStore extends BaseComponent
             {
                 var serializer = session();
                 serializer.open(RESOURCE, kivakitVersion(), output);
-                serializer.write(new VersionedObject<>(projectVersion(), entries));
+                serializer.write(new VersionedObject<>(entries, projectVersion()));
                 serializer.close();
             }
             catch (IOException ignored)
