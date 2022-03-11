@@ -27,7 +27,6 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.AsciiArt;
 import com.telenav.kivakit.core.string.Strings;
-import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.value.count.BitCount;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -117,7 +116,7 @@ public class PackedStringArray extends PrimitiveArray
      * compresses the input ala LZW.
      */
     @JavaVirtualMachine.KivaKitExcludeFromSizeOf
-    private transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._65536, Duration.MAXIMUM);
+    private transient CacheMap<String, Integer> pool = new CacheMap<>(Maximum._65536);
 
     public PackedStringArray(String objectName)
     {
