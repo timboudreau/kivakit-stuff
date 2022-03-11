@@ -10,6 +10,7 @@ open module kivakit.logs.server
     requires kivakit.service.registry;
     requires kivakit.service.client;
     requires kivakit.serialization.kryo;
+    requires kivakit.serialization.core;
 
     // Module exports
     exports com.telenav.kivakit.logs.server;

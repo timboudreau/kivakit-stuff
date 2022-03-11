@@ -199,7 +199,7 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         randomInts(ALLOW_REPEATS, array::add);
-        serializationTest(array);
+        testSerialization(array);
     }
 
     @Test

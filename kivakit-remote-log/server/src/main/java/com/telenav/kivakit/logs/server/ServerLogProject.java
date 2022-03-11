@@ -3,9 +3,9 @@ package com.telenav.kivakit.logs.server;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.logs.server.project.LogsServerKryoTypes;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 
 /**
  * @author jonathanl (shibo)
@@ -24,6 +24,6 @@ public class ServerLogProject extends Project
 
     private ServerLogProject()
     {
-        SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
+        register(new KryoSerializationSessionFactory(KRYO_TYPES));
     }
 }

@@ -24,6 +24,7 @@ import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUni
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
@@ -202,7 +203,7 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         data.writeBooleans(expected);
         data.reset();
         var actual = data.readBooleans(expected.length);
-        ensureEqual(actual, expected);
+        ensure(Arrays.equals(actual, expected));
     }
 
     @Test
@@ -210,7 +211,7 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         randomBytes(ALLOW_REPEATS, array::add);
-        serializationTest(array);
+        testSerialization(array);
     }
 
     @SuppressWarnings("SizeReplaceableByIsEmpty")

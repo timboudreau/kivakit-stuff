@@ -105,7 +105,7 @@ public class SplitLongSetTest extends PrimitiveCollectionsUnitTest
     @Test
     public void testSerialization()
     {
-        withPopulatedSet((set, values) -> serializationTest(set));
+        withPopulatedSet((set, values) -> testSerialization(set));
     }
 
     @Test

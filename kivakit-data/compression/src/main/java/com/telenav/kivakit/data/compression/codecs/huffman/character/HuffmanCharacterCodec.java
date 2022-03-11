@@ -24,6 +24,7 @@ import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
+import com.telenav.kivakit.core.string.Strip;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.MutableCount;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
@@ -110,7 +111,7 @@ public class HuffmanCharacterCodec extends BaseRepeater implements CharacterCode
         @Override
         protected Character onToValue(String value)
         {
-            return (char) Long.parseLong(value, 16);
+            return (char) Long.parseLong(Strip.leading(value, "0x"), 16);
         }
     }
 

@@ -203,7 +203,7 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         randomBytes(ALLOW_REPEATS, array::add);
-        serializationTest(array);
+        testSerialization(array);
     }
 
     @Test

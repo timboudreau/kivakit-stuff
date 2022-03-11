@@ -20,9 +20,9 @@ package com.telenav.kivakit.service.registry;
 
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
-import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
-import com.telenav.kivakit.serialization.kryo.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
 
 /**
@@ -44,6 +44,6 @@ public class ServiceRegistryProject extends Project
 
     private ServiceRegistryProject()
     {
-        SerializationSessionFactory.threadLocal(KRYO_TYPES.sessionFactory());
+        register(new KryoSerializationSessionFactory(KRYO_TYPES));
     }
 }

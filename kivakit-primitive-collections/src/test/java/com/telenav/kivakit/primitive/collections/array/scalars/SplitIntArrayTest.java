@@ -205,7 +205,7 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         randomInts(ALLOW_REPEATS, array::add);
-        serializationTest(array);
+        testSerialization(array);
     }
 
     @Test

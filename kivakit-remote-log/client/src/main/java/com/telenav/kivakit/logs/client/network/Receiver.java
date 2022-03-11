@@ -5,6 +5,7 @@ import com.telenav.kivakit.core.io.IO;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
+import com.telenav.kivakit.core.registry.RegistryTrait;
 import com.telenav.kivakit.core.thread.latches.CompletionLatch;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.version.VersionedObject;
@@ -13,6 +14,7 @@ import com.telenav.kivakit.interfaces.time.LengthOfTime;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -21,12 +23,14 @@ import java.util.function.Consumer;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.RUNNING;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.STOPPED;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.STOPPING;
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.CLIENT;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.CLIENT;
 
 /**
  * @author jonathanl (shibo)
  */
-public class Receiver extends BaseRepeater implements Stoppable
+public class Receiver extends BaseRepeater implements
+        Stoppable,
+        RegistryTrait
 {
     enum State
     {
@@ -57,7 +61,7 @@ public class Receiver extends BaseRepeater implements Stoppable
                         Consumer<VersionedObject<?>> objectListener)
     {
         // Create a serializer and read the framework version from the server
-        var serializationSession = SerializationSession.threadLocal(this);
+        var serializationSession = require(SerializationSessionFactory.class).newSession(this);
         var version = serializationSession.open(CLIENT, KivaKit.get().kivakitVersion(), connection.input());
 
         // and if we are compatible with it,

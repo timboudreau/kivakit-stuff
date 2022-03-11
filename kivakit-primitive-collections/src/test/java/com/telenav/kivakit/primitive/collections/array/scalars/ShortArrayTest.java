@@ -202,7 +202,7 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
             randomShorts(ALLOW_REPEATS, array::add);
-            serializationTest(array);
+            testSerialization(array);
         }
     }
 

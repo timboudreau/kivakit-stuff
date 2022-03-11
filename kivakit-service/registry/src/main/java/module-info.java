@@ -3,13 +3,14 @@ open module kivakit.service.registry
     // KivaKit
     requires transitive kivakit.microservice;
     requires transitive kivakit.network.core;
+    requires transitive kivakit.serialization.kryo;
 
     // Jackson
     requires com.fasterxml.jackson.annotation;
 
     // JSON
     requires gson;
-    requires kivakit.serialization.kryo;
+    requires kivakit.serialization.core;
 
     // Module exports
     exports com.telenav.kivakit.service.registry;

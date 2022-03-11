@@ -1,7 +1,7 @@
 package com.telenav.kivakit.logs.server.project;
 
 import com.telenav.kivakit.logs.server.session.Session;
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 
 /**
  * @author jonathanl (shibo)

@@ -142,7 +142,7 @@ public class IntToByteMapTest extends PrimitiveCollectionsUnitTest
     @Test
     public void testSerialization()
     {
-        withPopulatedMap((map, keys, values) -> serializationTest(map));
+        withPopulatedMap((map, keys, values) -> testSerialization(map));
     }
 
     @Test

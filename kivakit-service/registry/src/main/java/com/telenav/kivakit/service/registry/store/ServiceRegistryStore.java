@@ -27,7 +27,9 @@ import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.path.Extension;
-import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
+import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
 import com.telenav.kivakit.service.registry.project.lexakai.DiagramRegistry;
@@ -36,7 +38,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlNotPublicApi;
 
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
  * <b>Not public API</b>
@@ -77,17 +79,19 @@ public class ServiceRegistryStore extends BaseComponent
                 try (var input = file.openForReading())
                 {
                     // create a serialization object and read the serialized registry
-                    var session = SerializationSession.threadLocal(this);
+                    var session = new KryoSerializationSession(new CoreKryoTypes());
                     session.open(RESOURCE, settings().version(), input);
-                    VersionedObject<ServiceRegistry> object = session.read();
+                    var object = session.read();
+                    if (object != null)
+                    {
+                        // then unregister the loaded class with the Debug class so the debug flag
+                        // is re-considered for the newly loaded instance
+                        Debug.unregister(object.object().getClass());
 
-                    // then unregister the loaded class with the Debug class so the debug flag
-                    // is re-considered for the newly loaded instance
-                    Debug.unregister(object.object().getClass());
-
-                    // and add the listener to the registry.
-                    trace("Loaded service registry");
-                    return listenTo(object.object());
+                        // and add the listener to the registry.
+                        trace("Loaded service registry");
+                        return listenTo((ServiceRegistry) object.object());
+                    }
                 }
                 catch (Exception e)
                 {
@@ -117,7 +121,7 @@ public class ServiceRegistryStore extends BaseComponent
             {
                 try (var output = file.openForWriting())
                 {
-                    var session = SerializationSession.threadLocal(this);
+                    var session = new KryoSerializationSession(new KryoTypes());
                     session.open(RESOURCE, settings().version(), output);
                     session.write(new VersionedObject<>(registry, settings().version()));
                     session.close();

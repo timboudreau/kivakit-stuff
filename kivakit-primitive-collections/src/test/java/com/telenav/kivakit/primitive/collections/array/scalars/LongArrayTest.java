@@ -201,7 +201,7 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
             randomLongs(ALLOW_REPEATS, array::add);
-            serializationTest(array);
+            testSerialization(array);
         }
     }
 

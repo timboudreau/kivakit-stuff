@@ -19,7 +19,7 @@
 package com.telenav.kivakit.service.registry.serialization.serializers;
 
 import com.telenav.kivakit.application.Application;
-import com.telenav.kivakit.serialization.json.PrimitiveGsonSerializer;
+import com.telenav.kivakit.serialization.gson.serializers.PrimitiveGsonSerializer;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**

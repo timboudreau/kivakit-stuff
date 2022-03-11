@@ -163,7 +163,7 @@ public class PackedArrayTest extends PrimitiveCollectionsUnitTest
             {
                 values.set(i, i);
             }
-            serializationTest(values);
+            testSerialization(values);
         }
     }
 }

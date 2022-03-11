@@ -15,6 +15,7 @@ import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -27,7 +28,7 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.logging.logs.text.formatters.ColumnarLogFormatter.DEFAULT;
 import static com.telenav.kivakit.core.string.Formatter.Format.WITHOUT_EXCEPTION;
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.RESOURCE;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
  * @author jonathanl (shibo)
@@ -182,7 +183,7 @@ public class SessionStore extends BaseComponent
 
     private SerializationSession session()
     {
-        return SerializationSession.threadLocal(DEBUG.listener());
+        return require(SerializationSessionFactory.class).newSession(this);
     }
 
     private File sessionFile(Session session, Extension extension)

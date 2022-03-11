@@ -131,6 +131,6 @@ public class SplitPackedArrayTest extends PrimitiveCollectionsUnitTest
         {
             values.setInt(i, i);
         }
-        serializationTest(values);
+        testSerialization(values);
     }
 }

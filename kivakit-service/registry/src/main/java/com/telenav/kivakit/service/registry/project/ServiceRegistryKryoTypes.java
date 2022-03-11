@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.service.registry.project;
 
-import com.telenav.kivakit.serialization.kryo.KryoTypes;
+import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.service.registry.registries.LocalServiceRegistry;
 import com.telenav.kivakit.service.registry.registries.NetworkServiceRegistry;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;

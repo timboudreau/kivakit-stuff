@@ -203,7 +203,7 @@ public class SplitLongArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         randomLongs(ALLOW_REPEATS, array::add);
-        serializationTest(array);
+        testSerialization(array);
     }
 
     @Test

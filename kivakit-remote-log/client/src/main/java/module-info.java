@@ -17,6 +17,7 @@ open module kivakit.logs.client
     // Java
     requires java.desktop;
     requires java.prefs;
+    requires kivakit.serialization.core;
 
     // Module exports
     exports com.telenav.kivakit.logs.client;

@@ -19,6 +19,7 @@
 package com.telenav.kivakit.logs.server;
 
 import com.telenav.kivakit.application.Application;
+import com.telenav.kivakit.component.ComponentMixin;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.collections.map.VariableMap;
 import com.telenav.kivakit.core.logging.LogEntry;
@@ -30,7 +31,6 @@ import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.progress.reporters.ProgressiveInputStream;
 import com.telenav.kivakit.core.progress.reporters.ProgressiveOutputStream;
-import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Monitor;
 import com.telenav.kivakit.core.time.Duration;
@@ -43,6 +43,7 @@ import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.network.socket.server.ConnectionListener;
 import com.telenav.kivakit.serialization.core.SerializationSession;
+import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceMetadata;
 import com.telenav.kivakit.service.registry.ServiceType;
@@ -56,10 +57,10 @@ import java.util.List;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.CLIENT;
-import static com.telenav.kivakit.serialization.core.SerializationSession.Type.SERVER;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.CLIENT;
+import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.SERVER;
 
-public class ServerLog extends BaseTextLog implements ProjectTrait
+public class ServerLog extends BaseTextLog implements ComponentMixin
 {
     public static final ServiceType SERVER_LOG = new ServiceType("kivakit-server-log");
 
@@ -199,7 +200,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
         // Send the sessions we have to the client
         serializationSession.write(new VersionedObject<>(SessionStore.get().sessions(), KivaKit.get().projectVersion()));
 
-        // then read back the sessions that the client wants sent
+        // then read back the sessions that the client wants,
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
 
         // then send each desired session back to the client
@@ -249,7 +250,7 @@ public class ServerLog extends BaseTextLog implements ProjectTrait
                 synchronized (serializationLock)
                 {
                     // Create a serializer and start writing to the connection
-                    var serializer = SerializationSession.threadLocal(LOGGER);
+                    var serializer = require(SerializationSessionFactory.class).newSession(this);
                     serializer.open(CLIENT, KivaKit.get().kivakitVersion(), input);
                     serializer.open(SERVER, KivaKit.get().kivakitVersion(), output);
 
