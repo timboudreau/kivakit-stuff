@@ -4,9 +4,6 @@ import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.conversion.core.time.LocalDateTimeConverter;
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.logging.LogEntry;
-import com.telenav.kivakit.core.logging.Logger;
-import com.telenav.kivakit.core.logging.LoggerFactory;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
@@ -35,10 +32,6 @@ import static com.telenav.kivakit.serialization.core.SerializationSession.Sessio
  */
 public class SessionStore extends BaseComponent
 {
-    private static final Logger LOGGER = LoggerFactory.newLogger();
-
-    private static final Debug DEBUG = new Debug(LOGGER);
-
     private static final Lazy<SessionStore> store = Lazy.of(SessionStore::new);
 
     public static SessionStore get()
@@ -100,7 +93,7 @@ public class SessionStore extends BaseComponent
                 {
                     var serializationSession = session();
                     var version = serializationSession.open(RESOURCE, KivaKit.get().kivakitVersion(), input);
-                    DEBUG.trace("Loaded session '$' (KivaKit version $)", session, version);
+                    trace("Loaded session '$' (KivaKit version $)", session, version);
                     entries = (LinkedList<LogEntry>) serializationSession.read().object();
                     sessionNameToEntries.put(session, entries);
                 }
