@@ -42,6 +42,7 @@ import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
 import com.telenav.kivakit.network.socket.server.ConnectionListener;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 import com.telenav.kivakit.service.registry.Scope;
@@ -173,7 +174,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                         entry.formattedMessage();
 
                         // and send the entry
-                        serializer.write(new VersionedObject<>(entry, projectVersion()));
+                        serializer.write(new SerializableObject<>(entry, projectVersion()));
                         serializer.flush();
                     }
                     catch (Exception e)
@@ -198,7 +199,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
     public void synchronizeSessions(SerializationSession serializationSession, ProgressReporter reporter)
     {
         // Send the sessions we have to the client
-        serializationSession.write(new VersionedObject<>(SessionStore.get().sessions(), KivaKit.get().projectVersion()));
+        serializationSession.write(new SerializableObject<>(SessionStore.get().sessions(), KivaKit.get().projectVersion()));
 
         // then read back the sessions that the client wants,
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
@@ -206,7 +207,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
         // then send each desired session back to the client
         for (var session : sessionsToSend.object())
         {
-            serializationSession.write(new VersionedObject<>(SessionStore.get().read(session, reporter), KivaKit.get().projectVersion()));
+            serializationSession.write(new SerializableObject<>(SessionStore.get().read(session, reporter), KivaKit.get().projectVersion()));
         }
     }
 
@@ -255,7 +256,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                     serializer.open(SERVER, KivaKit.get().kivakitVersion(), output);
 
                     // then send the client our application name
-                    serializer.write(new VersionedObject<>(Application.get().name(), Application.get().projectVersion()));
+                    serializer.write(new SerializableObject<>(Application.get().name(), Application.get().projectVersion()));
 
                     // and synchronize sessions with it
                     synchronizeSessions(serializer, reporter);
@@ -282,7 +283,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                                 synchronized (serializationLock)
                                 {
                                     // sends a health report on the JVM
-                                    serializer.write(new VersionedObject<>(new JavaVirtualMachineHealth(), Application.get().projectVersion()));
+                                    serializer.write(new SerializableObject<>(new JavaVirtualMachineHealth(), Application.get().projectVersion()));
                                 }
                             }
                             catch (Exception e)

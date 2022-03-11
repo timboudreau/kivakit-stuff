@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.service.registry.serialization.serializers;
 
-import com.telenav.kivakit.serialization.gson.serializers.PrimitiveGsonSerializer;
+import com.telenav.kivakit.serialization.gson.PrimitiveGsonSerializer;
 import com.telenav.kivakit.service.registry.ServiceType;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 

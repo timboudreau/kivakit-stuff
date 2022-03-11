@@ -13,6 +13,7 @@ import com.telenav.kivakit.interfaces.lifecycle.Stoppable;
 import com.telenav.kivakit.interfaces.time.LengthOfTime;
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.logs.server.session.SessionStore;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 
@@ -137,7 +138,7 @@ public class Receiver extends BaseRepeater implements
         }
 
         // tell the server which sessions we desire,
-        serializationSession.write(new VersionedObject<>(desiredSessions, KivaKit.get().projectVersion()));
+        serializationSession.write(new SerializableObject<>(desiredSessions, KivaKit.get().projectVersion()));
 
         // then add each session to the cache
         for (var session : desiredSessions)

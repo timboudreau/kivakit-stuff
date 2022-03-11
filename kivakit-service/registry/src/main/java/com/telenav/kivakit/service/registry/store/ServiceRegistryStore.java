@@ -22,10 +22,10 @@ import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.CaseFormat;
-import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.resource.SerializableObject;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
@@ -123,7 +123,7 @@ public class ServiceRegistryStore extends BaseComponent
                 {
                     var session = new KryoSerializationSession(new KryoTypes());
                     session.open(RESOURCE, settings().version(), output);
-                    session.write(new VersionedObject<>(registry, settings().version()));
+                    session.write(new SerializableObject<>(registry, settings().version()));
                     session.close();
                 }
                 catch (Exception e)

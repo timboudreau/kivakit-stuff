@@ -18,12 +18,23 @@
 
 package com.telenav.kivakit.service.registry;
 
+import com.telenav.kivakit.application.Application;
+import com.telenav.kivakit.core.messaging.messages.status.Problem;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.network.core.Port;
+import com.telenav.kivakit.serialization.gson.factory.GsonFactory;
+import com.telenav.kivakit.serialization.gson.serializers.ProblemGsonSerializer;
+import com.telenav.kivakit.serialization.gson.serializers.TimeInMillisecondsGsonSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
+import com.telenav.kivakit.service.registry.serialization.serializers.ApplicationIdentifierGsonSerializer;
+import com.telenav.kivakit.service.registry.serialization.serializers.ServiceTypeGsonSerializer;
+
+import static com.telenav.kivakit.core.string.Formatter.Format.WITH_EXCEPTION;
 
 /**
  * The project class for kivakit-service-registry.
@@ -45,5 +56,16 @@ public class ServiceRegistryProject extends Project
     private ServiceRegistryProject()
     {
         register(new KryoSerializationSessionFactory(KRYO_TYPES));
+    }
+
+    @Override
+    public void onInitialize()
+    {
+        require(GsonFactory.class)
+                .addConvertingSerializer(Port.class, new Port.Converter(this))
+                .addJsonSerializerDeserializer(Application.Identifier.class, new ApplicationIdentifierGsonSerializer())
+                .addJsonSerializerDeserializer(ServiceType.class, new ServiceTypeGsonSerializer())
+                .addJsonSerializerDeserializer(Problem.class, new ProblemGsonSerializer(WITH_EXCEPTION))
+                .addJsonSerializerDeserializer(Time.class, new TimeInMillisecondsGsonSerializer());
     }
 }
