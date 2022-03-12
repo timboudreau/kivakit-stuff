@@ -443,7 +443,7 @@ public abstract class BaseServiceRegistry extends BaseRepeater implements Servic
                     .filter(Service::isBound)
                     .collect(Collectors.toSet());
 
-            return Result.result(bound);
+            return Result.success(bound);
         }
 
         return result(Sets.empty());

@@ -9,8 +9,8 @@ import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
 
@@ -92,7 +92,7 @@ public class SessionStore extends BaseComponent
                 try (var input = sessionFile(session, Extension.KRYO).openForReading())
                 {
                     var serializationSession = session();
-                    var version = serializationSession.open(RESOURCE, KivaKit.get().kivakitVersion(), input);
+                    var version = serializationSession.open(input, RESOURCE, KivaKit.get().kivakitVersion());
                     trace("Loaded session '$' (KivaKit version $)", session, version);
                     entries = (LinkedList<LogEntry>) serializationSession.read().object();
                     sessionNameToEntries.put(session, entries);
@@ -144,7 +144,7 @@ public class SessionStore extends BaseComponent
             try (var output = sessionFile(session, Extension.KRYO).openForWriting())
             {
                 var serializer = session();
-                serializer.open(RESOURCE, kivakitVersion(), output);
+                serializer.open(output, RESOURCE, kivakitVersion());
                 serializer.write(new SerializableObject<>(entries, projectVersion()));
                 serializer.close();
             }

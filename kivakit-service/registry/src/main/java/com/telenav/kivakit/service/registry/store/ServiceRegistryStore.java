@@ -25,8 +25,8 @@ import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
@@ -80,7 +80,7 @@ public class ServiceRegistryStore extends BaseComponent
                 {
                     // create a serialization object and read the serialized registry
                     var session = new KryoSerializationSession(new CoreKryoTypes());
-                    session.open(RESOURCE, settings().version(), input);
+                    session.open(input, RESOURCE, settings().version());
                     var object = session.read();
                     if (object != null)
                     {
@@ -122,7 +122,7 @@ public class ServiceRegistryStore extends BaseComponent
                 try (var output = file.openForWriting())
                 {
                     var session = new KryoSerializationSession(new KryoTypes());
-                    session.open(RESOURCE, settings().version(), output);
+                    session.open(output, RESOURCE, settings().version());
                     session.write(new SerializableObject<>(registry, settings().version()));
                     session.close();
                 }

@@ -41,7 +41,7 @@ public abstract class BaseResponse<T>
 
     public Result<T> asResult()
     {
-        return problem != null ? Result.failure(problem) : Result.result(value());
+        return problem != null ? Result.failure(problem) : Result.success(value());
     }
 
     public BaseResponse<T> problem(String message, Object... arguments)
