@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.SerializableObject;
+import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
