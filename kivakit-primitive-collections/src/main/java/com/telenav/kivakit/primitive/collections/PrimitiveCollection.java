@@ -78,6 +78,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.IMMEDIATE;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 
 /**
@@ -889,7 +890,7 @@ public abstract class PrimitiveCollection implements
     @SuppressWarnings("DuplicatedCode")
     public void write(Kryo kryo, Output output)
     {
-        kryo.writeObject(output, KivaKit.get().projectVersion());
+        kryo.writeObject(output, resolveProject(KivaKit.class).projectVersion());
         kryo.writeObject(output, objectName);
         kryo.writeObject(output, size);
         kryo.writeObject(output, compressionMethod);

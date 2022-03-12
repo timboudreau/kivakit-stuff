@@ -377,8 +377,8 @@ public class ServiceRegistryRestResource extends BaseRestResource
                 + Settings.of(this).requireSettings(ServiceRegistrySettings.class).version()
                 + "\n"
                 + "KivaKit "
-                + KivaKit.get().projectVersion()
-                + " (" + KivaKit.get().build() + ")";
+                + kivakit().projectVersion()
+                + " (" + kivakit().build() + ")";
 
         return Response.status(200)
                 .entity(output)

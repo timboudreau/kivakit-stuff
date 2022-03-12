@@ -20,7 +20,6 @@ package com.telenav.kivakit.logs.server;
 
 import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.component.ComponentMixin;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.collections.map.VariableMap;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.loggers.ConsoleLogger;
@@ -57,6 +56,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.CLIENT;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.SERVER;
@@ -102,7 +102,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
     {
         ShutdownHook.register(LAST, () -> SessionStore.get().save(session.get()));
 
-        ServerLogProject.get().initialize();
+        resolveProject(ServerLogProject.class).initialize();
 
         var client = LOGGER.listenTo(new ServiceRegistryClient());
         var metadata = new ServiceMetadata()
@@ -199,7 +199,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
     public void synchronizeSessions(SerializationSession serializationSession, ProgressReporter reporter)
     {
         // Send the sessions we have to the client
-        serializationSession.write(new SerializableObject<>(SessionStore.get().sessions(), KivaKit.get().projectVersion()));
+        serializationSession.write(new SerializableObject<>(SessionStore.get().sessions(), kivakit().projectVersion()));
 
         // then read back the sessions that the client wants,
         VersionedObject<List<Session>> sessionsToSend = serializationSession.read();
@@ -207,7 +207,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
         // then send each desired session back to the client
         for (var session : sessionsToSend.object())
         {
-            serializationSession.write(new SerializableObject<>(SessionStore.get().read(session, reporter), KivaKit.get().projectVersion()));
+            serializationSession.write(new SerializableObject<>(SessionStore.get().read(session, reporter), kivakit().projectVersion()));
         }
     }
 
@@ -253,7 +253,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                     // Create a serializer and start writing to the connection
                     var serializer = require(SerializationSessionFactory.class).newSession(this);
                     serializer.open(input, CLIENT);
-                    serializer.open(output, SERVER, KivaKit.get().kivakitVersion());
+                    serializer.open(output, SERVER, kivakit().kivakitVersion());
 
                     // then send the client our application name
                     serializer.write(new SerializableObject<>(Application.get().name(), Application.get().projectVersion()));

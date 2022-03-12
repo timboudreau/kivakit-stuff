@@ -394,7 +394,7 @@ public class ServiceRegistryClient extends BaseComponent
         {
             metadata.description("Service '" + serviceType + "' for " + name);
         }
-        metadata.kivakitVersion(KivaKit.get().projectVersion());
+        metadata.kivakitVersion(kivakit().projectVersion());
         metadata.version(version());
 
         // and register the service
@@ -468,7 +468,7 @@ public class ServiceRegistryClient extends BaseComponent
                 trace("Connecting client to $", port);
                 var local = Folder.kivakitExtensionsHome()
                         .folder("kivakit-service/server/target")
-                        .file("kivakit-service-server-" + KivaKit.get().kivakitVersion() + ".jar");
+                        .file("kivakit-service-server-" + kivakit().kivakitVersion() + ".jar");
                 var jar = settings.serverJar();
                 trace("Launching $", jar);
                 listenTo(new JarLauncher())

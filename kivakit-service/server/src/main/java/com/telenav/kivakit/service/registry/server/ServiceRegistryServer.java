@@ -20,12 +20,12 @@ package com.telenav.kivakit.service.registry.server;
 
 import com.telenav.kivakit.application.Server;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.commandline.SwitchParsers;
-import com.telenav.kivakit.core.object.Lazy;
+import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.language.reflection.Type;
-import com.telenav.kivakit.resource.ResourceFolder;
+import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.resource.Package;
+import com.telenav.kivakit.resource.ResourceFolder;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
 import com.telenav.kivakit.service.registry.ServiceRegistryProject;
@@ -49,6 +49,7 @@ import com.telenav.lexakai.annotations.UmlNote;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * Service registry server, including Wicket, REST and Swagger resources. Accepts these switches from the command line:
@@ -107,7 +108,7 @@ public class ServiceRegistryServer extends Server
 
     protected ServiceRegistryServer()
     {
-        super(ServiceRegistryProject.get());
+        super(resolveProject(ServiceRegistryProject.class));
     }
 
     public boolean isLocal()

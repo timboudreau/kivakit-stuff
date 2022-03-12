@@ -18,32 +18,24 @@
 
 package com.telenav.kivakit.service.registry.server;
 
-import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
 import com.telenav.kivakit.settings.Settings;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 
 /**
- * Project class for kivakit-service-registry-server
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
  *
  * @author jonathanl (shibo)
  */
+
 @LexakaiJavadoc(complete = true)
 public class ServiceRegistryServerProject extends Project
 {
-    private static final Lazy<ServiceRegistryServerProject> project = Lazy.of(ServiceRegistryServerProject::new);
-
-    public static ServiceRegistryServerProject get()
-    {
-        return project.get();
-    }
-
-    protected ServiceRegistryServerProject()
-    {
-    }
-
     @Override
     public Version projectVersion()
     {

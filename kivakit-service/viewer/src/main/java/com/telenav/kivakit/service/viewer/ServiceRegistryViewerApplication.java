@@ -64,8 +64,8 @@ public class ServiceRegistryViewerApplication extends Application
         {
             var metadata = new ServiceMetadata()
                     .description("Server log for " + identifier())
-                    .kivakitVersion(KivaKit.get().kivakitVersion())
-                    .version(KivaKit.get().projectVersion());
+                    .kivakitVersion(kivakit().kivakitVersion())
+                    .version(kivakit().projectVersion());
             var serverLog = client.register(Scope.localhost(), new ServiceType("kivakit-server-log"), metadata);
             System.out.println("Registered service " + serverLog);
         }

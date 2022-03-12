@@ -23,6 +23,8 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.logs.server.ServerLog;
 import com.telenav.kivakit.logs.server.ServerLogProject;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 /**
  * Application to view remote {@link ServerLog}s.
  *
@@ -38,7 +40,7 @@ public class LogViewerTesterApplication extends Application
 
     private LogViewerTesterApplication()
     {
-        super(ServerLogProject.get());
+        super(resolveProject(ServerLogProject.class));
     }
 
     @Override

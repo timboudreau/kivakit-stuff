@@ -6,6 +6,8 @@ import com.telenav.kivakit.ui.desktop.theme.KivaKitTheme;
 
 import javax.swing.JLabel;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
+
 /**
  * @author jonathanl (shibo)
  */
@@ -13,7 +15,7 @@ public class KivaKitVersion extends JLabel
 {
     public KivaKitVersion()
     {
-        this(KivaKit.get().projectVersion());
+        this(resolveProject(KivaKit.class).projectVersion());
     }
 
     public KivaKitVersion(Version version)

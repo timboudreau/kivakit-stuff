@@ -31,6 +31,7 @@ import com.telenav.kivakit.ui.desktop.graphics.image.ImageResource;
 import java.awt.Taskbar;
 
 import static com.telenav.kivakit.commandline.SwitchParsers.maximumSwitchParser;
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * Application to view remote {@link ServerLog}s.
@@ -52,7 +53,7 @@ public class LogViewerApplication extends Application
 
     private LogViewerApplication()
     {
-        super(ServerLogProject.get());
+        super(resolveProject(ServerLogProject.class));
     }
 
     @SuppressWarnings("resource")

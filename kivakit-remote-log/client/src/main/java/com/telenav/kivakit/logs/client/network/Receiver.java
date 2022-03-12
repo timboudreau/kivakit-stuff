@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.RUNNING;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.STOPPED;
 import static com.telenav.kivakit.logs.client.network.Receiver.State.STOPPING;
@@ -66,7 +67,7 @@ public class Receiver extends BaseRepeater implements
         var version = serializationSession.open(connection.input(), CLIENT);
 
         // and if we are compatible with it,
-        if (version.isOlderThanOrEqualTo(KivaKit.get().kivakitVersion()))
+        if (version.isOlderThanOrEqualTo(resolveProject(KivaKit.class).kivakitVersion()))
         {
             var port = connection.port();
             narrate("Handshaking with $", port);
@@ -138,7 +139,7 @@ public class Receiver extends BaseRepeater implements
         }
 
         // tell the server which sessions we desire,
-        serializationSession.write(new SerializableObject<>(desiredSessions, KivaKit.get().projectVersion()));
+        serializationSession.write(new SerializableObject<>(desiredSessions, resolveProject(KivaKit.class).projectVersion()));
 
         // then add each session to the cache
         for (var session : desiredSessions)

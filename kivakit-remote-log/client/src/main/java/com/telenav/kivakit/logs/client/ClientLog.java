@@ -29,6 +29,7 @@ import com.telenav.kivakit.logs.server.ServerLogProject;
 import javax.swing.SwingUtilities;
 import java.awt.Image;
 
+import static com.telenav.kivakit.core.project.Project.resolveProject;
 import static com.telenav.kivakit.logs.client.ClientLogFrame.ExitMode.EXIT_ON_CLOSE;
 
 public class ClientLog extends BaseLog
@@ -41,7 +42,7 @@ public class ClientLog extends BaseLog
 
     public ClientLog()
     {
-        ServerLogProject.get().initialize();
+        resolveProject(ServerLogProject.class).initialize();
     }
 
     @Override

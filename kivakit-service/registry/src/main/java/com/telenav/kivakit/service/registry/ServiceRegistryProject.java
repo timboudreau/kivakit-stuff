@@ -20,8 +20,8 @@ package com.telenav.kivakit.service.registry;
 
 import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.core.messaging.messages.status.Problem;
-import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.project.Project;
+import com.telenav.kivakit.core.project.ProjectTrait;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.serialization.gson.factory.GsonFactory;
@@ -29,7 +29,6 @@ import com.telenav.kivakit.serialization.gson.serializers.ProblemGsonSerializer;
 import com.telenav.kivakit.serialization.gson.serializers.TimeInMillisecondsGsonSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
-import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
 import com.telenav.kivakit.service.registry.serialization.serializers.ApplicationIdentifierGsonSerializer;
 import com.telenav.kivakit.service.registry.serialization.serializers.ServiceTypeGsonSerializer;
@@ -37,25 +36,18 @@ import com.telenav.kivakit.service.registry.serialization.serializers.ServiceTyp
 import static com.telenav.kivakit.core.string.Formatter.Format.WITH_EXCEPTION;
 
 /**
- * The project class for kivakit-service-registry.
+ * This class defines a KivaKit {@link Project}. It cannot be constructed with the new operator since it has a private
+ * constructor. To access the singleton instance of this class, call {@link Project#resolveProject(Class)}, or use
+ * {@link ProjectTrait#project(Class)}.
  *
  * @author jonathanl (shibo)
  */
 public class ServiceRegistryProject extends Project
 {
-    private static final KryoTypes KRYO_TYPES = new ServiceRegistryKryoTypes()
-            .mergedWith(new CoreKryoTypes());
-
-    private static final Lazy<ServiceRegistryProject> project = Lazy.of(ServiceRegistryProject::new);
-
-    public static ServiceRegistryProject get()
-    {
-        return project.get();
-    }
-
     private ServiceRegistryProject()
     {
-        register(new KryoSerializationSessionFactory(KRYO_TYPES));
+        register(new KryoSerializationSessionFactory(new ServiceRegistryKryoTypes()
+                .mergedWith(new CoreKryoTypes())));
     }
 
     @Override

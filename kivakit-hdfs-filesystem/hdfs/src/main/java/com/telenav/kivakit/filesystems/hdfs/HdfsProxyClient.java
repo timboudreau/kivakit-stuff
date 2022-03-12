@@ -167,7 +167,7 @@ public class HdfsProxyClient extends BaseComponent
             // allocated for the current application / process.
             var local = Folder.kivakitExtensionsHome()
                     .folder("kivakit-filesystems/hdfs-proxy/target")
-                    .file("kivakit-hdfs-proxy-" + KivaKit.get().projectVersion() + ".jar");
+                    .file("kivakit-hdfs-proxy-" + kivakit().projectVersion() + ".jar");
             var process = listenTo(new JarLauncher())
                     .addJarSource(local)
                     .addJarSource(settings.proxyJar())
