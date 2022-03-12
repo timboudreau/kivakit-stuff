@@ -124,6 +124,15 @@ public final class BitArray extends PrimitiveArray implements Named
     }
 
     /**
+     * Resets this bit array for reuse
+     */
+    public void reset()
+    {
+        offset = 0;
+        bytes.reset();
+    }
+
+    /**
      * Sets the bit at the given index
      */
     public void set(int index, boolean value)

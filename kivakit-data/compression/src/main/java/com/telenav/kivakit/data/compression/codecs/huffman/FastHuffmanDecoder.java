@@ -151,10 +151,14 @@ public final class FastHuffmanDecoder<Symbol>
         final
         Entry<Symbol>[] byteToEntry = new Entry[256];
 
+        private final BitArray data = new BitArray("bits");
+
         Table(FastHuffmanDecoder<Symbol> decoder, String prefix)
         {
             this.decoder = decoder;
             this.prefix = prefix;
+
+            data.initialize();
 
             decoder.prefixToTable.put(prefix, this);
         }
@@ -196,8 +200,7 @@ public final class FastHuffmanDecoder<Symbol>
                 var entry = new Entry<>(this);
 
                 // and a bit array to decode from
-                var data = new BitArray("bits");
-                data.initialize();
+                data.reset();
 
                 // then write the prefix and the index into the bit array
                 var writer = data.writer();
