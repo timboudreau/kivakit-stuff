@@ -252,7 +252,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                 {
                     // Create a serializer and start writing to the connection
                     var serializer = require(SerializationSessionFactory.class).newSession(this);
-                    serializer.open(input, CLIENT, KivaKit.get().kivakitVersion());
+                    serializer.open(input, CLIENT);
                     serializer.open(output, SERVER, KivaKit.get().kivakitVersion());
 
                     // then send the client our application name

@@ -80,7 +80,7 @@ public class ServiceRegistryStore extends BaseComponent
                 {
                     // create a serialization object and read the serialized registry
                     var session = new KryoSerializationSession(new CoreKryoTypes());
-                    session.open(input, RESOURCE, settings().version());
+                    session.open(input);
                     var object = session.read();
                     if (object != null)
                     {

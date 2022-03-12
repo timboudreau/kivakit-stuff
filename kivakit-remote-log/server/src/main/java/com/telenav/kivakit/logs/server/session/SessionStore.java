@@ -2,7 +2,6 @@ package com.telenav.kivakit.logs.server.session;
 
 import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.conversion.core.time.LocalDateTimeConverter;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.object.Lazy;
 import com.telenav.kivakit.core.progress.ProgressReporter;
@@ -92,7 +91,7 @@ public class SessionStore extends BaseComponent
                 try (var input = sessionFile(session, Extension.KRYO).openForReading())
                 {
                     var serializationSession = session();
-                    var version = serializationSession.open(input, RESOURCE, KivaKit.get().kivakitVersion());
+                    var version = serializationSession.open(input, RESOURCE);
                     trace("Loaded session '$' (KivaKit version $)", session, version);
                     entries = (LinkedList<LogEntry>) serializationSession.read().object();
                     sessionNameToEntries.put(session, entries);

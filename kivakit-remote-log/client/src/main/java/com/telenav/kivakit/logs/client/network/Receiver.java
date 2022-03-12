@@ -63,7 +63,7 @@ public class Receiver extends BaseRepeater implements
     {
         // Create a serializer and read the framework version from the server
         var serializationSession = require(SerializationSessionFactory.class).newSession(this);
-        var version = serializationSession.open(connection.input(), CLIENT, KivaKit.get().kivakitVersion());
+        var version = serializationSession.open(connection.input(), CLIENT);
 
         // and if we are compatible with it,
         if (version.isOlderThanOrEqualTo(KivaKit.get().kivakitVersion()))
