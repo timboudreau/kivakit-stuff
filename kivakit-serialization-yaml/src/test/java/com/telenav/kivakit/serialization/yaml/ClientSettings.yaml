@@ -1,0 +1,6 @@
+---
+class: com.telenav.kivakit.serialization.yaml.ClientSettings
+instance: banana
+port: 9999
+timeout: 6 seconds
+
