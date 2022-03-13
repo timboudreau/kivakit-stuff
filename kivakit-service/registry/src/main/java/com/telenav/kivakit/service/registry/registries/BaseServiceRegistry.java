@@ -181,7 +181,7 @@ public abstract class BaseServiceRegistry extends BaseRepeater implements Servic
             }
         });
 
-        return result(true);
+        return success(true);
     }
 
     /**
@@ -191,7 +191,7 @@ public abstract class BaseServiceRegistry extends BaseRepeater implements Servic
     @NotNull
     public Result<Set<Application.Identifier>> discoverApplications(Scope scope)
     {
-        return lock.read(() -> result(applicationToServices.keySet()));
+        return lock.read(() -> success(applicationToServices.keySet()));
     }
 
     /**
@@ -201,7 +201,7 @@ public abstract class BaseServiceRegistry extends BaseRepeater implements Servic
     public @NotNull
     Result<Service> discoverPortService(Port port)
     {
-        return lock.read(() -> result(portToService.get(port)));
+        return lock.read(() -> success(portToService.get(port)));
     }
 
     /**

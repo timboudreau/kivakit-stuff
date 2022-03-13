@@ -18,7 +18,6 @@
 
 package com.telenav.kivakit.service.registry.server.rest;
 
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.service.registry.Service;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
@@ -274,7 +273,7 @@ public class ServiceRegistryRestResource extends BaseRestResource
         }
 
         var response = new NetworkRegistryUpdateResponse();
-        response.result(result(succeeded));
+        response.result(success(succeeded));
         narrate("Returning network registry response: $", response);
         return response;
     }

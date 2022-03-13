@@ -94,7 +94,7 @@ public class LocalServiceRegistry extends BaseServiceRegistry
                 }
             }
 
-            return result(service);
+            return success(service);
         });
     }
 
@@ -106,7 +106,7 @@ public class LocalServiceRegistry extends BaseServiceRegistry
         {
             trace("Renewing service: $", service);
             addOrUpdate(service);
-            return result(service);
+            return success(service);
         });
     }
 

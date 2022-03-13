@@ -22,7 +22,6 @@ import com.google.gson.Gson;
 import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.application.Server;
 import com.telenav.kivakit.component.BaseComponent;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.function.Result;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.os.OperatingSystem;
@@ -435,7 +434,7 @@ public class ServiceRegistryClient extends BaseComponent
             else
             {
                 warning("Cannot send update on unbound service: $", service);
-                return result(false);
+                return success(false);
             }
         }
         catch (Exception | AssertionError e)

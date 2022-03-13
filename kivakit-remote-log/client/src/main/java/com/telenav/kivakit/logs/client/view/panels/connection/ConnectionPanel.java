@@ -82,7 +82,7 @@ public class ConnectionPanel extends KivaKitPanel
         // Locate all KivaKit server logs services on the network
         var client = LOGGER.listenTo(new ServiceRegistryClient());
         var services = client.discoverServices(Scope.localhost(), ServerLog.SERVER_LOG)
-                .then(Sets::union, client.discoverServices(Scope.network(), ServerLog.SERVER_LOG));
+                .then(Sets::union, client.discoverServices(Scope.network(), ServerLog.SERVER_LOG).get());
         if (services.isPresent())
         {
             // and add them to the dropdown, preserving the selected service if possible
