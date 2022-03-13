@@ -151,7 +151,7 @@ public final class FastHuffmanDecoder<Symbol>
         final
         Entry<Symbol>[] byteToEntry = new Entry[256];
 
-        private final BitArray data = new BitArray("bits");
+        private transient final BitArray data = new BitArray("bits");
 
         Table(FastHuffmanDecoder<Symbol> decoder, String prefix)
         {
