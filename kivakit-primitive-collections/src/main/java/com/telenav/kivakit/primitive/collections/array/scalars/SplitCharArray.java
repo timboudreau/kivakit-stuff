@@ -27,7 +27,7 @@ import com.telenav.kivakit.primitive.collections.CharCollection;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.list.CharList;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveSplitArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSplitArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;

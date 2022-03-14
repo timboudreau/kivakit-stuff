@@ -21,7 +21,7 @@ package com.telenav.kivakit.primitive.collections.list;
 import com.telenav.kivakit.primitive.collections.ByteCollection;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.iteration.ByteIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveList;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

@@ -31,7 +31,7 @@ import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
 import com.telenav.kivakit.primitive.collections.list.LongList;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;

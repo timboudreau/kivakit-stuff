@@ -22,7 +22,7 @@ import com.telenav.kivakit.settings.Settings;
 import com.telenav.kivakit.core.language.reflection.property.KivaKitIncludeProperty;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
-import com.telenav.kivakit.service.registry.project.lexakai.DiagramRest;
+import com.telenav.kivakit.service.registry.lexakai.DiagramRest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

@@ -23,7 +23,7 @@ import com.telenav.kivakit.component.ComponentMixin;
 import com.telenav.kivakit.core.function.Result;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;
-import com.telenav.kivakit.service.registry.project.lexakai.DiagramRegistry;
+import com.telenav.kivakit.service.registry.lexakai.DiagramRegistry;
 import com.telenav.kivakit.service.registry.registries.BaseServiceRegistry;
 import com.telenav.kivakit.service.registry.registries.LocalServiceRegistry;
 import com.telenav.kivakit.service.registry.registries.NetworkServiceRegistry;

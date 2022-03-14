@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.string.Indent;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveSet;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 @UmlClassDiagram(diagram = DiagramPrimitiveSet.class)

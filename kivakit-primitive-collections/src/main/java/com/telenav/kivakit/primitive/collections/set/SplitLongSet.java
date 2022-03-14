@@ -27,7 +27,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterable;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveSet;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;

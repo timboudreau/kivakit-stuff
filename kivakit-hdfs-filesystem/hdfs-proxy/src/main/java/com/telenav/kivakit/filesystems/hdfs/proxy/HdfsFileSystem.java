@@ -28,7 +28,7 @@ import com.telenav.kivakit.core.registry.InstanceIdentifier;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileSystemService;
-import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
+import com.telenav.kivakit.filesystems.hdfs.proxy.lexakai.DiagramHdfsProxy;
 import com.telenav.kivakit.resource.ResourceFolder;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;

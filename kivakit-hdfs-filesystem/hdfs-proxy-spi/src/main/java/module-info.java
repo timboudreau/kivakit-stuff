@@ -8,5 +8,5 @@ open module kivakit.filesystems.hdfs.proxy.spi
 
     // Module exports
     exports com.telenav.kivakit.filesystems.hdfs.proxy.spi;
-    exports com.telenav.kivakit.filesystems.hdfs.proxy.spi.project.lexakai;
+    exports com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai;
 }

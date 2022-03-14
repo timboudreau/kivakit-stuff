@@ -20,7 +20,7 @@ package com.telenav.kivakit.primitive.collections.array.scalars;
 
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Before;
 import org.junit.Test;
 

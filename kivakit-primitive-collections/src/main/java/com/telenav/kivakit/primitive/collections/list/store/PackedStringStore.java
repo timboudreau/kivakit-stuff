@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.strings.PackedStringArray;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveList;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

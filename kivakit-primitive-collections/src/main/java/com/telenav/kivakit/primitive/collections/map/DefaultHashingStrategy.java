@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.level.Percent;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)

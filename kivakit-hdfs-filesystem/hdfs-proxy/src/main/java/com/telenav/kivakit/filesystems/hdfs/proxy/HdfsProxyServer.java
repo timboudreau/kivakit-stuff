@@ -30,7 +30,7 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.proxy.converters.UserGroupInformationConverter;
-import com.telenav.kivakit.filesystems.hdfs.proxy.project.lexakai.DiagramHdfsProxy;
+import com.telenav.kivakit.filesystems.hdfs.proxy.lexakai.DiagramHdfsProxy;
 import com.telenav.kivakit.resource.path.FileName;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

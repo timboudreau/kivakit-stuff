@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.ByteCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveSplitArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSplitArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;

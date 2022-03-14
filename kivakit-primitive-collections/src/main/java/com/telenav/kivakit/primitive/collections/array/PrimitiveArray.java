@@ -27,7 +27,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.ShortArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

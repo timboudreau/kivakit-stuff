@@ -30,7 +30,7 @@ import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.iteration.ByteIterable;
 import com.telenav.kivakit.primitive.collections.iteration.ByteIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArrayArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArrayArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

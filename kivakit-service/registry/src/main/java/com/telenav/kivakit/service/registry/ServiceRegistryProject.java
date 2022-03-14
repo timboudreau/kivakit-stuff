@@ -29,7 +29,6 @@ import com.telenav.kivakit.serialization.gson.serializers.ProblemGsonSerializer;
 import com.telenav.kivakit.serialization.gson.serializers.TimeInMillisecondsGsonSerializer;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
-import com.telenav.kivakit.service.registry.project.ServiceRegistryKryoTypes;
 import com.telenav.kivakit.service.registry.serialization.serializers.ApplicationIdentifierGsonSerializer;
 import com.telenav.kivakit.service.registry.serialization.serializers.ServiceTypeGsonSerializer;
 

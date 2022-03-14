@@ -19,7 +19,6 @@
 package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.component.BaseComponent;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.object.Lazy;
@@ -27,7 +26,7 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
+import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.kivakit.resource.path.FileName;

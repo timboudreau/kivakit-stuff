@@ -14,5 +14,5 @@ open module kivakit.filesystems.hdfs
 
     // Module exports
     exports com.telenav.kivakit.filesystems.hdfs;
-    exports com.telenav.kivakit.filesystems.hdfs.project.lexakai;
+    exports com.telenav.kivakit.filesystems.hdfs.lexakai;
 }

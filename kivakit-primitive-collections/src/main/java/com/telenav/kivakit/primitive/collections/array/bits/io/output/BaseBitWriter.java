@@ -19,7 +19,7 @@
 package com.telenav.kivakit.primitive.collections.array.bits.io.output;
 
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitWriter;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArrayBitIo;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArrayBitIo;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

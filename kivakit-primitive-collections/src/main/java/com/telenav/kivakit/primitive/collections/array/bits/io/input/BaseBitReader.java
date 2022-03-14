@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.array.bits.BitArray;
 import com.telenav.kivakit.primitive.collections.array.bits.io.BitReader;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArrayBitIo;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArrayBitIo;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

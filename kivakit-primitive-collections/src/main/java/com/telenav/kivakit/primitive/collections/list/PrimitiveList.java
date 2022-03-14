@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.factory.LongMapFactory;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveList;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

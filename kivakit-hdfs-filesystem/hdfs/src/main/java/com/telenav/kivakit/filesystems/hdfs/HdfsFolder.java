@@ -30,7 +30,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystem.spi.FolderService;
-import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
+import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
 import com.telenav.kivakit.resource.path.FileName;

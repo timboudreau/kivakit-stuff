@@ -28,7 +28,7 @@ import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveScalarMap;
 import com.telenav.kivakit.primitive.collections.map.SplitPrimitiveMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

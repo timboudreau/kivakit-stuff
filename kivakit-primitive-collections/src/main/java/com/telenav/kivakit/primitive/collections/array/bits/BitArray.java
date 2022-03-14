@@ -28,7 +28,7 @@ import com.telenav.kivakit.primitive.collections.array.bits.io.input.BaseBitRead
 import com.telenav.kivakit.primitive.collections.array.bits.io.output.BaseBitWriter;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;

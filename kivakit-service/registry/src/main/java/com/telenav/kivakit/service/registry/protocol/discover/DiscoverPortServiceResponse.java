@@ -26,7 +26,7 @@ import com.telenav.kivakit.interfaces.string.Stringable;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.service.registry.Service;
-import com.telenav.kivakit.service.registry.project.lexakai.DiagramRest;
+import com.telenav.kivakit.service.registry.lexakai.DiagramRest;
 import com.telenav.kivakit.service.registry.protocol.BaseResponse;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

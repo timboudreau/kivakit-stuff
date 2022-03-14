@@ -24,7 +24,7 @@ import com.telenav.kivakit.interfaces.collection.Keyed;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.iteration.PrimitiveIterator;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMultiMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMultiMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;

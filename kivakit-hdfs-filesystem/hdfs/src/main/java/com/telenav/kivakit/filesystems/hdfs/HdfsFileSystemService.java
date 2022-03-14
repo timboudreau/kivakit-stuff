@@ -24,7 +24,7 @@ import com.telenav.kivakit.filesystem.spi.DiskService;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystem.spi.FileSystemService;
 import com.telenav.kivakit.filesystem.spi.FolderService;
-import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
+import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;

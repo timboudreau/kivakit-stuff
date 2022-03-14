@@ -36,7 +36,7 @@ import com.telenav.kivakit.primitive.collections.iteration.ByteIterator;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
 import com.telenav.kivakit.primitive.collections.iteration.PrimitiveIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 

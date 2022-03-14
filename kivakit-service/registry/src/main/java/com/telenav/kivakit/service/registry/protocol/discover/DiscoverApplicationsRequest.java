@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.language.object.ObjectFormatter;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeMember;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
 import com.telenav.kivakit.service.registry.Scope;
-import com.telenav.kivakit.service.registry.project.lexakai.DiagramRest;
+import com.telenav.kivakit.service.registry.lexakai.DiagramRest;
 import com.telenav.kivakit.service.registry.protocol.BaseRequest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

@@ -19,7 +19,7 @@
 package com.telenav.kivakit.primitive.collections.array.arrays;
 
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
 public class LongArrayArrayTest extends PrimitiveCollectionsUnitTest

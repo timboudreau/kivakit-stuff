@@ -22,7 +22,7 @@ import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.primitive.collections.list.PrimitiveList;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.IntToByteFixedMultiMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToLongFixedMultiMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMultiMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMultiMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.List;

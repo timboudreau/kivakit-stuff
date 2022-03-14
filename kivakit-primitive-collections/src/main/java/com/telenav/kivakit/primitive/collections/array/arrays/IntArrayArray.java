@@ -29,7 +29,7 @@ import com.telenav.kivakit.primitive.collections.array.PrimitiveArrayArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterable;
 import com.telenav.kivakit.primitive.collections.iteration.IntIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArrayArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArrayArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

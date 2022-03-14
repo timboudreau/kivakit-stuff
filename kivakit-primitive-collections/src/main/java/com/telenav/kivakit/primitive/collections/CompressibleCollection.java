@@ -24,7 +24,7 @@ import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.interfaces.messaging.Receiver;
 import com.telenav.kivakit.interfaces.messaging.Transmittable;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveCollection;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveCollection;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.IdentityHashMap;

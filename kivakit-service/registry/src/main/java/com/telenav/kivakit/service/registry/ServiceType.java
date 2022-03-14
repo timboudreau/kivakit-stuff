@@ -20,7 +20,7 @@ package com.telenav.kivakit.service.registry;
 
 import com.telenav.kivakit.core.value.identifier.StringIdentifier;
 import com.telenav.kivakit.microservice.protocols.rest.openapi.OpenApiIncludeType;
-import com.telenav.kivakit.service.registry.project.lexakai.DiagramRegistry;
+import com.telenav.kivakit.service.registry.lexakai.DiagramRegistry;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlExcludeSuperTypes;

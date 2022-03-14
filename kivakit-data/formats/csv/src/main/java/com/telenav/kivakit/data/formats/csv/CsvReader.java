@@ -22,7 +22,7 @@ import com.telenav.kivakit.core.collections.iteration.BaseIterator;
 import com.telenav.kivakit.core.io.LookAheadReader;
 import com.telenav.kivakit.core.messaging.repeaters.RepeaterMixin;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
+import com.telenav.kivakit.data.formats.csv.lexakai.DiagramCsv;
 import com.telenav.kivakit.interfaces.io.Closeable;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;

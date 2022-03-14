@@ -23,7 +23,7 @@ import com.telenav.kivakit.core.collections.map.NameMap;
 import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
+import com.telenav.kivakit.data.formats.csv.lexakai.DiagramCsv;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;

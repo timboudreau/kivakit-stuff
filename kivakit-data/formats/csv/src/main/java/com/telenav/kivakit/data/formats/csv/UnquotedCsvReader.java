@@ -20,7 +20,7 @@ package com.telenav.kivakit.data.formats.csv;
 
 import com.telenav.kivakit.core.io.LookAheadReader;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
+import com.telenav.kivakit.data.formats.csv.lexakai.DiagramCsv;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

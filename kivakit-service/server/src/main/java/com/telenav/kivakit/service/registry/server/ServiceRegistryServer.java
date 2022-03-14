@@ -32,7 +32,7 @@ import com.telenav.kivakit.service.registry.ServiceRegistryProject;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
 import com.telenav.kivakit.service.registry.registries.LocalServiceRegistry;
 import com.telenav.kivakit.service.registry.registries.NetworkServiceRegistry;
-import com.telenav.kivakit.service.registry.server.project.lexakai.DiagramServer;
+import com.telenav.kivakit.service.registry.server.lexakai.DiagramServer;
 import com.telenav.kivakit.service.registry.server.rest.ServiceRegistryRestApplication;
 import com.telenav.kivakit.service.registry.server.webapp.ServiceRegistryWebApplication;
 import com.telenav.kivakit.service.registry.store.ServiceRegistryStore;

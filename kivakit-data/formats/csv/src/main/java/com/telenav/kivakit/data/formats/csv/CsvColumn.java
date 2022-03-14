@@ -22,7 +22,7 @@ import com.telenav.kivakit.conversion.BaseStringConverter;
 import com.telenav.kivakit.conversion.StringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.value.name.Name;
-import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
+import com.telenav.kivakit.data.formats.csv.lexakai.DiagramCsv;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

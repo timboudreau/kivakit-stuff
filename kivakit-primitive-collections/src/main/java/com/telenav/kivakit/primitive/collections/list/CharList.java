@@ -20,7 +20,7 @@ package com.telenav.kivakit.primitive.collections.list;
 
 import com.telenav.kivakit.primitive.collections.CharCollection;
 import com.telenav.kivakit.primitive.collections.iteration.CharIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveList;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**

@@ -19,7 +19,7 @@
 package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.conversion.core.language.object.KivaKitConverted;
-import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
+import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.network.core.EmailAddress;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.kivakit.resource.ResourceFolder;

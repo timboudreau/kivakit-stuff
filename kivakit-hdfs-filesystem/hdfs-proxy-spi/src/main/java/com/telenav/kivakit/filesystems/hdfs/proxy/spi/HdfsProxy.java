@@ -19,7 +19,7 @@
 package com.telenav.kivakit.filesystems.hdfs.proxy.spi;
 
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.filesystems.hdfs.proxy.spi.project.lexakai.DiagramHdfsSpi;
+import com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai.DiagramHdfsSpi;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

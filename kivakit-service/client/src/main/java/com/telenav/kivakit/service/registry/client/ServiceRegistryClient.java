@@ -38,7 +38,7 @@ import com.telenav.kivakit.service.registry.ServiceMetadata;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
 import com.telenav.kivakit.service.registry.ServiceRegistrySettings;
 import com.telenav.kivakit.service.registry.ServiceType;
-import com.telenav.kivakit.service.registry.client.project.lexakai.DiagramClient;
+import com.telenav.kivakit.service.registry.client.lexakai.DiagramClient;
 import com.telenav.kivakit.service.registry.protocol.BaseRequest;
 import com.telenav.kivakit.service.registry.protocol.BaseResponse;
 import com.telenav.kivakit.service.registry.protocol.discover.DiscoverApplicationsRequest;
@@ -84,10 +84,12 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  * the network-wide registry where it can be queried with this client.
  * <p>
  * <i>Note: at this time, only {@link Scope#localhost()} and {@link Scope#network()} are supported.</i>
+ *
  * </p>
  * <p>
  * <b>Registry Servers</b>
  * </p>
+ *
  * ServiceRegistryServer is a command-line application can be run in two modes: as a registry on the local host (on port
  * 23,573) or as a network registry located on a well-known host (on port 23575 by default) that can be specified by the
  * KIVAKIT_NETWORK_SERVICE_REGISTRY_PORT environment variable (the default is kivakit-network-service-registry.mypna.com:23575).
@@ -111,9 +113,11 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  * {@link ServiceRegistryClient}. Only the client (which interacts with the other two subclasses over REST) is intended
  * for use by end-users of the KivaKit.
  * </p>
+ *
  * <p>
  * <b>Registration</b>
  * </p>
+ *
  * <p>
  * Services can register themselves by calling {@link #register(Service)}. The application identifier uniquely
  * identifies the registering application on the local host. The {@link Application} and {@link Server} classes produce
@@ -123,9 +127,11 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  * an identifier for the kind of service being registered, typically a value supplied as a service interface constant
  * value. When successful, the register() method will return a {@link Service} object that is bound to a free port in
  * the ephemeral port range.
+ *
  * <p>
  * <b>Lookup</b>
  * <p>
+ *
  * The following methods can be used to look up registered services within a given {@link Scope} (local host, network,
  * cluster or on a specific host):
  * <ul>
@@ -136,9 +142,11 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  *     <li>{@link #discoverServices(Scope, Application.Identifier)} - All services belonging to the given application within the given scope</li>
  *     <li>{@link #discoverServices(Scope, Application.Identifier, ServiceType)} - A specific application service within the given scope</li>
  * </ul>
+ *
  * <p>
  * <b>Example</b>
  * </p>
+ *
  * A service can be bound by application A by calling register() on a {@link ServiceRegistryClient}:
  * <pre>
  *     public static final Service.SearchType SERVICE = new Service.SearchType("example-server");
@@ -171,9 +179,11 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  *     var serverA = client.lookup(APPLICATION_A, SERVICE);
  *     var serverB = client.lookup(APPLICATION_B, SERVICE);
  * </pre>
+ *
  * <p>
  * <b>API Implementation Details</b>
  * </p>
+ *
  * <p>
  * For details on the implementation service registration, including service expiration and port leases,
  * see {@link LocalServiceRegistry}.
@@ -188,7 +198,7 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  * @see Port
  * @see Result
  */
-@SuppressWarnings("InfiniteLoopStatement")
+@SuppressWarnings({ "InfiniteLoopStatement", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramClient.class)
 @UmlRelation(label = "returns", referent = Result.class)
 @UmlRelation(label = "discovers applications", referent = Application.Identifier.class)

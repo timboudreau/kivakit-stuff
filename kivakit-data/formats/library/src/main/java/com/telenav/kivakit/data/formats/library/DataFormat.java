@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.data.formats.library;
 
-import com.telenav.kivakit.data.formats.library.project.lexakai.DiagramDataFormat;
+import com.telenav.kivakit.data.formats.library.lexakai.DiagramDataFormat;
 import com.telenav.kivakit.resource.Resource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;

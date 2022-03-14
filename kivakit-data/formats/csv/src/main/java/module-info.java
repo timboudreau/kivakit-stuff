@@ -5,5 +5,5 @@ open module kivakit.data.formats.csv
 
     // Module exports
     exports com.telenav.kivakit.data.formats.csv;
-    exports com.telenav.kivakit.data.formats.csv.project.lexakai;
+    exports com.telenav.kivakit.data.formats.csv.lexakai;
 }

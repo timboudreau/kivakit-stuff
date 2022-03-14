@@ -19,7 +19,7 @@
 package com.telenav.kivakit.security.digest.digesters;
 
 import com.telenav.kivakit.security.digest.BaseDigester;
-import com.telenav.kivakit.security.project.lexakai.DiagramSecurityDigest;
+import com.telenav.kivakit.security.lexakai.DiagramSecurityDigest;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

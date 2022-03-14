@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.map.multi.dynamic;
 
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
 public class LongToLongMultiMapTest extends PrimitiveCollectionsUnitTest

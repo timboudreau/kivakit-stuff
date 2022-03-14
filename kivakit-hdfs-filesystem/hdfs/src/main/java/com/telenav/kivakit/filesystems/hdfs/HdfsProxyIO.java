@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.filesystems.hdfs;
 
-import com.telenav.kivakit.filesystems.hdfs.project.lexakai.DiagramHdfs;
+import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.visibility.UmlNotPublicApi;

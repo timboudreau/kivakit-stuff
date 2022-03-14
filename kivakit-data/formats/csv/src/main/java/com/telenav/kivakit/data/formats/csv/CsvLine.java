@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.language.reflection.property.PropertyValues;
 import com.telenav.kivakit.core.messaging.repeaters.RepeaterMixin;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Maximum;
-import com.telenav.kivakit.data.formats.csv.project.lexakai.DiagramCsv;
+import com.telenav.kivakit.data.formats.csv.lexakai.DiagramCsv;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 

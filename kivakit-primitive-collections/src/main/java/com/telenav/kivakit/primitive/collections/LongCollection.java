@@ -24,7 +24,7 @@ import com.telenav.kivakit.interfaces.naming.NamedObject;
 import com.telenav.kivakit.interfaces.numeric.Quantizable;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterable;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveCollection;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveCollection;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.List;

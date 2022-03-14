@@ -32,7 +32,7 @@ import com.telenav.kivakit.primitive.collections.map.multi.IntMultiMap;
 import com.telenav.kivakit.primitive.collections.map.multi.PrimitiveMultiMap;
 import com.telenav.kivakit.primitive.collections.map.multi.PrimitiveScalarMultiMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveMultiMap;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveMultiMap;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.List;

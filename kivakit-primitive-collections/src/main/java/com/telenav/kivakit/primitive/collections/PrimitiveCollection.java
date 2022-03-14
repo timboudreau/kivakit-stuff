@@ -66,7 +66,7 @@ import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToLongMul
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveCollection;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.set.PrimitiveSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;

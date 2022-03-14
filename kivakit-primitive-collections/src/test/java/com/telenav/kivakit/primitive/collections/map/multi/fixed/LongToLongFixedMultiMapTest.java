@@ -20,7 +20,7 @@ package com.telenav.kivakit.primitive.collections.map.multi.fixed;
 
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.map.scalars.fixed.LongToByteFixedMultiMap;
-import com.telenav.kivakit.primitive.collections.project.PrimitiveCollectionsUnitTest;
+import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
 
 public class LongToLongFixedMultiMapTest extends PrimitiveCollectionsUnitTest

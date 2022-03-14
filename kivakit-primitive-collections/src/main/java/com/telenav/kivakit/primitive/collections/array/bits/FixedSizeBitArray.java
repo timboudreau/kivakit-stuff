@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.array.bits;
 
-import com.telenav.kivakit.primitive.collections.project.lexakai.DiagramPrimitiveArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArray;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 /**
