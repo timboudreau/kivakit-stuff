@@ -45,8 +45,8 @@ import com.telenav.kivakit.core.value.count.Estimate;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
+import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.core.vm.ShutdownHook;
-import com.telenav.kivakit.core.vm.SystemProperties;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -58,6 +58,7 @@ import com.telenav.kivakit.primitive.collections.array.arrays.ByteArrayArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.IntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
+import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.list.store.PackedStringStore;
 import com.telenav.kivakit.primitive.collections.list.store.PrimitiveListStore;
 import com.telenav.kivakit.primitive.collections.map.PrimitiveMap;
@@ -66,7 +67,6 @@ import com.telenav.kivakit.primitive.collections.map.multi.dynamic.LongToLongMul
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToIntMap;
 import com.telenav.kivakit.primitive.collections.map.scalars.LongToLongMap;
 import com.telenav.kivakit.primitive.collections.map.split.SplitLongToIntMap;
-import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.set.PrimitiveSet;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -979,7 +979,7 @@ public abstract class PrimitiveCollection implements
 
             // If we want to record stack traces, get a stack trace by creating a throwable (AllocationStackTrace)
             AllocationStackTrace stack = null;
-            if (Booleans.isTrue(SystemProperties.property("KIVAKIT_LOG_ALLOCATION_STACK_TRACES", "false")))
+            if (Booleans.isTrue(Properties.property("KIVAKIT_LOG_ALLOCATION_STACK_TRACES", "false")))
             {
                 stack = new AllocationStackTrace();
             }

@@ -22,7 +22,7 @@ import com.telenav.kivakit.component.BaseComponent;
 import com.telenav.kivakit.core.language.primitive.Booleans;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.string.CaseFormat;
-import com.telenav.kivakit.core.vm.SystemProperties;
+import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.resource.path.Extension;
@@ -113,7 +113,7 @@ public class ServiceRegistryStore extends BaseComponent
      */
     public synchronized void save(ServiceRegistry registry)
     {
-        if (Booleans.isTrue(SystemProperties.property("KIVAKIT_SAVE_REGISTRY", "true")))
+        if (Booleans.isTrue(Properties.property("KIVAKIT_SAVE_REGISTRY", "true")))
         {
             var file = file(registry.getClass()).withExtension(Extension.TMP);
             trace("Saving service registry to $", file.messageSource());

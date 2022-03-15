@@ -33,6 +33,7 @@ import com.telenav.kivakit.service.registry.ServiceMetadata;
 import com.telenav.kivakit.service.registry.ServiceType;
 import com.telenav.kivakit.service.registry.client.ServiceRegistryClient;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
 import static com.telenav.kivakit.core.string.Formatter.Format.WITH_EXCEPTION;
 import static com.telenav.kivakit.service.registry.Scope.Type.scopeTypeSwitchParser;
 
@@ -97,6 +98,6 @@ public class ServiceRegistryViewerApplication extends Application
     @Override
     protected ObjectSet<SwitchParser<?>> switchParsers()
     {
-        return ObjectSet.objectSet(SCOPE_TYPE);
+        return objectSet(SCOPE_TYPE);
     }
 }

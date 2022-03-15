@@ -48,8 +48,8 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.UmlNote;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 
+import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
 import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
-import static com.telenav.kivakit.core.project.Project.resolveProject;
 
 /**
  * Service registry server, including Wicket, REST and Swagger resources. Accepts these switches from the command line:
@@ -108,7 +108,7 @@ public class ServiceRegistryServer extends Server
 
     protected ServiceRegistryServer()
     {
-        super(resolveProject(ServiceRegistryProject.class));
+        addProject(ServiceRegistryProject.class);
     }
 
     public boolean isLocal()
@@ -176,6 +176,6 @@ public class ServiceRegistryServer extends Server
     @Override
     protected ObjectSet<SwitchParser<?>> switchParsers()
     {
-        return ObjectSet.objectSet(PORT, SCOPE);
+        return objectSet(PORT, SCOPE);
     }
 }

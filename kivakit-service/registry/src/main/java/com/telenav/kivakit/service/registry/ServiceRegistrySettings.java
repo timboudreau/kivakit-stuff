@@ -29,7 +29,7 @@ import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.version.Version;
-import com.telenav.kivakit.core.vm.SystemProperties;
+import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.network.core.Host;
 import com.telenav.kivakit.network.core.Port;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
@@ -125,7 +125,7 @@ public class ServiceRegistrySettings
     public Port network()
     {
         @SuppressWarnings("SpellCheckingInspection")
-        var port = SystemProperties.property
+        var port = Properties.property
                 (
                         "KIVAKIT_NETWORK_SERVICE_REGISTRY_PORT",
                         "kivakit-network-service-registry.mypna.com:23575"
