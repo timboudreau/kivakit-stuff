@@ -22,6 +22,7 @@
     <packaging>pom</packaging>
 
     <!-- Project -->
+    
     <description>A collection of modules that extend KivaKit</description>
     <url>https://www.kivakit.org</url>
     <inceptionYear>2011</inceptionYear>
