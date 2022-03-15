@@ -14,6 +14,5 @@ open module kivakit.logs.server
 
     // Module exports
     exports com.telenav.kivakit.logs.server;
-    exports com.telenav.kivakit.logs.server.project;
     exports com.telenav.kivakit.logs.server.session;
 }

@@ -1,4 +1,4 @@
-package com.telenav.kivakit.logs.server.project;
+package com.telenav.kivakit.logs.server;
 
 import com.telenav.kivakit.logs.server.session.Session;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
@@ -6,9 +6,9 @@ import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 /**
  * @author jonathanl (shibo)
  */
-public class LogsServerKryoTypes extends KryoTypes
+public class ServerLogKryoTypes extends KryoTypes
 {
-    public LogsServerKryoTypes()
+    public ServerLogKryoTypes()
     {
         //----------------------------------------------------------------------------------------------
         // NOTE: To maintain backward compatibility, classes are assigned identifiers by KivaKitKryoSerializer.

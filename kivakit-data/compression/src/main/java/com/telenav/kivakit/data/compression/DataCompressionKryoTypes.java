@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package com.telenav.kivakit.data.compression.project;
+package com.telenav.kivakit.data.compression;
 
 import com.telenav.kivakit.data.compression.codecs.huffman.FastHuffmanDecoder;
 import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;

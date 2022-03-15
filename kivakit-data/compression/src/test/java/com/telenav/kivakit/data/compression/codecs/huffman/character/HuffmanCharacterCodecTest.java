@@ -20,7 +20,7 @@ package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
-import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
+import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.List;

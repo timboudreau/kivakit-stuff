@@ -11,6 +11,5 @@ open module kivakit.data.compression
     exports com.telenav.kivakit.data.compression.codecs.huffman.tree;
     exports com.telenav.kivakit.data.compression.codecs.huffman;
     exports com.telenav.kivakit.data.compression.codecs;
-    exports com.telenav.kivakit.data.compression.project;
     exports com.telenav.kivakit.data.compression;
 }

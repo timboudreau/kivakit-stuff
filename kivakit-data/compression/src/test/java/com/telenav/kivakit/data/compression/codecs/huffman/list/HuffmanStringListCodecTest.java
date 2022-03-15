@@ -30,7 +30,7 @@ import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
+import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;

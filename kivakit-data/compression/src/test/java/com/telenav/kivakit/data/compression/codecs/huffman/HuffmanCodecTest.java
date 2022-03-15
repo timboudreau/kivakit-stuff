@@ -26,7 +26,7 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.data.compression.project.DataCompressionUnitTest;
+import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;

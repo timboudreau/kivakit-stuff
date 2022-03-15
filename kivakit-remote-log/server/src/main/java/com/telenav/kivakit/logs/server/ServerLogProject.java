@@ -2,7 +2,6 @@ package com.telenav.kivakit.logs.server;
 
 import com.telenav.kivakit.core.project.Project;
 import com.telenav.kivakit.core.project.ProjectTrait;
-import com.telenav.kivakit.logs.server.project.LogsServerKryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSessionFactory;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 
@@ -18,6 +17,6 @@ public class ServerLogProject extends Project
     public ServerLogProject()
     {
         register(new KryoSerializationSessionFactory(new CoreKryoTypes()
-                .mergedWith(new LogsServerKryoTypes())));
+                .mergedWith(new ServerLogKryoTypes())));
     }
 }
