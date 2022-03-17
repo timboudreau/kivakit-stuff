@@ -46,7 +46,7 @@ public final class DefaultHashingStrategy implements HashingStrategy
     }
 
     /** The capacity to allocate */
-    private Count recommendedSize;
+    private Estimate recommendedSize;
 
     /** The threshold at which we should resize */
     private Count rehashThreshold;
@@ -62,7 +62,7 @@ public final class DefaultHashingStrategy implements HashingStrategy
     {
         this.maximumOccupancy = maximumOccupancy;
         recommendedSize = capacity.nextPrime();
-        rehashThreshold = recommendedSize.percent(maximumOccupancy);
+        rehashThreshold = recommendedSize.percent(maximumOccupancy).asCount();
     }
 
     @Override

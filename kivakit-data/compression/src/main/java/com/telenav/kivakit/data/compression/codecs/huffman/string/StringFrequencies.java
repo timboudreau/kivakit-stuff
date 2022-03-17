@@ -88,7 +88,7 @@ public class StringFrequencies
         return new Symbols<>(frequencies, occurrences);
     }
 
-    public StringFrequencies top(Count count)
+    public StringFrequencies top(Maximum count)
     {
         return new StringFrequencies(frequencies.top(count), maximum);
     }

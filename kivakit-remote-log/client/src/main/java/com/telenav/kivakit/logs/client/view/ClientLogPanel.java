@@ -25,7 +25,7 @@ import com.telenav.kivakit.core.progress.reporters.ProgressiveInputStream;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.time.Duration;
-import com.telenav.kivakit.core.value.count.Count;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.vm.ShutdownHook;
@@ -101,7 +101,7 @@ public class ClientLogPanel extends KivaKitPanel
 
     private Session connectedSession;
 
-    public ClientLogPanel(ClientLogFrame frame, ClientLog log, Count maximumEntries)
+    public ClientLogPanel(ClientLogFrame frame, ClientLog log, Maximum maximumEntries)
     {
         this.frame = frame;
         this.log = log;

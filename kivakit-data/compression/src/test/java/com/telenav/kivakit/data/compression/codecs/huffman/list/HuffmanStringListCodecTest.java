@@ -26,16 +26,19 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.data.compression.Codec;
+import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanCharacterCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.string.HuffmanStringCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static com.telenav.kivakit.core.value.count.Count._10;
+import static com.telenav.kivakit.core.value.count.Count._100;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanStringListCodecTest extends DataCompressionUnitTest
@@ -98,7 +101,7 @@ public class HuffmanStringListCodecTest extends DataCompressionUnitTest
     public void testRandom()
     {
         var progress = BroadcastingProgressReporter.create(Listener.none(), "codec");
-        loop(10, codecNumber ->
+        _10.loop(codecNumber ->
         {
             var stringSymbols = randomStringSymbols(2, 16, 1, 32);
             var string = HuffmanStringCodec.from(stringSymbols, Maximum._8);
@@ -112,10 +115,10 @@ public class HuffmanStringListCodecTest extends DataCompressionUnitTest
             choices.addAll(randomStringSymbols(2, 8, 1, 32).symbols());
 
             var test = BroadcastingProgressReporter.create(Listener.none(), "test");
-            loop(100, testNumber ->
+            _100.loop(testNumber ->
             {
                 var input = new ArrayList<String>();
-                loop(1, 32, () -> input.add(choices.get(randomInt(0, choices.size() - 1))));
+                loopRandomNumberOfTimes(1, 32, () -> input.add(choices.get(randomInt(0, choices.size() - 1))));
                 test(codec, input);
                 test.next();
             });

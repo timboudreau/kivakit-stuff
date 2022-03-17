@@ -18,10 +18,10 @@
 
 package com.telenav.kivakit.logs.client;
 
-import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.logging.Logger;
 import com.telenav.kivakit.core.logging.LoggerFactory;
+import com.telenav.kivakit.core.value.count.Maximum;
 import com.telenav.kivakit.logs.client.project.LogsClientTheme;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 
@@ -40,7 +40,10 @@ public class ClientLogFrame extends JFrame
 
     private final ClientLogPanel panel;
 
-    public ClientLogFrame(ClientLog log, Maximum maximumRows, String title, Image icon,
+    public ClientLogFrame(ClientLog log,
+                          Maximum maximumRows,
+                          String title,
+                          Image icon,
                           ExitMode mode)
     {
         super(title);

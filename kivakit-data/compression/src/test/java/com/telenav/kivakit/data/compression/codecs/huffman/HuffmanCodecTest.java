@@ -24,13 +24,16 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
-import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.telenav.kivakit.core.value.count.Count._10;
+import static com.telenav.kivakit.core.value.count.Count._100;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanCodecTest extends DataCompressionUnitTest
@@ -46,9 +49,9 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
     {
         var symbols = new Symbols<>(new CountMap<String>()
                 .add("a", Count._1)
-                .add("b", Count._10)
+                .add("b", _10)
                 .add("c", Count._1_000)
-                .add("d", Count._100)
+                .add("d", _100)
                 .add("last", Count._10_000));
 
         var codec = HuffmanCodec.from(symbols, Maximum._8);
@@ -190,18 +193,18 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
         var progress = BroadcastingProgressReporter.create();
 
         // For each random codec
-        loop(10, codecNumber ->
+        _10.loop(codecNumber ->
         {
             var symbols = randomStringSymbols(2, 200, 1, 8);
             var codec = HuffmanCodec.from(symbols, Maximum._8);
 
             // test it a few times
-            loop(100, testNumber ->
+            _100.loop(testNumber ->
             {
                 // by creating a random list of values to encode from the coded symbols in the codec
                 var values = new ArrayList<String>();
                 var choices = new ArrayList<>(codec.codedSymbols());
-                loop(2, 100, ordinal -> values.add(choices.get(randomInt(0, choices.size() - 1)).value()));
+                rangeInclusive(2, 100).loop(ordinal -> values.add(choices.get(randomInt(0, choices.size() - 1)).value()));
 
                 // and trying to encode and decode those values
                 test(codec, values);

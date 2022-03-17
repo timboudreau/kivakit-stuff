@@ -19,11 +19,13 @@
 package com.telenav.kivakit.data.compression.codecs.huffman.character;
 
 import com.telenav.kivakit.core.progress.reporters.BroadcastingProgressReporter;
-import com.telenav.kivakit.data.compression.SymbolConsumer;
 import com.telenav.kivakit.data.compression.DataCompressionUnitTest;
+import com.telenav.kivakit.data.compression.SymbolConsumer;
 import org.junit.Test;
 
 import java.util.List;
+
+import static com.telenav.kivakit.core.value.count.Count._10;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
@@ -63,7 +65,7 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
     @Test
     public void testRandom()
     {
-        loop(10, codecNumber ->
+        _10.loop(codecNumber ->
         {
             var symbols = randomCharacterSymbols(2, 26);
             var codec = HuffmanCharacterCodec.from(symbols);

@@ -26,6 +26,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.telenav.kivakit.core.value.count.Count._10;
+import static com.telenav.kivakit.core.value.count.Count._100;
+
 public class HuffmanStringCodecTest extends DataCompressionUnitTest
 {
     @SuppressWarnings("SpellCheckingInspection")
@@ -43,17 +46,17 @@ public class HuffmanStringCodecTest extends DataCompressionUnitTest
     public void testRandom()
     {
         var progress = BroadcastingProgressReporter.create(Listener.none(), "codec");
-        loop(10, codecNumber ->
+        _10.loop(codecNumber ->
         {
             var symbols = randomStringSymbols(2, 100, 1, 100);
             var codec = HuffmanStringCodec.from(symbols);
             var choices = symbols.symbols();
 
             var test = BroadcastingProgressReporter.create(Listener.none(), "test");
-            loop(100, testNumber ->
+            _100.loop(testNumber ->
             {
                 var input = new ArrayList<String>();
-                loop(1, 200, () -> input.add(choices.get(randomInt(0, choices.size() - 1))));
+                loopRandomNumberOfTimes(1, 200, () -> input.add(choices.get(randomInt(0, choices.size() - 1))));
                 test(codec, input);
                 test.next();
             });

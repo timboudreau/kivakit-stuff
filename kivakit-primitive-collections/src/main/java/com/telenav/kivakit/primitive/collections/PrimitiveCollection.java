@@ -38,6 +38,7 @@ import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
 import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.core.value.count.AbstractCount;
 import com.telenav.kivakit.core.value.count.Bytes;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Countable;
@@ -609,7 +610,7 @@ public abstract class PrimitiveCollection implements
         return Estimate.estimate(initialChildSize);
     }
 
-    public PrimitiveCollection initialChildSize(Count childSize)
+    public PrimitiveCollection initialChildSize(AbstractCount<?> childSize)
     {
         initialChildSize(childSize.asInt());
         return this;
@@ -1158,7 +1159,7 @@ public abstract class PrimitiveCollection implements
         return newByteArray(who, why, initialSize());
     }
 
-    protected byte[] newByteArray(Object who, String why, Count size)
+    protected byte[] newByteArray(Object who, String why, AbstractCount<?> size)
     {
         return newByteArray(who, why, size.asInt());
     }
@@ -1180,7 +1181,7 @@ public abstract class PrimitiveCollection implements
         return newCharArray(who, why, initialSize());
     }
 
-    protected char[] newCharArray(Object who, String why, Count size)
+    protected char[] newCharArray(Object who, String why, AbstractCount<?> size)
     {
         return newCharArray(who, why, size.asInt());
     }
@@ -1202,7 +1203,7 @@ public abstract class PrimitiveCollection implements
         return newIntArray(who, why, initialSize());
     }
 
-    protected int[] newIntArray(Object who, String why, Count size)
+    protected int[] newIntArray(Object who, String why, AbstractCount<?> size)
     {
         return newIntArray(who, why, size.asInt());
     }
@@ -1224,7 +1225,7 @@ public abstract class PrimitiveCollection implements
         return newLongArray(who, why, initialSize());
     }
 
-    protected long[] newLongArray(Object who, String why, Count size)
+    protected long[] newLongArray(Object who, String why, AbstractCount<?> size)
     {
         return newLongArray(who, why, size.asInt());
     }
@@ -1246,7 +1247,7 @@ public abstract class PrimitiveCollection implements
         return newObjectArray(who, why, initialSize());
     }
 
-    protected <T> T[] newObjectArray(Object who, String why, Count size)
+    protected <T> T[] newObjectArray(Object who, String why, AbstractCount<?> size)
     {
         return newObjectArray(who, why, size.asInt());
     }
@@ -1264,7 +1265,7 @@ public abstract class PrimitiveCollection implements
         return newShortArray(who, why, initialSize());
     }
 
-    protected short[] newShortArray(Object who, String why, Count size)
+    protected short[] newShortArray(Object who, String why, AbstractCount<?> size)
     {
         return newShortArray(who, why, size.asInt());
     }
@@ -1286,7 +1287,7 @@ public abstract class PrimitiveCollection implements
         return newStringArray(who, why, initialSize());
     }
 
-    protected String[] newStringArray(Object who, String why, Count size)
+    protected String[] newStringArray(Object who, String why, AbstractCount<?> size)
     {
         return newStringArray(who, why, size.asInt());
     }
