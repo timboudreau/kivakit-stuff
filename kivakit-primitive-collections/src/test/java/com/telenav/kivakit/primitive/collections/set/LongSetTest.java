@@ -141,7 +141,7 @@ public class LongSetTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedSet(MapTest test)
     {
         var set = set();
-        var values = random().list(Repeats.NO_REPEATS, Long.class);
+        var values = random().list(Repeats.NO_REPEATS, Long.class, value -> !value.equals(set.nullLong()));
         addAll(set, values);
         test.test(set, values);
     }

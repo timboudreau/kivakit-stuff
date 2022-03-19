@@ -26,6 +26,7 @@ import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.value.count.Count._10;
 
 public class ShortArrayTest extends PrimitiveCollectionsUnitTest
 {
@@ -79,7 +80,7 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     {
         var map = new HashMap<ShortArray, Integer>();
 
-        random().loop(() ->
+        _10.loop(() ->
         {
             var array = array();
             random().shortSequence(array::add);
@@ -132,10 +133,10 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
 
         array.clear();
         array.nullShort((short) -1);
-        random().shortSequence(value -> value != -1, array::add);
+        random().shortSequence(value -> !value.equals((short) -1), array::add);
         random().loop(() ->
         {
-            var index = random().randomIndex(array.size());
+            var index = random().randomIndex(array.size() * 2);
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -174,18 +175,18 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         array.set(32, (short) 100);
 
         var values = array.iterator();
-        ensureEqual(0L, values.next());
-        ensureEqual(1L, values.next());
-        ensureEqual(2L, values.next());
+        ensureEqual((short)0, values.next());
+        ensureEqual((short)1, values.next());
+        ensureEqual((short)2, values.next());
         ensureEqual(array.nullShort(), values.next());
         ensure(values.hasNext());
 
         array.hasNullShort(true);
 
         values = array.iterator();
-        ensureEqual(1L, values.next());
-        ensureEqual(2L, values.next());
-        ensureEqual(100L, values.next());
+        ensureEqual((short)1, values.next());
+        ensureEqual((short)2, values.next());
+        ensureEqual((short)100, values.next());
         ensureFalse(values.hasNext());
     }
 

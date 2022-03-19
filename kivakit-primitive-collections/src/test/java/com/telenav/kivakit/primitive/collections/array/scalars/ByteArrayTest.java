@@ -26,6 +26,8 @@ import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.value.count.Count._100;
+import static com.telenav.kivakit.core.value.count.Count._20;
 
 public class ByteArrayTest extends PrimitiveCollectionsUnitTest
 {
@@ -79,7 +81,7 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var map = new HashMap<ByteArray, Integer>();
 
-        random().loop(() ->
+        _20.loop(() ->
         {
             var array = array();
             random().byteSequence(array::add);
@@ -117,27 +119,27 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         index = 0;
         random().byteSequence(value ->
         {
-            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
+            index++;
         });
 
         index = 0;
         random().byteSequence(value ->
         {
-            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
+            index++;
         });
 
         array.clear();
         array.nullByte((byte) -1);
-        random().byteSequence(value -> value != -1, array::add);
+        random().byteSequence(value -> !value.equals((byte)-1), array::add);
         random().loop(() ->
         {
-            var index = random().randomIndex(array.size());
+            var index = random().randomIndex(array.size() * 2);
             var value = array.safeGet(index);
-            ensureEqual(index >= array.size(), array.isNull(value));
+            ensureEqual(index >= array.size(), array.isNull(value), "index = $, size = $, value = $", index, array.size(), value);
         });
     }
 
@@ -174,18 +176,18 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         array.set(32, (byte) 100);
 
         var values = array.iterator();
-        ensureEqual(0L, values.next());
-        ensureEqual(1L, values.next());
-        ensureEqual(2L, values.next());
+        ensureEqual((byte)0, values.next());
+        ensureEqual((byte)1, values.next());
+        ensureEqual((byte)2, values.next());
         ensureEqual(array.nullByte(), values.next());
         ensure(values.hasNext());
 
         array.hasNullByte(true);
 
         values = array.iterator();
-        ensureEqual(1L, values.next());
-        ensureEqual(2L, values.next());
-        ensureEqual(100L, values.next());
+        ensureEqual((byte)1, values.next());
+        ensureEqual((byte)2, values.next());
+        ensureEqual((byte)100, values.next());
         ensureFalse(values.hasNext());
     }
 

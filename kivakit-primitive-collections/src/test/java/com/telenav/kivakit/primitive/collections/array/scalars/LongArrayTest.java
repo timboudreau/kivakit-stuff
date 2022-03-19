@@ -26,6 +26,7 @@ import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.value.count.Count._10;
 
 public class LongArrayTest extends PrimitiveCollectionsUnitTest
 {
@@ -79,7 +80,7 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     {
         var map = new HashMap<LongArray, Integer>();
 
-        random().loop(() ->
+        _10.loop(() ->
         {
             var array = array();
             random().longSequence(array::add);
@@ -132,10 +133,10 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
 
         array.clear();
         array.nullLong(-1);
-        random().longSequence(value -> value != -1, array::add);
+        random().longSequence(value -> !value.equals(-1L), array::add);
         random().loop(() ->
         {
-            var index = random().randomIndex(array.size());
+            var index = random().randomIndex(array.size() * 2);
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -152,13 +153,13 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
         index = 0;
         random().longSequence(value -> value != array.nullLong(), value ->
         {
-            index++;
-
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
 
             array.set(index, array.nullLong());
             ensure(array.isNull(array.get(index)));
+
+            index++;
         });
     }
 

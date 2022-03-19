@@ -26,6 +26,7 @@ import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.value.count.Count._10;
 
 public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
 {
@@ -77,7 +78,7 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<SplitIntArray, Integer>();
-        random().loop(() ->
+        _10.loop(() ->
         {
             var array = array();
             random().intSequence(array::add);
@@ -133,11 +134,11 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
             var array = array();
             array.nullInt(-1);
 
-            random().intSequence(NO_REPEATS, value -> value != -1, array::add);
+            random().intSequence(NO_REPEATS, value -> !value.equals(-1), array::add);
             array.safeGet(0);
             random().loop(() ->
             {
-                var index = random().randomIndex(array.size());
+                var index = random().randomIndex(array.size() * 2);
                 var value = array.safeGet(index);
                 ensureEqual(index >= array.size(), array.isNull(value));
             });

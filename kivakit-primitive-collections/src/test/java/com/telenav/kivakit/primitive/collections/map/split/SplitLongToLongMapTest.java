@@ -108,7 +108,7 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
             while (iterator.hasNext())
             {
                 var key = iterator.next();
-                ensure((map.containsKey(key)));
+                ensure(map.containsKey(key));
                 count++;
             }
             ensureEqual(map.size(), count);
@@ -172,8 +172,9 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = random().list(NO_REPEATS, Long.class);
-        var values = random().list(ALLOW_REPEATS, Long.class);
+        var keys = random().list(NO_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
+        var values = random().list(ALLOW_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
+        ensure(!keys.contains(map.nullLong()));
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

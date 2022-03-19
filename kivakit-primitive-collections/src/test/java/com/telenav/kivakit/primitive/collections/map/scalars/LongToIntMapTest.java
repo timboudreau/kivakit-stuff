@@ -25,6 +25,9 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+
 public class LongToIntMapTest extends PrimitiveCollectionsUnitTest
 {
     @FunctionalInterface
@@ -174,12 +177,14 @@ public class LongToIntMapTest extends PrimitiveCollectionsUnitTest
         index = 0;
         keys.forEach(key -> map.put(key, values.get(index++ % values.size())));
     }
-
     private void withPopulatedMap(LongToIntMapTest.MapTest test)
     {
         var map = map();
-        var keys = random().list(Repeats.NO_REPEATS, Long.class);
-        var values = random().list(Integer.class);
+        var keys = random().list(NO_REPEATS, Long.class,
+                value -> !value.equals(map.nullLong()));
+        var values = random().list(ALLOW_REPEATS, count(keys), Integer.class,
+                value -> !value.equals(map.nullInt()));
+        ensureEqual(keys.size(), values.size());
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

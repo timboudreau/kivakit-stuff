@@ -75,7 +75,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
     protected Symbols<Character> randomCharacterSymbols(int minimum, int maximum)
     {
         var frequencies = new CountMap<Character>();
-        random().rangeInclusive(minimum, maximum).loop(ignored ->
+        random().rangeInclusive(minimum, maximum).loop(() ->
                 frequencies.add(random().letter(), Count.count(random().randomIntExclusive(1, 10_000))));
         frequencies.add(HuffmanCharacterCodec.ESCAPE, Count._1024);
         frequencies.add(HuffmanCharacterCodec.END_OF_STRING, Count._1024);
@@ -88,7 +88,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
                                                   int maximumLength)
     {
         var frequencies = new CountMap<String>();
-        var range = random().rangeInclusive(minimum, maximum, 10);
+        var range = random().rangeInclusive(minimum, maximum);
         range.loop(() ->
         {
             while (true)

@@ -24,6 +24,8 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
+import static com.telenav.kivakit.core.value.count.Count._10;
+
 public class IntArrayTest extends PrimitiveCollectionsUnitTest
 {
     @Test
@@ -78,7 +80,7 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<IntArray, Integer>();
-        random().loop(() ->
+        _10.loop(() ->
         {
             var array = array();
             random().intSequence(array::add);
@@ -130,10 +132,10 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
 
         array.clear();
         array.nullInt(-1);
-        random().intSequence(value -> value != -1, array::add);
+        random().intSequence(value -> !value.equals(-1), array::add);
         random().loop(() ->
         {
-            final int index = random().randomIntExclusive(0, 100_000);
+            final int index = random().randomIndex(array.size() * 2);
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });

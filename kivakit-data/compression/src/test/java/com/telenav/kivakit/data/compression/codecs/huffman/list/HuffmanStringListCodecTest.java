@@ -39,6 +39,7 @@ import java.util.Objects;
 
 import static com.telenav.kivakit.core.value.count.Count._10;
 import static com.telenav.kivakit.core.value.count.Count._100;
+import static com.telenav.kivakit.interfaces.code.RetryableLoopBody.Action.NEXT;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanStringListCodecTest extends DataCompressionUnitTest
@@ -121,8 +122,11 @@ public class HuffmanStringListCodecTest extends DataCompressionUnitTest
                 random().rangeInclusive(1, 32).loop(() -> input.add(choices.get(random().randomIntExclusive(0, choices.size() - 1))));
                 test(codec, input);
                 test.next();
+                return NEXT;
             });
+
             progress.next();
+            return NEXT;
         });
     }
 

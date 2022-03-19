@@ -34,6 +34,7 @@ import java.util.List;
 
 import static com.telenav.kivakit.core.value.count.Count._10;
 import static com.telenav.kivakit.core.value.count.Count._100;
+import static com.telenav.kivakit.interfaces.code.RetryableLoopBody.Action.NEXT;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanCodecTest extends DataCompressionUnitTest
@@ -204,13 +205,15 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
                 // by creating a random list of values to encode from the coded symbols in the codec
                 var values = new ArrayList<String>();
                 var choices = new ArrayList<>(codec.codedSymbols());
-                random().rangeInclusive(2, 100).loop(ordinal -> values.add(choices.get(random().randomIntExclusive(0, choices.size() - 1)).value()));
+                random().rangeInclusive(2, 100).loop(() -> values.add(choices.get(random().randomIntExclusive(0, choices.size() - 1)).value()));
 
                 // and trying to encode and decode those values
                 test(codec, values);
 
                 progress.next();
+                return NEXT;
             });
+            return NEXT;
         });
     }
 }

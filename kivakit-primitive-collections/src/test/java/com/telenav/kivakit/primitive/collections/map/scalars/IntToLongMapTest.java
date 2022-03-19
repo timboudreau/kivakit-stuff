@@ -25,6 +25,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
 
 public class IntToLongMapTest extends PrimitiveCollectionsUnitTest
@@ -179,8 +180,11 @@ public class IntToLongMapTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedMap(IntToLongMapTest.MapTest test)
     {
         var map = map();
-        var keys = random().list(NO_REPEATS, Integer.class);
-        var values = random().list(Long.class);
+        var keys = random().list(NO_REPEATS, Integer.class,
+                value -> !value.equals(map.nullInt()));
+        var values = random().list(ALLOW_REPEATS, count(keys), Long.class,
+                value -> !value.equals(map.nullLong()));
+        ensureEqual(keys.size(), values.size());
         putAll(map, keys, values);
         test.test(map, keys, values);
     }
