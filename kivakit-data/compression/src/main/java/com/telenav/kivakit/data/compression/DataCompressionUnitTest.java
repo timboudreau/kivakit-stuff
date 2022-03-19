@@ -36,6 +36,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import static com.telenav.kivakit.core.value.count.Count._10;
+
 /**
  * @author jonathanl (shibo)
  */
@@ -54,7 +56,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
         return new Symbols<>(new CountMap<String>()
                 .add("abc", Count._1_000)
                 .add("def", Count._100)
-                .add("ghi", Count._10)
+                .add("ghi", _10)
                 .add("jkl", Count._1));
     }
 
@@ -73,28 +75,33 @@ public class DataCompressionUnitTest extends KryoUnitTest
     protected Symbols<Character> randomCharacterSymbols(int minimum, int maximum)
     {
         var frequencies = new CountMap<Character>();
-        loopRandomNumberOfTimes(minimum, maximum, () -> frequencies.add(randomAsciiChar(), Count.count(randomInt(1, 10_000))));
+        random().rangeInclusive(minimum, maximum).loop(ignored ->
+                frequencies.add(random().letter(), Count.count(random().randomIntExclusive(1, 10_000))));
         frequencies.add(HuffmanCharacterCodec.ESCAPE, Count._1024);
         frequencies.add(HuffmanCharacterCodec.END_OF_STRING, Count._1024);
         return new Symbols<>(frequencies, HuffmanCharacterCodec.ESCAPE, Minimum._1);
     }
 
-    protected Symbols<String> randomStringSymbols(int minimum, int maximum, int minimumLength,
+    protected Symbols<String> randomStringSymbols(int minimum,
+                                                  int maximum,
+                                                  int minimumLength,
                                                   int maximumLength)
     {
         var frequencies = new CountMap<String>();
-        loopRandomNumberOfTimes(minimum, maximum, () ->
+        var range = random().rangeInclusive(minimum, maximum, 10);
+        range.loop(() ->
         {
             while (true)
             {
-                var value = randomAsciiString(minimumLength, maximumLength);
+                var value = random().letters(minimumLength, maximumLength);
                 if (!frequencies.contains(value))
                 {
-                    frequencies.add(value, Count.count(randomInt(1, 10_000)));
+                    frequencies.add(value, Count.count(random().randomIntExclusive(1, 10_000)));
                     break;
                 }
             }
         });
+        ensure(!frequencies.isEmpty());
         return new Symbols<>(frequencies);
     }
 

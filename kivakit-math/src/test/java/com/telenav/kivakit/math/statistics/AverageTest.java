@@ -34,11 +34,11 @@ public class AverageTest extends UnitTest
         for (var i = 0; i < 100; i++)
         {
             var average = new Average();
-            var sampleCount = randomInt(0, 1000);
+            var sampleCount =  random().randomIntExclusive(0, 1000);
             var tempTotal = 0D;
             for (var j = 0; j < sampleCount; j++)
             {
-                var currentValue = randomValueFactory().newDouble(-10000, 10000);
+                var currentValue = random().randomDouble(-10000, 10000);
                 tempTotal += currentValue;
                 average.add(currentValue);
             }
@@ -55,11 +55,11 @@ public class AverageTest extends UnitTest
         for (var i = 0; i < 100; i++)
         {
             var average = new Average();
-            var sampleCount = randomInt(1, 1000);
+            var sampleCount = random().randomIntExclusive(1, 1000);
             var total = 0;
             for (var j = 0; j < sampleCount; j++)
             {
-                var currentValue = randomInt(-10000, 10000);
+                var currentValue =  random().randomIntExclusive(-10000, 10000);
                 total += currentValue;
                 average.add(currentValue);
             }

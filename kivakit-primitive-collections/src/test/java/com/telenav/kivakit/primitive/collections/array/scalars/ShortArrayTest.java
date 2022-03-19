@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,16 +34,12 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullShort(false);
-        var values = randomShortList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(5_000);
+        var values = random().list(Short.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -53,8 +47,9 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullShort(false);
-        randomShorts(NO_REPEATS, array::add);
-        randomIndexes(NO_REPEATS, index ->
+        random().shortSequence(array::add);
+
+        random().indexes(NO_REPEATS, array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -62,22 +57,20 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullShort((short) -1);
-        randomShorts(NO_REPEATS, value ->
+        random().shortSequence(NO_REPEATS, value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(ALLOW_REPEATS, array.size(), index ->
         {
-            if (index < array.size())
-            {
-                array.set(index, (short) 99);
-                ensure(!array.isNull(array.get(index)));
-                array.clear(index);
-                ensure(array.isNull(array.get(index)));
-            }
+            array.set(index, (short) 99);
+            ensure(!array.isNull(array.get(index)));
+            array.clear(index);
+            ensure(array.isNull(array.get(index)));
         });
     }
 
@@ -85,10 +78,11 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<ShortArray, Integer>();
-        loop(() ->
+
+        random().loop(() ->
         {
             var array = array();
-            randomShorts(ALLOW_REPEATS, Count._32, array::add);
+            random().shortSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -104,10 +98,10 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
 
         var last = new MutableInteger(Integer.MIN_VALUE);
 
-        resetIndex();
-        randomShorts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().shortSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
@@ -120,28 +114,28 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
 
-        resetIndex();
-        randomShorts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().shortSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
-        resetIndex();
-        randomShorts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().shortSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
         array.clear();
         array.nullShort((short) -1);
-        randomShorts(NO_REPEATS, value -> value != -1, array::add);
-        loop(() ->
+        random().shortSequence(value -> value != -1, array::add);
+        random().loop(() ->
         {
-            var index = randomIndex();
+            var index = random().randomIndex(array.size());
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -151,13 +145,14 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomValueFactory().newShort();
+        var nullValue = newRandomValueFactory().randomShort();
         array.nullShort(nullValue);
         ensure(array.hasNullShort());
-        resetIndex();
-        randomShorts(ALLOW_REPEATS, value -> value != array.nullShort(), value ->
+
+        index = 0;
+        random().shortSequence(value -> value != array.nullShort(), value ->
         {
-            var index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -179,19 +174,18 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         array.set(32, (short) 100);
 
         var values = array.iterator();
-        ensureEqual((short) 0, values.next());
-        ensureEqual((short) 1, values.next());
-        ensureEqual((short) 2, values.next());
+        ensureEqual(0L, values.next());
+        ensureEqual(1L, values.next());
+        ensureEqual(2L, values.next());
         ensureEqual(array.nullShort(), values.next());
         ensure(values.hasNext());
 
         array.hasNullShort(true);
 
         values = array.iterator();
-        ensureEqual((short) 0, values.next());
-        ensureEqual((short) 1, values.next());
-        ensureEqual((short) 2, values.next());
-        ensureEqual((short) 100, values.next());
+        ensureEqual(1L, values.next());
+        ensureEqual(2L, values.next());
+        ensureEqual(100L, values.next());
         ensureFalse(values.hasNext());
     }
 
@@ -201,7 +195,7 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         if (!isQuickTest())
         {
             var array = array();
-            randomShorts(ALLOW_REPEATS, array::add);
+            random().shortSequence(array::add);
             testSerialization(array);
         }
     }
@@ -227,11 +221,11 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
         ensure(array.isEmpty());
         ensure(array.size() == 0);
 
+        index = 0;
         var maximum = new MutableInteger(Integer.MIN_VALUE);
-        resetIndex();
-        randomShorts(ALLOW_REPEATS, value ->
+        random().shortSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             maximum.maximum(index);
             array.set(index, value);
             ensure(array.size() == maximum.get() + 1);
@@ -242,10 +236,11 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     public void testSubArray()
     {
         var array = array();
-        randomShorts(ALLOW_REPEATS, array::add);
+        random().shortSequence(array::add);
+
         var last = array.size() - 1;
-        var offset = Math.abs(randomInt(0, last));
-        var length = Math.abs(randomInt(0, last - offset));
+        var offset = Math.abs(random().randomIntExclusive(0, last));
+        var length = Math.abs(random().randomIntExclusive(0, last - offset));
 
         ensure(offset < array.size());
         ensure(length >= 0);
@@ -262,7 +257,6 @@ public class ShortArrayTest extends PrimitiveCollectionsUnitTest
     private ShortArray array()
     {
         var array = new ShortArray("test");
-        array.nullShort(Short.MIN_VALUE);
         array.initialize();
         return array;
     }

@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,16 +34,12 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullLong(false);
-        var values = randomLongList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(5_000);
+        var values = random().list(Long.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -53,8 +47,9 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullLong(false);
-        randomLongs(NO_REPEATS, array::add);
-        randomIndexes(NO_REPEATS, index ->
+        random().longSequence(array::add);
+
+        random().indexes(NO_REPEATS, array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -62,22 +57,20 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullLong(-1);
-        randomLongs(NO_REPEATS, value ->
+        random().longSequence(NO_REPEATS, value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(ALLOW_REPEATS, array.size(), index ->
         {
-            if (index < array.size())
-            {
-                array.set(index, 99);
-                ensure(!array.isNull(array.get(index)));
-                array.clear(index);
-                ensure(array.isNull(array.get(index)));
-            }
+            array.set(index, 99);
+            ensure(!array.isNull(array.get(index)));
+            array.clear(index);
+            ensure(array.isNull(array.get(index)));
         });
     }
 
@@ -85,10 +78,11 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<LongArray, Integer>();
-        loop(() ->
+
+        random().loop(() ->
         {
             var array = array();
-            randomLongs(ALLOW_REPEATS, Count._32, array::add);
+            random().longSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -104,10 +98,10 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
 
         var last = new MutableInteger(Integer.MIN_VALUE);
 
-        resetIndex();
-        randomLongs(ALLOW_REPEATS, value ->
+        index = 0;
+        random().longSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
@@ -120,28 +114,28 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
 
-        resetIndex();
-        randomLongs(ALLOW_REPEATS, value ->
+        index = 0;
+        random().longSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
-        resetIndex();
-        randomLongs(ALLOW_REPEATS, value ->
+        index = 0;
+        random().longSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
         array.clear();
         array.nullLong(-1);
-        randomLongs(NO_REPEATS, value -> value != -1, array::add);
-        loop(() ->
+        random().longSequence(value -> value != -1, array::add);
+        random().loop(() ->
         {
-            var index = randomIndex();
+            var index = random().randomIndex(array.size());
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -151,13 +145,14 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomValueFactory().newLong();
+        var nullValue = newRandomValueFactory().randomLong();
         array.nullLong(nullValue);
         ensure(array.hasNullLong());
-        resetIndex();
-        randomLongs(ALLOW_REPEATS, value -> value != array.nullLong(), value ->
+
+        index = 0;
+        random().longSequence(value -> value != array.nullLong(), value ->
         {
-            var index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -200,7 +195,7 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
         if (!isQuickTest())
         {
             var array = array();
-            randomLongs(ALLOW_REPEATS, array::add);
+            random().longSequence(array::add);
             testSerialization(array);
         }
     }
@@ -226,11 +221,11 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
         ensure(array.isEmpty());
         ensure(array.size() == 0);
 
+        index = 0;
         var maximum = new MutableInteger(Integer.MIN_VALUE);
-        resetIndex();
-        randomLongs(ALLOW_REPEATS, value ->
+        random().longSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             maximum.maximum(index);
             array.set(index, value);
             ensure(array.size() == maximum.get() + 1);
@@ -241,14 +236,18 @@ public class LongArrayTest extends PrimitiveCollectionsUnitTest
     public void testSubArray()
     {
         var array = array();
-        randomLongs(ALLOW_REPEATS, array::add);
+        random().longSequence(array::add);
+
         var last = array.size() - 1;
-        var offset = Math.abs(randomInt(0, last));
-        var length = Math.abs(randomInt(0, last - offset));
+        var offset = Math.abs(random().randomIntExclusive(0, last));
+        var length = Math.abs(random().randomIntExclusive(0, last - offset));
+
         ensure(offset < array.size());
         ensure(length >= 0);
         ensure(offset + length < array.size());
+
         var subArray = array.subArray(offset, length);
+
         for (var i = 0; i < length; i++)
         {
             ensureEqual(array.get(offset + i), subArray.get(i));

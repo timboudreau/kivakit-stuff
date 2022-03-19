@@ -199,12 +199,12 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
             var codec = HuffmanCodec.from(symbols, Maximum._8);
 
             // test it a few times
-            _100.loop(testNumber ->
+            _10.loop(testNumber ->
             {
                 // by creating a random list of values to encode from the coded symbols in the codec
                 var values = new ArrayList<String>();
                 var choices = new ArrayList<>(codec.codedSymbols());
-                rangeInclusive(2, 100).loop(ordinal -> values.add(choices.get(randomInt(0, choices.size() - 1)).value()));
+                random().rangeInclusive(2, 100).loop(ordinal -> values.add(choices.get(random().randomIntExclusive(0, choices.size() - 1)).value()));
 
                 // and trying to encode and decode those values
                 test(codec, values);

@@ -141,7 +141,7 @@ public class SplitLongSetTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedSet(MapTest test)
     {
         var set = set();
-        var values = randomLongList(Repeats.NO_REPEATS);
+        var values = random().list(Repeats.NO_REPEATS, Long.class);
         addAll(set, values);
         test.test(set, values);
     }

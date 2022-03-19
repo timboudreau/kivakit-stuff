@@ -56,7 +56,7 @@ public class HuffmanStringCodecTest extends DataCompressionUnitTest
             _100.loop(testNumber ->
             {
                 var input = new ArrayList<String>();
-                loopRandomNumberOfTimes(1, 200, () -> input.add(choices.get(randomInt(0, choices.size() - 1))));
+                random().rangeInclusive(1, 200).loop(() -> input.add(choices.get(random().randomIntExclusive(0, choices.size() - 1))));
                 test(codec, input);
                 test.next();
             });

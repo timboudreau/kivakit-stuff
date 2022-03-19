@@ -90,8 +90,8 @@ public class LongToByteMapTest extends PrimitiveCollectionsUnitTest
     {
         withPopulatedMap((map, keys, values) ->
         {
-            resetIndex();
-            keys.forEach(key -> ensureEqual(map.get(key), values.get(nextIndex())));
+            index = 0;
+            keys.forEach(key -> ensureEqual(map.get(key), values.get(index++)));
         });
     }
 
@@ -171,15 +171,15 @@ public class LongToByteMapTest extends PrimitiveCollectionsUnitTest
 
     private void putAll(LongToByteMap map, List<Long> keys, List<Byte> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex() % values.size())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++ % values.size())));
     }
 
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = randomLongList(Repeats.NO_REPEATS);
-        var values = randomByteList(Repeats.ALLOW_REPEATS);
+        var keys = random().list(Repeats.NO_REPEATS, Long.class);
+        var values = random().list(Byte.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

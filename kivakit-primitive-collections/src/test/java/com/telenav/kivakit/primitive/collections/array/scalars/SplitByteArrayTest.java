@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,16 +34,12 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullByte(false);
-        var values = randomByteList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(5_000);
+        var values = random().list(Byte.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -53,8 +47,8 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullByte(false);
-        randomBytes(NO_REPEATS, Count.count(250), array::add);
-        randomIndexes(NO_REPEATS, Count.count(250), index ->
+        random().byteSequence(array::add);
+        random().indexes(array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -62,22 +56,20 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullByte((byte) -1);
-        randomBytes(NO_REPEATS, value ->
+        random().byteSequence(NO_REPEATS, value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(ALLOW_REPEATS, array.size(), index ->
         {
-            if (index < array.size())
-            {
-                array.set(index, (byte) 99);
-                ensure(!array.isNull(array.get(index)));
-                array.clear(index);
-                ensure(array.isNull(array.get(index)));
-            }
+            array.set(index, (byte) 99);
+            ensure(!array.isNull(array.get(index)));
+            array.clear(index);
+            ensure(array.isNull(array.get(index)));
         });
     }
 
@@ -85,10 +77,10 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<SplitByteArray, Integer>();
-        loop(() ->
+        random().loop(() ->
         {
             var array = array();
-            randomBytes(ALLOW_REPEATS, Count._32, array::add);
+            random().byteSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -104,10 +96,10 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
 
         var last = new MutableInteger(Integer.MIN_VALUE);
 
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value ->
+        index = 0;
+        random().byteSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
@@ -121,30 +113,31 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
 
-            resetIndex();
-            randomBytes(ALLOW_REPEATS, value ->
+            index = 0;
+            random().byteSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 array.set(index, value);
                 ensureEqual(array.get(index), value);
             });
 
-            resetIndex();
-            randomBytes(ALLOW_REPEATS, value ->
+            index++;
+            random().byteSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 array.set(index, value);
                 ensureEqual(array.get(index), value);
             });
         }
         {
-            var array = new SplitByteArray("test");
+            var array = array();
             array.nullByte((byte) -1);
-            array.initialize();
-            randomBytes(NO_REPEATS, value -> value != -1, array::add);
-            loop(() ->
+
+            random().byteSequence(NO_REPEATS, value -> value != -1, array::add);
+            array.safeGet(0);
+            random().loop(() ->
             {
-                var index = randomIndex();
+                var index = random().randomIndex(array.size());
                 var value = array.safeGet(index);
                 ensureEqual(index >= array.size(), array.isNull(value));
             });
@@ -155,13 +148,13 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomValueFactory().newByte();
+        var nullValue = newRandomValueFactory().randomByte();
         array.nullByte(nullValue);
         ensure(array.hasNullByte());
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value -> value != array.nullByte(), value ->
+        index = 0;
+        random().byteSequence(value -> value != array.nullByte(), value ->
         {
-            var index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -194,7 +187,7 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
         ensureEqual((byte) 0, values.next());
         ensureEqual((byte) 1, values.next());
         ensureEqual((byte) 2, values.next());
-        ensureEqual((byte) -1, values.next());
+        ensureEqual(Byte.MIN_VALUE, values.next());
         ensure(values.hasNext());
     }
 
@@ -202,7 +195,7 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testSerialization()
     {
         var array = array();
-        randomBytes(ALLOW_REPEATS, array::add);
+        random().byteSequence(array::add);
         testSerialization(array);
     }
 
@@ -228,10 +221,10 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
             var maximum = new MutableInteger(Integer.MIN_VALUE);
-            resetIndex();
-            randomBytes(ALLOW_REPEATS, value ->
+            index = 0;
+            random().byteSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 maximum.maximum(index);
                 array.set(index, value);
                 ensure(array.size() == maximum.get() + 1);
@@ -242,8 +235,8 @@ public class SplitByteArrayTest extends PrimitiveCollectionsUnitTest
     private SplitByteArray array()
     {
         var array = (SplitByteArray) new SplitByteArray("test")
-                .initialChildSize(100)
-                .nullByte((byte) -1);
+                .nullByte(Byte.MIN_VALUE)
+                .initialChildSize(100);
         array.initialize();
         return array;
     }

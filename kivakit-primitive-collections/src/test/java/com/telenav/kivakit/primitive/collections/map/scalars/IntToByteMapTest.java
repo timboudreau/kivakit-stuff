@@ -25,7 +25,6 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
 
 public class IntToByteMapTest extends PrimitiveCollectionsUnitTest
@@ -39,7 +38,6 @@ public class IntToByteMapTest extends PrimitiveCollectionsUnitTest
     @Test
     public void testClear()
     {
-        iterations(10);
         withPopulatedMap((map, keys, values) ->
         {
             ensureFalse(map.isEmpty());
@@ -174,15 +172,15 @@ public class IntToByteMapTest extends PrimitiveCollectionsUnitTest
 
     private void putAll(IntToByteMap map, List<Integer> keys, List<Byte> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex() % values.size())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++ % values.size())));
     }
 
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = randomIntList(NO_REPEATS);
-        var values = randomByteList(ALLOW_REPEATS);
+        var keys = random().list(NO_REPEATS, Integer.class);
+        var values = random().list(Byte.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

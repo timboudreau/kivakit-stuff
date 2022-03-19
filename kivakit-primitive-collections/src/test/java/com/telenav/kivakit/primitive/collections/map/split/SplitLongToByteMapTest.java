@@ -25,6 +25,9 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+
 public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
 {
     @FunctionalInterface
@@ -90,8 +93,8 @@ public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
     {
         withPopulatedMap((map, keys, values) ->
         {
-            resetIndex();
-            keys.forEach(key -> ensureEqual(map.get(key), values.get(nextIndex())));
+            index = 0;
+            keys.forEach(key -> ensureEqual(map.get(key), values.get(index++)));
         });
     }
 
@@ -156,23 +159,21 @@ public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
     private SplitLongToByteMap map()
     {
         var map = new SplitLongToByteMap("test");
-        map.nullLong(Long.MIN_VALUE);
-        map.nullByte(Byte.MIN_VALUE);
         map.initialize();
         return map;
     }
 
     private void putAll(SplitLongToByteMap map, List<Long> keys, List<Byte> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++)));
     }
 
-    private void withPopulatedMap(MapTest test)
+    private void withPopulatedMap(SplitLongToByteMapTest.MapTest test)
     {
         var map = map();
-        var keys = randomLongList(Repeats.NO_REPEATS);
-        var values = randomByteList(Repeats.ALLOW_REPEATS);
+        var keys = random().list(NO_REPEATS, Long.class);
+        var values = random().list(ALLOW_REPEATS, Byte.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

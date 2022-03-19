@@ -58,7 +58,7 @@ public class LongToIntMapTest extends PrimitiveCollectionsUnitTest
             var b = map();
             putAll(b, keys, values);
             ensureEqual(a, b);
-            b.put(99, -1);
+            b.put(99, (byte) -1);
             ensureNotEqual(a, b);
         });
     }
@@ -90,26 +90,33 @@ public class LongToIntMapTest extends PrimitiveCollectionsUnitTest
     {
         withPopulatedMap((map, keys, values) ->
         {
-            resetIndex();
-            keys.forEach(key -> ensureEqual(map.get(key), values.get(nextIndex())));
+            index = 0;
+            keys.forEach(key -> ensureEqual(map.get(key), values.get(index++)));
         });
     }
 
     @Test
     public void testKeys()
     {
-        withPopulatedMap((map, keys, values) ->
         {
-            var iterator = map.keys();
-            int count = 0;
-            while (iterator.hasNext())
+            var map = map();
+            ensureEqual(0, map.size());
+            ensureFalse(map.keys().hasNext());
+        }
+        {
+            withPopulatedMap((map, keys, values) ->
             {
-                var key = iterator.next();
-                ensure((map.containsKey(key)));
-                count++;
-            }
-            ensureEqual(map.size(), count);
-        });
+                var iterator = map.keys();
+                int count = 0;
+                while (iterator.hasNext())
+                {
+                    var key = iterator.next();
+                    ensure((map.containsKey(key)));
+                    count++;
+                }
+                ensureEqual(map.size(), count);
+            });
+        }
     }
 
     @Test
@@ -164,15 +171,15 @@ public class LongToIntMapTest extends PrimitiveCollectionsUnitTest
 
     private void putAll(LongToIntMap map, List<Long> keys, List<Integer> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex() % values.size())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++ % values.size())));
     }
 
-    private void withPopulatedMap(MapTest test)
+    private void withPopulatedMap(LongToIntMapTest.MapTest test)
     {
         var map = map();
-        var keys = randomLongList(Repeats.NO_REPEATS);
-        var values = randomIntList(Repeats.ALLOW_REPEATS);
+        var keys = random().list(Repeats.NO_REPEATS, Long.class);
+        var values = random().list(Integer.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

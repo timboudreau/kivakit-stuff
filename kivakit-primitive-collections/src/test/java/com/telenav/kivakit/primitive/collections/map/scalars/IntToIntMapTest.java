@@ -25,6 +25,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+
 public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
 {
     @FunctionalInterface
@@ -58,7 +60,7 @@ public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
             var b = map();
             putAll(b, keys, values);
             ensureEqual(a, b);
-            b.put(99, -1);
+            b.put(99, (byte) -1);
             ensureNotEqual(a, b);
         });
     }
@@ -90,8 +92,14 @@ public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
     {
         withPopulatedMap((map, keys, values) ->
         {
-            resetIndex();
-            keys.forEach(key -> ensureEqual(map.get(key), values.get(nextIndex())));
+            var iterator = values.iterator();
+            keys.forEach(key ->
+            {
+                ensure(map.containsKey(key));
+                var mapValue = map.get(key);
+                var expectedValue = iterator.next();
+                ensureEqual(expectedValue, mapValue);
+            });
         });
     }
 
@@ -105,7 +113,7 @@ public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
             while (iterator.hasNext())
             {
                 var key = iterator.next();
-                assert map.containsKey(key);
+                ensure(map.containsKey(key));
                 count++;
             }
             ensureEqual(map.size(), count);
@@ -146,7 +154,7 @@ public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
             while (iterator.hasNext())
             {
                 var value = iterator.next();
-                ensure((valueSet.contains(value)));
+                ensure(valueSet.contains(value));
                 count++;
             }
             ensureEqual(map.size(), count);
@@ -163,15 +171,15 @@ public class IntToIntMapTest extends PrimitiveCollectionsUnitTest
 
     private void putAll(IntToIntMap map, List<Integer> keys, List<Integer> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex() % values.size())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++ % values.size())));
     }
 
-    private void withPopulatedMap(MapTest test)
+    private void withPopulatedMap(IntToIntMapTest.MapTest test)
     {
         var map = map();
-        var keys = randomIntList(Repeats.NO_REPEATS);
-        var values = randomIntList(Repeats.ALLOW_REPEATS);
+        var keys = random().list(NO_REPEATS, Integer.class);
+        var values = random().list(Integer.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

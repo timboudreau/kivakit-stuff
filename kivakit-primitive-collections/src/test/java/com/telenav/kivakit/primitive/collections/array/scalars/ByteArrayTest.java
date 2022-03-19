@@ -18,13 +18,10 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
@@ -37,16 +34,12 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullByte(false);
-        var values = randomByteList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(5_000);
+        var values = random().list(Byte.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -54,8 +47,9 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullByte(false);
-        randomBytes(NO_REPEATS, Count.count(250), array::add);
-        randomIndexes(NO_REPEATS, Count.count(250), index ->
+        random().byteSequence(array::add);
+
+        random().indexes(NO_REPEATS, array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -63,22 +57,20 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullByte((byte) -1);
-        randomBytes(NO_REPEATS, value ->
+        random().byteSequence(NO_REPEATS, value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(ALLOW_REPEATS, array.size(), index ->
         {
-            if (index < array.size())
-            {
-                array.set(index, (byte) 99);
-                ensure(!array.isNull(array.get(index)));
-                array.clear(index);
-                ensure(array.isNull(array.get(index)));
-            }
+            array.set(index, (byte) 99);
+            ensure(!array.isNull(array.get(index)));
+            array.clear(index);
+            ensure(array.isNull(array.get(index)));
         });
     }
 
@@ -86,10 +78,11 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<ByteArray, Integer>();
-        loop(() ->
+
+        random().loop(() ->
         {
             var array = array();
-            randomBytes(ALLOW_REPEATS, Count._32, array::add);
+            random().byteSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -105,10 +98,10 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
 
         var last = new MutableInteger(Integer.MIN_VALUE);
 
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value ->
+        index = 0;
+        random().byteSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
@@ -121,28 +114,28 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
 
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value ->
+        index = 0;
+        random().byteSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value ->
+        index = 0;
+        random().byteSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
         array.clear();
         array.nullByte((byte) -1);
-        randomBytes(NO_REPEATS, value -> value != -1, array::add);
-        loop(() ->
+        random().byteSequence(value -> value != -1, array::add);
+        random().loop(() ->
         {
-            var index = randomIndex();
+            var index = random().randomIndex(array.size());
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -152,13 +145,14 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomValueFactory().newByte();
+        var nullValue = random().randomByte();
         array.nullByte(nullValue);
         ensure(array.hasNullByte());
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value -> value != array.nullByte(), value ->
+
+        index = 0;
+        random().byteSequence(value -> value != array.nullByte(), value ->
         {
-            var index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -177,44 +171,35 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         array.add((byte) 0);
         array.add((byte) 1);
         array.add((byte) 2);
-        array.set(100, (byte) 100);
+        array.set(32, (byte) 100);
 
         var values = array.iterator();
-        ensureEqual((byte) 0, values.next());
-        ensureEqual((byte) 1, values.next());
-        ensureEqual((byte) 2, values.next());
-        ensureEqual((byte) 0, values.next());
+        ensureEqual(0L, values.next());
+        ensureEqual(1L, values.next());
+        ensureEqual(2L, values.next());
+        ensureEqual(array.nullByte(), values.next());
         ensure(values.hasNext());
 
-        array.nullByte((byte) 0);
+        array.hasNullByte(true);
 
         values = array.iterator();
-        ensureEqual((byte) 1, values.next());
-        ensureEqual((byte) 2, values.next());
-        ensureEqual((byte) 100, values.next());
+        ensureEqual(1L, values.next());
+        ensureEqual(2L, values.next());
+        ensureEqual(100L, values.next());
         ensureFalse(values.hasNext());
-    }
-
-    @Test
-    public void testReadWrite()
-    {
-        var data = array();
-        var expected = new boolean[] { true, false, false, true, false, true, false, false, true, true, true };
-        data.writeBooleans(expected);
-        data.reset();
-        var actual = data.readBooleans(expected.length);
-        ensure(Arrays.equals(actual, expected));
     }
 
     @Test
     public void testSerialization()
     {
-        var array = array();
-        randomBytes(ALLOW_REPEATS, array::add);
-        testSerialization(array);
+        if (!isQuickTest())
+        {
+            var array = array();
+            random().byteSequence(array::add);
+            testSerialization(array);
+        }
     }
 
-    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Test
     public void testSizeIsEmpty()
     {
@@ -236,11 +221,11 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
         ensure(array.isEmpty());
         ensure(array.size() == 0);
 
+        index = 0;
         var maximum = new MutableInteger(Integer.MIN_VALUE);
-        resetIndex();
-        randomBytes(ALLOW_REPEATS, value ->
+        random().byteSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             maximum.maximum(index);
             array.set(index, value);
             ensure(array.size() == maximum.get() + 1);
@@ -251,14 +236,18 @@ public class ByteArrayTest extends PrimitiveCollectionsUnitTest
     public void testSubArray()
     {
         var array = array();
-        randomBytes(ALLOW_REPEATS, array::add);
+        random().byteSequence(array::add);
+
         var last = array.size() - 1;
-        var offset = Math.abs(randomInt(0, last));
-        var length = Math.abs(randomInt(0, last - offset));
+        var offset = Math.abs(random().randomIntExclusive(0, last));
+        var length = Math.abs(random().randomIntExclusive(0, last - offset));
+
         ensure(offset < array.size());
         ensure(length >= 0);
         ensure(offset + length < array.size());
+
         var subArray = array.sublist(offset, length);
+
         for (var i = 0; i < length; i++)
         {
             ensureEqual(array.get(offset + i), subArray.get(i));

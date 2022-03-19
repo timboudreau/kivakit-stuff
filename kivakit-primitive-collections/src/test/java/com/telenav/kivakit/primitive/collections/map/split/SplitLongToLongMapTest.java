@@ -25,6 +25,9 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+
 public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
 {
     @FunctionalInterface
@@ -90,8 +93,8 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
     {
         withPopulatedMap((map, keys, values) ->
         {
-            resetIndex();
-            keys.forEach(key -> ensureEqual(map.get(key), values.get(nextIndex())));
+            index = 0;
+            keys.forEach(key -> ensureEqual(map.get(key), values.get(index++)));
         });
     }
 
@@ -162,15 +165,15 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
 
     private void putAll(SplitLongToLongMap map, List<Long> keys, List<Long> values)
     {
-        resetIndex();
-        keys.forEach(key -> map.put(key, values.get(nextIndex())));
+        index = 0;
+        keys.forEach(key -> map.put(key, values.get(index++)));
     }
 
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = randomLongList(Repeats.NO_REPEATS);
-        var values = randomLongList(Repeats.ALLOW_REPEATS);
+        var keys = random().list(NO_REPEATS, Long.class);
+        var values = random().list(ALLOW_REPEATS, Long.class);
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

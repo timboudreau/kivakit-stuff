@@ -56,7 +56,7 @@ public class SplitPackedArrayTest extends PrimitiveCollectionsUnitTest
         // Test each bit length
         for (var bits = 1; bits <= Long.SIZE; bits++)
         {
-            // Create packed array with given bit length
+            // Create packed array with given bit-length
             var count = BitCount.bitCount(bits);
             var values = new PackedArray("test");
             values.initialSize(32);
@@ -71,7 +71,7 @@ public class SplitPackedArrayTest extends PrimitiveCollectionsUnitTest
                 var maximum = 1 << bits;
                 for (var i = 0; i < 32; i++)
                 {
-                    var value = Math.abs(randomInt(0, maximum - 1));
+                    var value = Math.abs(random().randomIntExclusive(0, maximum - 1));
                     var left = values.safeGet(index - 1);
                     var right = values.safeGet(index + 1);
                     values.set(index, value);

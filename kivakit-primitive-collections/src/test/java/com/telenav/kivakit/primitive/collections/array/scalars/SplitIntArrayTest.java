@@ -18,10 +18,8 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,16 +34,12 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullInt(false);
-        var values = randomIntList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(1_000);
+        var values = random().list(Integer.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -53,8 +47,8 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullInt(false);
-        randomInts(NO_REPEATS, Count.count(250), array::add);
-        randomIndexes(NO_REPEATS, Count.count(250), index ->
+        random().intSequence(array::add);
+        random().indexes(array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -62,22 +56,20 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullInt(-1);
-        randomInts(NO_REPEATS, value ->
+        random().intSequence(NO_REPEATS, value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(ALLOW_REPEATS, array.size(), index ->
         {
-            if (index < array.size())
-            {
-                array.set(index, 99);
-                ensure(!array.isNull(array.get(index)));
-                array.clear(index);
-                ensure(array.isNull(array.get(index)));
-            }
+            array.set(index, 99);
+            ensure(!array.isNull(array.get(index)));
+            array.clear(index);
+            ensure(array.isNull(array.get(index)));
         });
     }
 
@@ -85,10 +77,10 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<SplitIntArray, Integer>();
-        loop(() ->
+        random().loop(() ->
         {
             var array = array();
-            randomInts(ALLOW_REPEATS, Count._16, array::add);
+            random().intSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -104,10 +96,10 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
 
         var last = new MutableInteger(Integer.MIN_VALUE);
 
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().intSequence(value ->
         {
-            var index = nextIndex();
+            index++;
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
@@ -121,31 +113,31 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
 
-            resetIndex();
-            randomInts(ALLOW_REPEATS, value ->
+            index = 0;
+            random().intSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 array.set(index, value);
                 ensureEqual(array.get(index), value);
             });
 
-            resetIndex();
-            randomInts(ALLOW_REPEATS, value ->
+            index++;
+            random().intSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 array.set(index, value);
                 ensureEqual(array.get(index), value);
             });
         }
         {
-            var array = new SplitIntArray("test");
+            var array = array();
             array.nullInt(-1);
-            array.initialize();
 
-            randomInts(NO_REPEATS, value -> value != -1, array::add);
-            loop(() ->
+            random().intSequence(NO_REPEATS, value -> value != -1, array::add);
+            array.safeGet(0);
+            random().loop(() ->
             {
-                var index = randomIndex();
+                var index = random().randomIndex(array.size());
                 var value = array.safeGet(index);
                 ensureEqual(index >= array.size(), array.isNull(value));
             });
@@ -156,13 +148,13 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomInt();
+        var nullValue = newRandomValueFactory().randomInt();
         array.nullInt(nullValue);
         ensure(array.hasNullInt());
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value -> value != array.nullInt(), value ->
+        index = 0;
+        random().intSequence(value -> value != array.nullInt(), value ->
         {
-            var index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -176,7 +168,6 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     public void testIteration()
     {
         var array = array();
-        array.hasNullInt(false);
 
         array.add(0);
         array.add(1);
@@ -187,16 +178,16 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
         ensureEqual(0, values.next());
         ensureEqual(1, values.next());
         ensureEqual(2, values.next());
-        ensureEqual(-1, values.next());
-        ensure(values.hasNext());
+        ensureEqual(100, values.next());
+        ensure(!values.hasNext());
 
-        array.hasNullInt(true);
-        array.nullInt(0);
+        array.hasNullInt(false);
 
         values = array.iterator();
+        ensureEqual(0, values.next());
         ensureEqual(1, values.next());
         ensureEqual(2, values.next());
-        ensureEqual(-1, values.next());
+        ensureEqual(Integer.MIN_VALUE, values.next());
         ensure(values.hasNext());
     }
 
@@ -204,7 +195,7 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     public void testSerialization()
     {
         var array = array();
-        randomInts(ALLOW_REPEATS, array::add);
+        random().intSequence(array::add);
         testSerialization(array);
     }
 
@@ -230,10 +221,10 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
         {
             var array = array();
             var maximum = new MutableInteger(Integer.MIN_VALUE);
-            resetIndex();
-            randomInts(ALLOW_REPEATS, value ->
+            index = 0;
+            random().intSequence(value ->
             {
-                var index = nextIndex();
+                index++;
                 maximum.maximum(index);
                 array.set(index, value);
                 ensure(array.size() == maximum.get() + 1);
@@ -244,7 +235,7 @@ public class SplitIntArrayTest extends PrimitiveCollectionsUnitTest
     private SplitIntArray array()
     {
         var array = (SplitIntArray) new SplitIntArray("test")
-                .nullInt(-1)
+                .nullInt(Integer.MIN_VALUE)
                 .initialChildSize(100);
         array.initialize();
         return array;

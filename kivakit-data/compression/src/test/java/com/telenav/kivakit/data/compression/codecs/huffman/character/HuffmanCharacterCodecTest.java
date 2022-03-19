@@ -65,13 +65,14 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
     @Test
     public void testRandom()
     {
-        _10.loop(codecNumber ->
+        _10.loop(() ->
         {
             var symbols = randomCharacterSymbols(2, 26);
+            ensure(symbols.size() >= 2 && symbols.size() <= 26, "Symbols.size: $", symbols.size());
             var codec = HuffmanCharacterCodec.from(symbols);
 
             var progress = BroadcastingProgressReporter.create();
-            loop(100, () ->
+            _10.loop(() ->
             {
                 var random = randomStringSymbols(1, 64, 1, 32);
                 test(codec, random.symbols());

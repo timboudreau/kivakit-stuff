@@ -121,7 +121,7 @@ public class IntLinkedListStoreTest extends PrimitiveCollectionsUnitTest
         var list1 = new MutableValue<>(IntLinkedListStore.NEW_LIST);
         var list2 = new MutableValue<>(IntLinkedListStore.NEW_LIST);
 
-        var values = randomIntList(ALLOW_REPEATS);
+        var values = random().list(ALLOW_REPEATS, Integer.class);
         values.forEach(value ->
         {
             list1.set(store.add(list1.get(), value));

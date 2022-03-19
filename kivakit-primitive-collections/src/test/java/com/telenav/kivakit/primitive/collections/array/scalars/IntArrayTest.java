@@ -18,16 +18,11 @@
 
 package com.telenav.kivakit.primitive.collections.array.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.mutable.MutableInteger;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-
-import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
-import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
 
 public class IntArrayTest extends PrimitiveCollectionsUnitTest
 {
@@ -36,16 +31,12 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullInt(false);
-        var values = randomIntList(ALLOW_REPEATS);
-        values.forEach(array::add);
-        resetIndex();
-        values.forEach(value -> ensureEqual(array.get(nextIndex()), value));
-    }
 
-    @Before
-    public void testBefore()
-    {
-        iterations(5_000);
+        var values = random().list(Integer.class);
+        values.forEach(array::add);
+
+        index = 0;
+        values.forEach(value -> ensureEqual(array.get(index++), value));
     }
 
     @Test
@@ -53,8 +44,9 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
         array.hasNullInt(false);
-        randomInts(NO_REPEATS, array::add);
-        randomIndexes(NO_REPEATS, index ->
+
+        random().intSequence(array::add);
+        random().indexes(array.size(), index ->
         {
             ensure(!array.isNull(array.get(index)));
             array.clear(index);
@@ -62,14 +54,15 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
         });
 
         array.nullInt(-1);
-        randomInts(NO_REPEATS, value ->
+        random().intSequence(value ->
         {
             if (!array.isNull(value))
             {
                 array.add(value);
             }
         });
-        randomIndexes(ALLOW_REPEATS, index ->
+
+        random().indexes(array.size(), index ->
         {
             if (index < array.size())
             {
@@ -85,10 +78,10 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     public void testEqualsHashCode()
     {
         var map = new HashMap<IntArray, Integer>();
-        loop(() ->
+        random().loop(() ->
         {
             var array = array();
-            randomInts(ALLOW_REPEATS, Count._32, array::add);
+            random().intSequence(array::add);
             map.put(array, 99);
             ensureEqual(99, map.get(array));
         });
@@ -102,16 +95,15 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
         ensureThrows(array::first);
         ensureThrows(array::last);
 
+        index = 0;
         var last = new MutableInteger(Integer.MIN_VALUE);
-
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value ->
+        random().intSequence(value ->
         {
-            final int index = nextIndex();
             array.set(index, value);
             last.maximum(index);
             ensureEqual(array.get(0), array.first());
             ensureEqual(array.get(last.get()), array.last());
+            index++;
         });
     }
 
@@ -120,28 +112,28 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     {
         var array = array();
 
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().intSequence(value ->
         {
-            final int index = nextIndex();
             array.set(index, value);
             ensureEqual(array.get(index), value);
+            index++;
         });
 
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().intSequence(value ->
         {
-            final int index = nextIndex();
+            index++;
             array.set(index, value);
             ensureEqual(array.get(index), value);
         });
 
         array.clear();
         array.nullInt(-1);
-        randomInts(NO_REPEATS, value -> value != -1, array::add);
-        loop(() ->
+        random().intSequence(value -> value != -1, array::add);
+        random().loop(() ->
         {
-            final int index = randomInt(0, 100_000);
+            final int index = random().randomIntExclusive(0, 100_000);
             var value = array.safeGet(index);
             ensureEqual(index >= array.size(), array.isNull(value));
         });
@@ -151,13 +143,13 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     public void testIsNull()
     {
         var array = array();
-        var nullValue = randomInt();
+        var nullValue = random().randomInt();
         array.nullInt(nullValue);
         ensure(array.hasNullInt());
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value -> value != array.nullInt(), value ->
+        index = 0;
+        random().intSequence(value -> value != array.nullInt(), value ->
         {
-            final int index = nextIndex();
+            index++;
 
             array.set(index, value);
             ensure(!array.isNull(array.get(index)));
@@ -198,7 +190,7 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     public void testSerialization()
     {
         var array = array();
-        randomInts(ALLOW_REPEATS, array::add);
+        random().intSequence(array::add);
         testSerialization(array);
     }
 
@@ -224,10 +216,10 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
         ensure(array.size() == 0);
 
         var maximum = new MutableInteger(Integer.MIN_VALUE);
-        resetIndex();
-        randomInts(ALLOW_REPEATS, value ->
+        index = 0;
+        random().intSequence(value ->
         {
-            final int index = nextIndex();
+            index++;
             maximum.maximum(index);
             array.set(index, value);
             ensure(array.size() == maximum.get() + 1);
@@ -238,10 +230,10 @@ public class IntArrayTest extends PrimitiveCollectionsUnitTest
     public void testSubArray()
     {
         var array = array();
-        randomInts(ALLOW_REPEATS, array::add);
+        random().intSequence(array::add);
         var last = array.size() - 1;
-        final int offset = Math.abs(randomInt(0, last));
-        final int length = Math.abs(randomInt(0, last - offset));
+        final int offset = Math.abs(random().randomIntExclusive(0, last));
+        final int length = Math.abs(random().randomIntExclusive(0, last - offset));
         ensure(offset < array.size());
         ensure(length >= 0);
         ensure(offset + length < array.size());

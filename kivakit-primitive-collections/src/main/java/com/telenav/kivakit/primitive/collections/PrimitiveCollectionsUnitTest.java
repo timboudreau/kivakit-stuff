@@ -21,6 +21,9 @@ package com.telenav.kivakit.primitive.collections;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
+import org.junit.Test;
+
+import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
 
 /**
  * This is the base test class for all unit tests. It provides some methods common to all tests.
