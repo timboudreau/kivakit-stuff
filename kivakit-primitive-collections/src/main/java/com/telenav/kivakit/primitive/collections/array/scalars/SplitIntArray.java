@@ -26,8 +26,8 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.IntCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
-import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSplitArray;
+import com.telenav.kivakit.primitive.collections.list.IntList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
@@ -39,16 +39,16 @@ import java.util.Arrays;
  * arrays is quick and memory efficient versus trying to manage one very large array. This design also works around the
  * 2GB limitation of Java arrays (which can only be indexed by int values).
  * <p>
- * Supports the operations of {@link IntCollection}, with the exception of {@link #clear()}. Indexing operations in
- * {@link IntList} are supported just as in {@link IntArray}, but the values are distributed across an array of child
- * {@link IntArray} objects.
+ * Supports the operations of {@link IntCollection}, except {@link #clear()}. Indexing operations in {@link IntList} are
+ * supported just as in {@link IntArray}, but the values are distributed across an array of child {@link IntArray}
+ * objects.
  *
  * @author jonathanl (shibo)
  * @see PrimitiveSplitArray
  * @see IntList
  * @see IntArray
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
 public final class SplitIntArray extends PrimitiveSplitArray implements IntList
 {
     /** The child arrays */

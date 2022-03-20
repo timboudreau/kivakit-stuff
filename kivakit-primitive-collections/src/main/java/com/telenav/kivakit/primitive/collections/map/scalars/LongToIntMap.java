@@ -61,7 +61,7 @@ import java.util.Arrays;
  * @see PrimitiveMap
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class LongToIntMap extends PrimitiveMap implements PrimitiveScalarMap
 {
     /**
