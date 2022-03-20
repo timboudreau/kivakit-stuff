@@ -48,6 +48,7 @@ import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.core.vm.ShutdownHook;
+import com.telenav.kivakit.interfaces.code.TripwireTrait;
 import com.telenav.kivakit.interfaces.collection.Sized;
 import com.telenav.kivakit.interfaces.lifecycle.Initializable;
 import com.telenav.kivakit.interfaces.naming.Named;
@@ -97,7 +98,7 @@ import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
  * <b>Two-Dimensional Collections</b>
  * <p>
  * Two-dimensional collections have two keys (or indexes) and the second dimension can be configured with {@link
- * #initialChildSize(Count)} and {@link #maximumChildSize(Maximum)}. Examples of two-dimensional collections include
+ * #initialChildSize(BaseCount)} and {@link #maximumChildSize(Maximum)}. Examples of two-dimensional collections include
  * {@link ByteArrayArray} and {@link LongToLongMultiMap}. The first key gets access to a child collection (usually an
  * array or list) and the second key gets access to the data.
  * <p>
@@ -158,14 +159,14 @@ import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
  * @see Debug
  * @see Sized
  */
-@SuppressWarnings({ "UnusedReturnValue", "SpellCheckingInspection" })
 @UmlClassDiagram(diagram = DiagramPrimitiveCollection.class)
 public abstract class PrimitiveCollection implements
         KryoSerializable,
         NamedObject,
         Initializable,
         Countable,
-        CompressibleCollection
+        CompressibleCollection,
+        TripwireTrait
 {
     /** The number of elements to show when converting a collection to a String */
     protected static final int TO_STRING_MAXIMUM_ELEMENTS = 20;
