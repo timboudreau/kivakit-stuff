@@ -255,7 +255,7 @@ public final class SplitCharArray extends PrimitiveSplitArray implements CharLis
         {
             // create a new child
             array = new CharArray(objectName() + ".child[" + childIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.initialSize(initialChildSizeAsInt());
             array.maximumSize(maximumChildSizeAsInt());
             array.initialize();

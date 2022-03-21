@@ -18,6 +18,7 @@
 
 package com.telenav.kivakit.primitive.collections.map.split;
 
+import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
@@ -172,8 +173,9 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = random().list(NO_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
-        var values = random().list(ALLOW_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
+        var keys = random().list(NO_REPEATS, Long.class, value -> !value.equals(map.nullLong()));
+        var values = random().list(ALLOW_REPEATS, Count.count(keys.size()), Long.class,
+                value -> !value.equals(map.nullLong()));
         ensure(!keys.contains(map.nullLong()));
         putAll(map, keys, values);
         test.test(map, keys, values);

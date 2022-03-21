@@ -320,7 +320,7 @@ public final class SplitByteArray extends PrimitiveSplitArray implements ByteLis
         {
             // create a new child
             array = new ByteArray(objectName() + ".child[" + childIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.initialSize(childSize);
             array.maximumSize(maximumChildSizeAsInt());
             array.initialize();

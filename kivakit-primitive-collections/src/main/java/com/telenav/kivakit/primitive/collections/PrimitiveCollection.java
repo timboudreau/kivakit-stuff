@@ -333,7 +333,7 @@ public abstract class PrimitiveCollection implements
     private boolean hasNullShort = true;
 
     /** The size of any child collections */
-    private int initialChildSize = 262_144;
+    private int initialChildSize = 65_536;
 
     /** The initial size of this collection */
     private int initialSize = 2_048;
@@ -506,7 +506,7 @@ public abstract class PrimitiveCollection implements
      * Copies the sizes and null values from the given collection
      */
     @MustBeInvokedByOverriders
-    public void copyConfiguration(PrimitiveCollection that)
+    public void copySettings(PrimitiveCollection that)
     {
         initialSize = that.initialSize;
         maximumSize = that.maximumSize;

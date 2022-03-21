@@ -19,6 +19,7 @@
 package com.telenav.kivakit.data.compression;
 
 import com.telenav.kivakit.core.collections.map.CountMap;
+import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.core.value.count.MutableCount;
@@ -88,7 +89,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
                                                   int maximumLength)
     {
         var frequencies = new CountMap<String>();
-        var range = random().rangeInclusive(minimum, maximum);
+        var range = random().rangeInclusive(minimum, maximum, minimumLength);
         range.loop(() ->
         {
             while (true)

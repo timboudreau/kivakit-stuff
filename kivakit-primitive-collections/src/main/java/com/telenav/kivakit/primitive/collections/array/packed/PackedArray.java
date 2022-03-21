@@ -152,9 +152,9 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
      */
     @SuppressWarnings("SpellCheckingInspection")
     @Override
-    public void copyConfiguration(PrimitiveCollection uncast)
+    public void copySettings(PrimitiveCollection uncast)
     {
-        super.copyConfiguration(uncast);
+        super.copySettings(uncast);
 
         var that = (PackedPrimitiveArray) uncast;
         bits = that.bits().asInt();
@@ -268,7 +268,7 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
         if (requiredBits.isLessThan(bits()))
         {
             var array = new PackedArray(objectName());
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.bits(requiredBits, overflow());
             array.initialize();
 
@@ -465,7 +465,7 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
     private void copy(PackedArray that)
     {
         super.copy(that);
-        copyConfiguration(that);
+        copySettings(that);
         data = that.data;
         firstShift = that.firstShift;
         firstMask = that.firstMask;

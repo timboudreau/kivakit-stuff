@@ -380,7 +380,7 @@ public final class SplitLongToIntMap extends SplitPrimitiveMap implements Primit
         {
             // then allocate and configure the child
             child = new LongToIntMap(objectName() + ".child[" + childIndex + "]");
-            child.copyConfiguration(this);
+            child.copySettings(this);
             child.initialSize(initialChildSize());
             child.maximumSize(Integer.MAX_VALUE);
             child.initialize();

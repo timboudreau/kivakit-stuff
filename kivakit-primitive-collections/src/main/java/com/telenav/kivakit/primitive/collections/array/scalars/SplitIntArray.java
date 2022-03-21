@@ -267,12 +267,12 @@ public final class SplitIntArray extends PrimitiveSplitArray implements IntList
         {
             // create a new child
             array = new IntArray(objectName() + ".child[" + childIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.initialSize(childSize);
             array.maximumSize(maximumChildSizeAsInt());
             array.initialize();
 
-            // and add it to the children array.w
+            // and add it to the children array.
             children[childIndex] = array;
         }
 

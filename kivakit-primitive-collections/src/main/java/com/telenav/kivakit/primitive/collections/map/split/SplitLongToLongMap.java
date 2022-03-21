@@ -379,7 +379,7 @@ public final class SplitLongToLongMap extends SplitPrimitiveMap implements Primi
         {
             // then allocate and configure the child
             child = new LongToLongMap(objectName() + ".child[" + childIndex + "]");
-            child.copyConfiguration(this);
+            child.copySettings(this);
             child.initialSize(initialChildSize());
             child.maximumSize(Integer.MAX_VALUE);
             child.initialize();

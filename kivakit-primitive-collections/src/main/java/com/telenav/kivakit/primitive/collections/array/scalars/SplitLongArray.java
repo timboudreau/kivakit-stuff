@@ -269,7 +269,7 @@ public final class SplitLongArray extends PrimitiveSplitArray implements LongLis
         {
             // create a new child
             array = new LongArray(objectName() + ".child[" + childIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.initialSize(childSize);
             array.maximumSize(maximumChildSizeAsInt());
             array.initialize();

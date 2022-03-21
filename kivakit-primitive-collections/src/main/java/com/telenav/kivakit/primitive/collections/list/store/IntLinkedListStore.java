@@ -41,7 +41,7 @@ import java.util.List;
  * @see IntIterator
  * @see Quantizable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public class IntLinkedListStore extends PrimitiveListStore
 {
     /** List identifier to start a new list */

@@ -135,9 +135,9 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
     }
 
     @Override
-    public void copyConfiguration(PrimitiveCollection primitiveCollection)
+    public void copySettings(PrimitiveCollection primitiveCollection)
     {
-        super.copyConfiguration(primitiveCollection);
+        super.copySettings(primitiveCollection);
 
         var that = (PackedArray) primitiveCollection;
         bits(that.bits(), that.overflow());
@@ -421,7 +421,7 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
         if (array == null)
         {
             array = new PackedArray(objectName() + ".child[" + childIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.initialSize(initialChildSize());
             array.maximumSize(maximumChildSize());
             array.initialize();

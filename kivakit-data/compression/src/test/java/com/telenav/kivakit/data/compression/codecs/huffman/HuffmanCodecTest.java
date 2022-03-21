@@ -34,7 +34,7 @@ import java.util.List;
 
 import static com.telenav.kivakit.core.value.count.Count._10;
 import static com.telenav.kivakit.core.value.count.Count._100;
-import static com.telenav.kivakit.interfaces.code.RetryableLoopBody.Action.NEXT;
+import static com.telenav.kivakit.interfaces.code.FilteredLoopBody.FilterAction.ACCEPT;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class HuffmanCodecTest extends DataCompressionUnitTest
@@ -191,6 +191,7 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
     @Test
     public void testRandom()
     {
+        random().seed(485465258L);
         var progress = BroadcastingProgressReporter.create();
 
         // For each random codec
@@ -211,9 +212,7 @@ public class HuffmanCodecTest extends DataCompressionUnitTest
                 test(codec, values);
 
                 progress.next();
-                return NEXT;
             });
-            return NEXT;
         });
     }
 }

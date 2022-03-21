@@ -66,9 +66,9 @@ public class BigSplitPackedArray extends PrimitiveSplitArray implements PackedPr
     }
 
     @Override
-    public void copyConfiguration(PrimitiveCollection that)
+    public void copySettings(PrimitiveCollection that)
     {
-        super.copyConfiguration(that);
+        super.copySettings(that);
 
         bits = ((PackedArray) that).bits();
     }
@@ -309,7 +309,7 @@ public class BigSplitPackedArray extends PrimitiveSplitArray implements PackedPr
         if (array == null)
         {
             array = new PackedArray(objectName() + ".child[" + arrayIndex + "]");
-            array.copyConfiguration(this);
+            array.copySettings(this);
             array.bits(bits, PackedPrimitiveArray.OverflowHandling.NO_OVERFLOW);
             array.nullLong(nullLong());
             array.hasNullLong(hasNullLong());

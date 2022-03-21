@@ -173,7 +173,7 @@ public class SplitLongToIntMapTest extends PrimitiveCollectionsUnitTest
     {
         var map = map();
         var keys = random().list(NO_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
-        var values = random().list(ALLOW_REPEATS,  Integer.class, value -> !value.equals(map.nullInt()));
+        var values = random().list(ALLOW_REPEATS, count(keys), Integer.class, value -> !value.equals(map.nullInt()));
         putAll(map, keys, values);
         test.test(map, keys, values);
     }
