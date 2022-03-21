@@ -71,7 +71,7 @@ public class HuffmanCharacterCodecTest extends DataCompressionUnitTest
             ensure(symbols.size() >= 2 && symbols.size() <= 26, "Symbols.size: $", symbols.size());
             var codec = HuffmanCharacterCodec.from(symbols);
 
-            tripEvery(10);
+            tripwireTripEvery(10);
 
             var progress = BroadcastingProgressReporter.create();
             _10.loop(() ->
