@@ -26,8 +26,8 @@ import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.LongCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveSplitArray;
-import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSplitArray;
+import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
@@ -48,16 +48,17 @@ import java.util.Arrays;
  * @see LongList
  * @see LongArray
  */
+@SuppressWarnings("DuplicatedCode")
 @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
 public final class SplitLongArray extends PrimitiveSplitArray implements LongList
 {
+    private int childSize;
+
     /** The child arrays */
     private LongArray[] children;
 
     /** The index at which adding takes place */
     private int cursor;
-
-    private int childSize;
 
     /**
      * Convenience method that uses selects a default child size
