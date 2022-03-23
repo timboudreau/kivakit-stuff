@@ -56,6 +56,7 @@ public class LongToByteMapTest extends PrimitiveCollectionsUnitTest
     @Test
     public void testEqualsHashCode()
     {
+        random().seed(1099517422L);
         withPopulatedMap((a, keys, values) ->
         {
             var b = map();
