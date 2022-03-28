@@ -25,7 +25,6 @@ import com.telenav.kivakit.core.string.CaseFormat;
 import com.telenav.kivakit.core.vm.Properties;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.path.Extension;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.kryo.KryoSerializationSession;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
@@ -38,6 +37,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import com.telenav.lexakai.annotations.visibility.UmlNotPublicApi;
 
+import static com.telenav.kivakit.resource.Extension.TMP;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
@@ -115,7 +115,7 @@ public class ServiceRegistryStore extends BaseComponent
     {
         if (Booleans.isTrue(Properties.property("KIVAKIT_SAVE_REGISTRY", "true")))
         {
-            var file = file(registry.getClass()).withExtension(Extension.TMP);
+            var file = file(registry.getClass()).withExtension(TMP);
             trace("Saving service registry to $", file.messageSource());
             if (file.delete())
             {

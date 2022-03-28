@@ -8,7 +8,7 @@ import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
-import com.telenav.kivakit.resource.path.Extension;
+import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
 import com.telenav.kivakit.serialization.core.SerializationSessionFactory;
@@ -24,6 +24,8 @@ import java.util.Set;
 
 import static com.telenav.kivakit.core.logging.logs.text.formatters.ColumnarLogFormatter.DEFAULT;
 import static com.telenav.kivakit.core.string.Formatter.Format.WITHOUT_EXCEPTION;
+import static com.telenav.kivakit.resource.Extension.KRYO;
+import static com.telenav.kivakit.resource.Extension.TXT;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.RESOURCE;
 
 /**
@@ -55,7 +57,7 @@ public class SessionStore extends BaseComponent
     public synchronized void add(Session session, byte[] bytes, ProgressReporter reporter)
     {
         add(session);
-        sessionFile(session, Extension.KRYO).reader(reporter).bytes();
+        sessionFile(session, KRYO).reader(reporter).bytes();
     }
 
     public synchronized void addAll(Session session, List<LogEntry> toAdd)
@@ -73,8 +75,8 @@ public class SessionStore extends BaseComponent
     public synchronized void delete(Session session)
     {
         sessions.remove(session);
-        sessionFile(session, Extension.KRYO).delete();
-        sessionFile(session, Extension.TXT).delete();
+        sessionFile(session, KRYO).delete();
+        sessionFile(session, TXT).delete();
     }
 
     /**
@@ -88,7 +90,7 @@ public class SessionStore extends BaseComponent
             var entries = sessionNameToEntries.get(session);
             if (entries == null)
             {
-                try (var input = sessionFile(session, Extension.KRYO).openForReading())
+                try (var input = sessionFile(session, KRYO).openForReading())
                 {
                     var serializationSession = session();
                     var version = serializationSession.open(input, RESOURCE);
@@ -115,9 +117,9 @@ public class SessionStore extends BaseComponent
     public synchronized void load()
     {
         sessions = new HashSet<>();
-        for (var file : logFolder().files(Extension.KRYO.fileMatcher()))
+        for (var file : logFolder().files(KRYO))
         {
-            var parts = file.fileName().withoutExtension(Extension.KRYO).name().split("-");
+            var parts = file.fileName().withoutExtension(KRYO).name().split("-");
             if (parts.length == 2)
             {
                 var name = parts[0];
@@ -132,7 +134,7 @@ public class SessionStore extends BaseComponent
 
     public byte[] read(Session session, ProgressReporter reporter)
     {
-        return sessionFile(session, Extension.KRYO).reader(reporter).bytes();
+        return sessionFile(session, KRYO).reader(reporter).bytes();
     }
 
     public synchronized void save(Session session)
@@ -140,7 +142,7 @@ public class SessionStore extends BaseComponent
         var entries = entries(session);
         if (!entries.isEmpty())
         {
-            try (var output = sessionFile(session, Extension.KRYO).openForWriting())
+            try (var output = sessionFile(session, KRYO).openForWriting())
             {
                 var serializer = session();
                 serializer.open(output, RESOURCE, kivakitVersion());
@@ -151,7 +153,7 @@ public class SessionStore extends BaseComponent
             {
             }
 
-            try (var output = sessionFile(session, Extension.TXT).printWriter())
+            try (var output = sessionFile(session, TXT).printWriter())
             {
                 for (var row : entries)
                 {

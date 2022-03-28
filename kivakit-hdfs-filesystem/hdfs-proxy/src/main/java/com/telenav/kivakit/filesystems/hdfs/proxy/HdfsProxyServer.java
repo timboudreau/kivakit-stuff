@@ -477,7 +477,7 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
 
     private FileSystem fileSystem(FilePath path)
     {
-        return HdfsFileSystem.of(path).fileSystem();
+        return HdfsFileSystem.hdfsFileSystem(path).fileSystem();
     }
 
     private List<String> files(String pathAsString, boolean recursive) throws RemoteException
@@ -546,7 +546,7 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
 
     private Path hdfsPath(FilePath path)
     {
-        return HdfsFileSystem.of(path).hdfsPath(path);
+        return HdfsFileSystem.hdfsFileSystem(path).hdfsPath(path);
     }
 
     @SuppressWarnings("InfiniteLoopStatement")

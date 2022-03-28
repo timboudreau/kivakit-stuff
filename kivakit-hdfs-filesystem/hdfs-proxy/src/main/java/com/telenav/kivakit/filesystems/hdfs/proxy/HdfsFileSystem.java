@@ -26,11 +26,11 @@ import com.telenav.kivakit.core.logging.LoggerFactory;
 import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.registry.InstanceIdentifier;
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileSystemService;
 import com.telenav.kivakit.filesystems.hdfs.proxy.lexakai.DiagramHdfsProxy;
 import com.telenav.kivakit.resource.ResourceFolder;
-import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import org.apache.hadoop.conf.Configuration;
@@ -52,7 +52,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  *
  * <p>
  * HDFS filesystem wrapper used by HdfsFileSystemService to implement the KivaKit {@link FileSystemService} service
- * provider interface. The {@link #of(FilePath)} method here lazy-loads and configures an HdfsFileSystem object which
+ * provider interface. The {@link #hdfsFileSystem(FilePath)} method here lazy-loads and configures an HdfsFileSystem object which
  * gives access to the Hadoop {@link FileSystem} interface for the cluster specified in the given HDFS file path. Note
  * that this means that multiple HDFS filesystems can be accessed at the same time and transparently. See
  * FileSystemServiceLoader for details on how the KivaKit dynamically loads {@link FileSystemService} implementations.
@@ -104,7 +104,7 @@ class HdfsFileSystem extends BaseComponent
     /**
      * Loads
      */
-    public synchronized static HdfsFileSystem of(FilePath path)
+    public synchronized static HdfsFileSystem hdfsFileSystem(FilePath path)
     {
         return filesystems.computeIfAbsent(cluster(path), ignored -> new HdfsFileSystem(path.root()));
     }
@@ -181,7 +181,7 @@ class HdfsFileSystem extends BaseComponent
     private Configuration hdfsConfiguration(FilePath path)
     {
         // If the user defines KIVAKIT_HDFS_CONFIGURATION_FOLDER,
-        ResourceFolder configurationFolder = null;
+        ResourceFolder<?> configurationFolder = null;
         var property = systemProperty("KIVAKIT_HDFS_CONFIGURATION_FOLDER");
         if (property != null)
         {
