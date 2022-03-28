@@ -18,13 +18,13 @@
 
 package com.telenav.kivakit.math.trigonometry;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.core.test.CoreUnitTest;
 import org.junit.Test;
 
 /**
  * @author jonathanl (shibo)
  */
-public class TrigonometryTest extends UnitTest
+public class TrigonometryTest extends CoreUnitTest
 {
     @Test
     public void testArcTangent()

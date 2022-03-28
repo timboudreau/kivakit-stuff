@@ -19,7 +19,6 @@
 package com.telenav.kivakit.data.compression;
 
 import com.telenav.kivakit.core.collections.map.CountMap;
-import com.telenav.kivakit.core.os.Console;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Minimum;
 import com.telenav.kivakit.core.value.count.MutableCount;
@@ -28,8 +27,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.character.HuffmanChar
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.resource.PropertyMap;
-import com.telenav.kivakit.resource.resources.PackageResource;
+import com.telenav.kivakit.properties.PropertyMap;
 import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
@@ -42,6 +40,7 @@ import static com.telenav.kivakit.core.value.count.Count._10;
 /**
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("SameParameterValue")
 public class DataCompressionUnitTest extends KryoUnitTest
 {
     protected ByteList encode(Codec<String> codec, List<String> values)
@@ -69,7 +68,7 @@ public class DataCompressionUnitTest extends KryoUnitTest
 
     protected PropertyMap properties(String name)
     {
-        return PropertyMap.load(this, PackageResource.packageResource(this, getClass(), name));
+        return PropertyMap.load(packageResource(name));
     }
 
     @NotNull

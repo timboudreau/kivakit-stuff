@@ -1,7 +1,6 @@
 package com.telenav.kivakit.ui.desktop.graphics.image;
 
-import com.telenav.kivakit.core.messaging.Listener;
-import com.telenav.kivakit.resource.resources.PackageResource;
+import com.telenav.kivakit.resource.Resource;
 
 import javax.imageio.ImageIO;
 import java.awt.Image;
@@ -12,19 +11,14 @@ import java.io.IOException;
  */
 public class ImageResource
 {
-    public static ImageResource of(PackageResource resource)
+    public static ImageResource of(Resource resource)
     {
         return new ImageResource(resource);
     }
 
-    public static ImageResource of(Listener listener, Class<?> type, String path)
-    {
-        return of(PackageResource.packageResource(listener, type, path));
-    }
+    private final Resource resource;
 
-    private final PackageResource resource;
-
-    public ImageResource(PackageResource resource)
+    public ImageResource(Resource resource)
     {
         this.resource = resource;
     }

@@ -27,14 +27,14 @@ import com.telenav.kivakit.core.thread.Retry;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystem.spi.FolderService;
 import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
 import com.telenav.kivakit.interfaces.comparison.Matcher;
-import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.path.FilePath;
+import com.telenav.kivakit.resource.FileName;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlAggregation;
@@ -47,6 +47,7 @@ import java.util.List;
 
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
+import static com.telenav.kivakit.interfaces.comparison.Matcher.matchAll;
 
 /**
  * <b>Not public API</b>
@@ -123,7 +124,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     @Override
     public List<FileService> files()
     {
-        return retry(() -> matching(proxy().files(pathAsString()), Matcher.anything())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
+        return retry(() -> matching(proxy().files(pathAsString()), matchAll())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
     }
 
     @Override
@@ -147,7 +148,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     @Override
     public List<FolderService> folders()
     {
-        return folders(Matcher.anything());
+        return folders(matchAll());
     }
 
     @Override
@@ -228,8 +229,9 @@ public class HdfsFolder extends BaseComponent implements FolderService
 
     public List<FileService> nestedFiles()
     {
-        return retry(() -> matching(proxy().nestedFiles(pathAsString()), Matcher.anything())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
+        return retry(() -> matching(proxy().nestedFiles(pathAsString()), matchAll())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
     }
+
 
     @Override
     public List<FileService> nestedFiles(Matcher<FilePath> matcher)
@@ -244,7 +246,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     }
 
     @Override
-    public HdfsFolder parent()
+    public HdfsFolder parentService()
     {
         var parent = path().parent();
         if (parent != null)

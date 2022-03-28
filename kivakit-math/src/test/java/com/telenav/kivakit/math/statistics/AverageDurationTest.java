@@ -18,12 +18,12 @@
 
 package com.telenav.kivakit.math.statistics;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.core.test.CoreUnitTest;
 import com.telenav.kivakit.core.time.AverageDuration;
 import com.telenav.kivakit.core.time.Duration;
 import org.junit.Test;
 
-public class AverageDurationTest extends UnitTest
+public class AverageDurationTest extends CoreUnitTest
 {
     @Test
     public void test()

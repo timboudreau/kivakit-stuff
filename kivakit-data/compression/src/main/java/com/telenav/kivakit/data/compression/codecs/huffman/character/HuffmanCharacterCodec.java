@@ -34,7 +34,7 @@ import com.telenav.kivakit.data.compression.codecs.huffman.HuffmanCodec;
 import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
-import com.telenav.kivakit.resource.PropertyMap;
+import com.telenav.kivakit.properties.PropertyMap;
 
 import static com.telenav.kivakit.data.compression.SymbolConsumer.Directive.CONTINUE;
 

@@ -21,11 +21,11 @@ package com.telenav.kivakit.data.formats.csv;
 import com.telenav.kivakit.conversion.core.language.primitive.DoubleConverter;
 import com.telenav.kivakit.conversion.core.language.primitive.IntegerConverter;
 import com.telenav.kivakit.core.progress.ProgressReporter;
-import com.telenav.kivakit.core.test.UnitTest;
-import com.telenav.kivakit.resource.resources.PackageResource;
+import com.telenav.kivakit.test.UnitTest;
+import com.telenav.kivakit.resource.packages.PackageTrait;
 import org.junit.Test;
 
-public class CsvReaderTest extends UnitTest
+public class CsvReaderTest extends UnitTest implements PackageTrait
 {
     @Test
     public void test()
@@ -37,7 +37,7 @@ public class CsvReaderTest extends UnitTest
         var price = CsvColumn.of("price", new DoubleConverter(this));
         var schema = new CsvSchema(year, make, model, description, price);
 
-        var resource = PackageResource.packageResource(this, CsvReaderTest.class, "SampleCsv.csv");
+        var resource = packageResource("SampleCsv.csv");
         try (var myReader = new CsvReader(resource, schema, ',', ProgressReporter.none()))
         {
             myReader.skipLines(1);

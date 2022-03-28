@@ -19,10 +19,10 @@
 package com.telenav.kivakit.math.statistics;
 
 import com.telenav.kivakit.core.math.Average;
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.core.test.CoreUnitTest;
 import org.junit.Test;
 
-public class AverageTest extends UnitTest
+public class AverageTest extends CoreUnitTest
 {
     @Test
     public void testAverage_addAverages()

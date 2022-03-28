@@ -23,10 +23,10 @@ import com.telenav.kivakit.core.thread.Retry;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Bytes;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.spi.FileService;
 import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
-import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.kivakit.resource.writing.BaseWritableResource;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
@@ -139,7 +139,7 @@ public class HdfsFile extends BaseWritableResource implements FileService
     }
 
     @Override
-    public HdfsFolder parent()
+    public HdfsFolder parentService()
     {
         var parent = path().parent();
         if (parent != null)

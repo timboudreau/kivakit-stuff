@@ -18,11 +18,11 @@
 
 package com.telenav.kivakit.math.statistics;
 
-import com.telenav.kivakit.core.test.UnitTest;
+import com.telenav.kivakit.core.test.CoreUnitTest;
 import com.telenav.kivakit.core.value.level.Percent;
 import org.junit.Test;
 
-public class SuccessRateTest extends UnitTest
+public class SuccessRateTest extends CoreUnitTest
 {
     @Test
     public void test()

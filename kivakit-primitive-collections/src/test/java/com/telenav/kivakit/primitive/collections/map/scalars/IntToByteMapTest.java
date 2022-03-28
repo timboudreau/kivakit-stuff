@@ -18,7 +18,6 @@
 
 package com.telenav.kivakit.primitive.collections.map.scalars;
 
-import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollectionsUnitTest;
 import org.junit.Test;
@@ -26,8 +25,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.telenav.kivakit.core.test.UnitTest.Repeats.ALLOW_REPEATS;
-import static com.telenav.kivakit.core.test.UnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.test.CoreUnitTest.Repeats.ALLOW_REPEATS;
+import static com.telenav.kivakit.core.test.CoreUnitTest.Repeats.NO_REPEATS;
 
 public class IntToByteMapTest extends PrimitiveCollectionsUnitTest
 {
