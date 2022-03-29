@@ -30,8 +30,8 @@ import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.vm.JavaVirtualMachine;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.launcher.JarLauncher;
 import com.telenav.kivakit.network.core.Port;
-import com.telenav.kivakit.resource.JarLauncher;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.Service;
 import com.telenav.kivakit.service.registry.ServiceMetadata;
@@ -70,7 +70,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
-import static com.telenav.kivakit.resource.JarLauncher.ProcessType.DETACHED;
+import static com.telenav.kivakit.launcher.JarLauncher.ProcessType.DETACHED;
 import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverServicesRequest.SearchType.ALL_SERVICES;
 import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverServicesRequest.SearchType.APPLICATION_SERVICES;
 import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverServicesRequest.SearchType.SERVICES_OF_TYPE;
@@ -198,7 +198,7 @@ import static com.telenav.kivakit.service.registry.protocol.discover.DiscoverSer
  * @see Port
  * @see Result
  */
-@SuppressWarnings({ "InfiniteLoopStatement", "SpellCheckingInspection" })
+@SuppressWarnings({ "InfiniteLoopStatement", "SpellCheckingInspection", "unused", "UnusedReturnValue" })
 @UmlClassDiagram(diagram = DiagramClient.class)
 @UmlRelation(label = "returns", referent = Result.class)
 @UmlRelation(label = "discovers applications", referent = Application.Identifier.class)
@@ -323,8 +323,8 @@ public class ServiceRegistryClient extends BaseComponent
      * @param service The service to register
      * @return The registered service, bound to a port
      */
-    public @NotNull
-    Result<Service> register(Service service)
+    @SuppressWarnings("InfiniteLoopStatement")
+    public @NotNull Result<Service> register(Service service)
     {
         // Register the service
         trace("Registering with local registry: $", service);
