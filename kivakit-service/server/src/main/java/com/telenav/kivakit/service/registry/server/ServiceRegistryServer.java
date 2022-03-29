@@ -140,8 +140,6 @@ public class ServiceRegistryServer extends Server
     @Override
     protected void onRun()
     {
-        showCommandLine();
-
         // Determine what port to use for the server,
         var settings = require(ServiceRegistrySettings.class);
         var port = isNetwork()
