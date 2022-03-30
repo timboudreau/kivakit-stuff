@@ -173,9 +173,9 @@ public class SplitLongToLongMapTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedMap(MapTest test)
     {
         var map = map();
-        var keys = random().list(NO_REPEATS, Long.class, value -> !value.equals(map.nullLong()));
+        var keys = random().list(NO_REPEATS, Long.class, value -> !map.isEmpty(value));
         var values = random().list(ALLOW_REPEATS, Count.count(keys.size()), Long.class,
-                value -> !value.equals(map.nullLong()));
+                value -> !map.isEmpty(value));
         ensure(!keys.contains(map.nullLong()));
         putAll(map, keys, values);
         test.test(map, keys, values);

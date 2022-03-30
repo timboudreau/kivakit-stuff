@@ -8,6 +8,7 @@ import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.filesystem.File;
 import com.telenav.kivakit.filesystem.Folder;
+import com.telenav.kivakit.logs.server.ServerLogProject;
 import com.telenav.kivakit.resource.Extension;
 import com.telenav.kivakit.resource.serialization.SerializableObject;
 import com.telenav.kivakit.serialization.core.SerializationSession;
@@ -31,7 +32,7 @@ import static com.telenav.kivakit.serialization.core.SerializationSession.Sessio
 /**
  * @author jonathanl (shibo)
  */
-public class SessionStore extends BaseComponent
+@SuppressWarnings("unused") public class SessionStore extends BaseComponent
 {
     private static final Lazy<SessionStore> store = Lazy.of(SessionStore::new);
 
@@ -146,7 +147,7 @@ public class SessionStore extends BaseComponent
             {
                 var serializer = session();
                 serializer.open(output, RESOURCE, kivakitVersion());
-                serializer.write(new SerializableObject<>(entries, projectVersion()));
+                serializer.write(new SerializableObject<>(entries, project(ServerLogProject.class).projectVersion()));
                 serializer.close();
             }
             catch (IOException ignored)

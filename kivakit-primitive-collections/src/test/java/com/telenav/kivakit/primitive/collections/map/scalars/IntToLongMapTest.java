@@ -181,9 +181,9 @@ public class IntToLongMapTest extends PrimitiveCollectionsUnitTest
     {
         var map = map();
         var keys = random().list(NO_REPEATS, Integer.class,
-                value -> !value.equals(map.nullInt()));
+                value -> !map.isEmpty(value));
         var values = random().list(ALLOW_REPEATS, count(keys), Long.class,
-                value -> !value.equals(map.nullLong()));
+                value -> !map.isEmpty(value));
         ensureEqual(keys.size(), values.size());
         putAll(map, keys, values);
         test.test(map, keys, values);

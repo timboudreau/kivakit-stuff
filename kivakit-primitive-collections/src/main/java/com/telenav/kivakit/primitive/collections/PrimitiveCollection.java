@@ -159,7 +159,7 @@ import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
  * @see Debug
  * @see Sized
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveCollection.class)
+@SuppressWarnings({ "unused", "UnusedReturnValue" }) @UmlClassDiagram(diagram = DiagramPrimitiveCollection.class)
 public abstract class PrimitiveCollection implements
         KryoSerializable,
         NamedObject,
@@ -793,6 +793,7 @@ public abstract class PrimitiveCollection implements
         return -1;
     }
 
+
     public final int nullInt()
     {
         return nullInt;
@@ -921,9 +922,11 @@ public abstract class PrimitiveCollection implements
         return allocated(who, why, what, initialSize, -1);
     }
 
-    @SuppressWarnings("ConstantConditions")
-    protected final <T> T allocated(Object allocator, String why, T allocated,
-                                    int initialSize, int estimatedChildSize)
+    protected final <T> T allocated(Object allocator,
+                                    String why,
+                                    T allocated,
+                                    int initialSize,
+                                    int estimatedChildSize)
     {
         // If we want to log allocations and the size of the objects is big enough,
         if (logAllocations() && initialSize >= logAllocationsMinimumSize())
@@ -986,7 +989,7 @@ public abstract class PrimitiveCollection implements
                 stack = new AllocationStackTrace();
             }
 
-            // If there is a child (as in a multimap),
+            // If there is a child (as in a multi-map),
             if (estimatedChildSize != -1)
             {
                 // show both dimensions of the primitive collection

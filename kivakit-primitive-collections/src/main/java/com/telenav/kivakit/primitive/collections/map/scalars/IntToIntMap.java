@@ -36,6 +36,8 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
 
+import static com.telenav.kivakit.core.io.IO.println;
+
 /**
  * A map from int keys to int values. Supports typical map functions:
  * <p>
@@ -62,6 +64,7 @@ import java.util.Arrays;
  * @see PrimitiveMap
  * @see KryoSerializable
  */
+@SuppressWarnings({ "unused", "DuplicatedCode" })
 @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class IntToIntMap extends PrimitiveMap implements PrimitiveScalarMap
 {
@@ -397,7 +400,6 @@ public final class IntToIntMap extends PrimitiveMap implements PrimitiveScalarMa
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -411,7 +413,6 @@ public final class IntToIntMap extends PrimitiveMap implements PrimitiveScalarMa
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

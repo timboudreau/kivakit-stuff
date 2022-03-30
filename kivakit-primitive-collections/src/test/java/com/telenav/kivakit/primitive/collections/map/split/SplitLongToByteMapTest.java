@@ -172,8 +172,8 @@ public class SplitLongToByteMapTest extends PrimitiveCollectionsUnitTest
     private void withPopulatedMap(SplitLongToByteMapTest.MapTest test)
     {
         var map = map();
-        var keys = random().list(NO_REPEATS,  Long.class, value -> !value.equals(map.nullLong()));
-        var values = random().list(ALLOW_REPEATS,count(keys),  Byte.class, value -> !value.equals(map.nullByte()));
+        var keys = random().list(NO_REPEATS,  Long.class, value -> !map.isEmpty(value));
+        var values = random().list(ALLOW_REPEATS,count(keys),  Byte.class, value -> !map.isEmpty(value));
         putAll(map, keys, values);
         test.test(map, keys, values);
     }

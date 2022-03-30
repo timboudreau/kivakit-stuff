@@ -35,6 +35,7 @@ import com.telenav.kivakit.core.thread.Monitor;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
 import com.telenav.kivakit.core.value.count.Maximum;
+import com.telenav.kivakit.core.version.Version;
 import com.telenav.kivakit.core.version.VersionedObject;
 import com.telenav.kivakit.core.vm.JavaVirtualMachineHealth;
 import com.telenav.kivakit.core.vm.ShutdownHook;
@@ -61,6 +62,7 @@ import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.CLIENT;
 import static com.telenav.kivakit.serialization.core.SerializationSession.SessionType.SERVER;
 
+@SuppressWarnings("UnusedReturnValue")
 public class ServerLog extends BaseTextLog implements ComponentMixin
 {
     public static final ServiceType SERVER_LOG = new ServiceType("kivakit-server-log");
@@ -74,17 +76,17 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
         return singleton.get();
     }
 
-    private int port;
-
     private final LinkedList<LogEntry> entries = new LinkedList<>();
 
     private Maximum maximumEntries = Maximum.maximum(20_000);
 
+    private int port;
+
+    private final Monitor serializationLock = new Monitor();
+
     private SerializationSession serializer;
 
     private final Time started = Time.now();
-
-    private final Monitor serializationLock = new Monitor();
 
     private final Lazy<Session> session = Lazy.of(() ->
     {
@@ -256,7 +258,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                     serializer.open(output, SERVER, kivakit().kivakitVersion());
 
                     // then send the client our application name
-                    serializer.write(new SerializableObject<>(Application.get().name(), Application.get().projectVersion()));
+                    serializer.write(new SerializableObject<>(Application.get().name(), Application.get().version()));
 
                     // and synchronize sessions with it
                     synchronizeSessions(serializer, reporter);
@@ -283,7 +285,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
                                 synchronized (serializationLock)
                                 {
                                     // sends a health report on the JVM
-                                    serializer.write(new SerializableObject<>(new JavaVirtualMachineHealth(), Application.get().projectVersion()));
+                                    serializer.write(new SerializableObject<>(new JavaVirtualMachineHealth(), Application.get().version()));
                                 }
                             }
                             catch (Exception e)
@@ -299,5 +301,10 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
         {
             LOGGER.warning(e, "Socket connection failed");
         }
+    }
+
+    private Version projectVersion()
+    {
+        return project(ServerLogProject.class).projectVersion();
     }
 }
