@@ -37,7 +37,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @author jonathanl (shibo)
  * @see ByteCollection
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public interface ByteList extends
         ByteCollection,
         PrimitiveList,

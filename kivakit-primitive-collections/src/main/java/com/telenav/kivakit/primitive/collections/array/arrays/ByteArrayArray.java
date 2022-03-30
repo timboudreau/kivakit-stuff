@@ -46,7 +46,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @see ByteArray
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveArrayArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveArrayArray.class)
 public final class ByteArrayArray extends PrimitiveArrayArray
 {
     private IntArray indexes;

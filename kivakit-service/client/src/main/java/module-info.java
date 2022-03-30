@@ -7,10 +7,7 @@ open module kivakit.service.client
 
     // Jersey and XML binding
     requires jersey.client;
-    requires jersey.media.json.jackson;
-    requires com.fasterxml.jackson.core;
     requires java.ws.rs;
-    requires jakarta.activation;
     requires gson;
 
     // Module exports

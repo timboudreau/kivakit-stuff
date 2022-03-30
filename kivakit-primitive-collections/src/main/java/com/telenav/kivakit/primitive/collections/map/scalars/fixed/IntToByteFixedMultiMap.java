@@ -36,14 +36,14 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 import java.util.List;
 
 /**
- * A compact multimap which allows one-time put of a fixed list of values. Adding more values is not supported.
+ * A compact multi-map which allows one-time put of a fixed list of values. Adding more values is not supported.
  *
  * @author jonathanl (shibo)
  * @see ByteArray
  * @see PrimitiveMultiMap
  * @see KryoSerializable
  */
-@SuppressWarnings({ "ConstantConditions" })
+@SuppressWarnings({ "ConstantConditions", "DuplicatedCode" })
 @UmlClassDiagram(diagram = DiagramPrimitiveMultiMap.class)
 public final class IntToByteFixedMultiMap extends PrimitiveMultiMap implements PrimitiveScalarMultiMap
 {

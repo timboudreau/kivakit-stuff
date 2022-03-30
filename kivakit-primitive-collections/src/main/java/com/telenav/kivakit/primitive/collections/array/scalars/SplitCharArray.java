@@ -48,7 +48,7 @@ import java.util.Arrays;
  * @see CharList
  * @see CharArray
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
 public final class SplitCharArray extends PrimitiveSplitArray implements CharList
 {
     /** The child arrays */

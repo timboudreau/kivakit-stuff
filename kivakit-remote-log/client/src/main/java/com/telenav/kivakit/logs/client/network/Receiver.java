@@ -2,7 +2,6 @@ package com.telenav.kivakit.logs.client.network;
 
 import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.io.IO;
-import com.telenav.kivakit.core.messaging.Debug;
 import com.telenav.kivakit.core.messaging.repeaters.BaseRepeater;
 import com.telenav.kivakit.core.progress.ProgressReporter;
 import com.telenav.kivakit.core.registry.RegistryTrait;
@@ -40,8 +39,6 @@ public class Receiver extends BaseRepeater implements
         STOPPING,
         STOPPED
     }
-
-    private final Debug DEBUG = new Debug(this);
 
     private State state;
 

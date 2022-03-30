@@ -61,7 +61,7 @@ import java.util.Arrays;
  * @see PrimitiveMap
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class IntToLongMap extends PrimitiveMap implements PrimitiveScalarMap
 {
     /**
@@ -371,7 +371,6 @@ public final class IntToLongMap extends PrimitiveMap implements PrimitiveScalarM
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -385,7 +384,6 @@ public final class IntToLongMap extends PrimitiveMap implements PrimitiveScalarM
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

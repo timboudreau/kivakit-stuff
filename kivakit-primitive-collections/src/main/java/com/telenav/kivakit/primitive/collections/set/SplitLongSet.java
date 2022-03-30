@@ -54,7 +54,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see PrimitiveSet
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveSet.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveSet.class)
 public final class SplitLongSet extends PrimitiveSet implements LongIterable
 {
     /** The child sets */

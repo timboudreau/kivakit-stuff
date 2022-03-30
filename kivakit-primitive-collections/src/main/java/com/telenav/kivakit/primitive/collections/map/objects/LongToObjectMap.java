@@ -37,7 +37,7 @@ import java.util.Iterator;
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class LongToObjectMap<T> extends PrimitiveMap
 {
     /** The keys */
@@ -251,7 +251,7 @@ public final class LongToObjectMap<T> extends PrimitiveMap
         kryo.writeClassAndObject(output, values);
     }
 
-    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
+    @SuppressWarnings({ "unchecked" })
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -261,7 +261,7 @@ public final class LongToObjectMap<T> extends PrimitiveMap
         values = that.values;
     }
 
-    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
+    @SuppressWarnings({ "unchecked" })
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

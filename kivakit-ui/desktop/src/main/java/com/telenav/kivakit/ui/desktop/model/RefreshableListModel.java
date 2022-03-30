@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author jonathanl (shibo)
  */
-public class RefreshableListModel<E> extends AbstractListModel<E> implements Serializable
+@SuppressWarnings("DuplicatedCode") public class RefreshableListModel<E> extends AbstractListModel<E> implements Serializable
 {
     private final List<E> items;
 

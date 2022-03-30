@@ -1,8 +1,6 @@
 open module kivakit.security
 {
-    // KivaKit
-    requires transitive kivakit.conversion;
-    requires kivakit.core;
+    requires lexakai.annotations;
 
     // Module exports
     exports com.telenav.kivakit.security.digest.digesters;

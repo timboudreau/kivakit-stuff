@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author jonathanl (shibo)
  */
-public class RefreshableComboBoxModel<E> extends AbstractListModel<E> implements MutableComboBoxModel<E>, Serializable
+@SuppressWarnings("DuplicatedCode") public class RefreshableComboBoxModel<E> extends AbstractListModel<E> implements MutableComboBoxModel<E>, Serializable
 {
     private final List<E> items;
 

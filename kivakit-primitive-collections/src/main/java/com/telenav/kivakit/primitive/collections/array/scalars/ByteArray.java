@@ -48,7 +48,7 @@ import java.util.Arrays;
  * @see KryoSerializable
  * @see CompressibleCollection
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
 public class ByteArray extends PrimitiveArray implements ByteList
 {
     /** The underlying primitive data array */

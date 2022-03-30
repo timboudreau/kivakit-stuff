@@ -42,7 +42,7 @@ import java.util.List;
  * @see LongIterator
  * @see Quantizable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public class LongLinkedListStore extends PrimitiveListStore
 {
     /** List identifier to start a new list */

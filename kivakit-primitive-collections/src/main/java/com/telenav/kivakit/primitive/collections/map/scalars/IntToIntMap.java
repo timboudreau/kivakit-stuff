@@ -36,8 +36,6 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
 
-import static com.telenav.kivakit.core.io.IO.println;
-
 /**
  * A map from int keys to int values. Supports typical map functions:
  * <p>

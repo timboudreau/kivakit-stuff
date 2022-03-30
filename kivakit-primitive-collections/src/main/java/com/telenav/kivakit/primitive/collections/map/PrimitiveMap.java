@@ -47,7 +47,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
 import static com.telenav.kivakit.core.ensure.Ensure.illegalState;
 import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
 
-@SuppressWarnings("UnusedReturnValue")
+@SuppressWarnings({ "UnusedReturnValue", "DuplicatedCode" })
 @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public abstract class PrimitiveMap extends PrimitiveCollection
 {

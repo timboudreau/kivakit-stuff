@@ -58,7 +58,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  * @see PrimitiveMap
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class StringToIntMap extends PrimitiveMap
 {
     /** The keys */
@@ -301,7 +301,6 @@ public final class StringToIntMap extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -315,7 +314,6 @@ public final class StringToIntMap extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

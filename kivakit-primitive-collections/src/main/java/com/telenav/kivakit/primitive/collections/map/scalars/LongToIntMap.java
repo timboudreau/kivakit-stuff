@@ -370,7 +370,6 @@ public final class LongToIntMap extends PrimitiveMap implements PrimitiveScalarM
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -384,7 +383,6 @@ public final class LongToIntMap extends PrimitiveMap implements PrimitiveScalarM
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

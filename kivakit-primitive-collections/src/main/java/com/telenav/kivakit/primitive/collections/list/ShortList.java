@@ -47,7 +47,7 @@ import java.util.List;
  * @see Sized
  * @see ShortIterable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public interface ShortList extends ShortCollection, PrimitiveList
 {
     /**

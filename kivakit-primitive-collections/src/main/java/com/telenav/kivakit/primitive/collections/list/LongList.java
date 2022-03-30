@@ -36,7 +36,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @author jonathanl (shibo)
  * @see LongCollection
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public interface LongList extends LongCollection, PrimitiveList
 {
     /**

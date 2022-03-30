@@ -36,7 +36,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @author jonathanl (shibo)
  * @see CharCollection
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveList.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveList.class)
 public interface CharList extends CharCollection, PrimitiveList
 {
     /**

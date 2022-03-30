@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * A map from long -&gt; list of longs.
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMultiMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMultiMap.class)
 public final class LongToLongMultiMap extends PrimitiveMultiMap implements
         LongMultiMap,
         PrimitiveScalarMultiMap

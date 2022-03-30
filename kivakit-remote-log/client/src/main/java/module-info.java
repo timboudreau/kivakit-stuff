@@ -8,15 +8,11 @@ open module kivakit.logs.client
     // KivaKit
     requires kivakit.ui.desktop;
     requires kivakit.logs.server;
-    requires kivakit.primitive.collections;
     requires kivakit.service.client;
     requires kivakit.network.core;
 
-    requires org.jetbrains.annotations;
-
     // Java
     requires java.desktop;
-    requires java.prefs;
     requires kivakit.serialization.core;
 
     // Module exports

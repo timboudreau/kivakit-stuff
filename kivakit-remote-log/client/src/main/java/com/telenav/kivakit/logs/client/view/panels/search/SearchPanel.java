@@ -29,7 +29,7 @@ import static com.telenav.kivakit.ui.desktop.layout.Spacing.MANUAL_SPACING;
 /**
  * @author jonathanl (shibo)
  */
-public class SearchPanel extends KivaKitPanel
+@SuppressWarnings("DuplicatedCode") public class SearchPanel extends KivaKitPanel
 {
     public static final String ALL_THREADS = "All Threads";
 

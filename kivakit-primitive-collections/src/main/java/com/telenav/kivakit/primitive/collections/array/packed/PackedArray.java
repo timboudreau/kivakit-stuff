@@ -150,7 +150,6 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     public void copySettings(PrimitiveCollection uncast)
     {

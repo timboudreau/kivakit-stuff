@@ -57,7 +57,7 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
  * @see SplitPrimitiveMap
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class SplitLongToByteMap extends SplitPrimitiveMap implements PrimitiveScalarMap
 {
     private LongToByteMap[] children;

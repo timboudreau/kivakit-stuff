@@ -266,7 +266,6 @@ public final class LongSet extends PrimitiveSet implements LongCollection
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -278,7 +277,6 @@ public final class LongSet extends PrimitiveSet implements LongCollection
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("SpellCheckingInspection")
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

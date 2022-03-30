@@ -47,7 +47,7 @@ import java.util.Arrays;
  * @see ByteList
  * @see ByteArray
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
 public final class SplitByteArray extends PrimitiveSplitArray implements ByteList
 {
     /** The child arrays */

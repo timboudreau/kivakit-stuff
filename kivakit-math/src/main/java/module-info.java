@@ -1,7 +1,7 @@
 open module kivakit.math
 {
     // KivaKit
-    requires kivakit.collections;
+    requires kivakit.core;
 
     // Module exports
     exports com.telenav.kivakit.math.statistics;

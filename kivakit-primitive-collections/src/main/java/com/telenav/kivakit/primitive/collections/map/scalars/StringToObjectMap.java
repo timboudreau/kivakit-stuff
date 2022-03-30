@@ -60,7 +60,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.fail;
  * @see PrimitiveMap
  * @see KryoSerializable
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class StringToObjectMap<T> extends PrimitiveMap
 {
     /** The keys */
@@ -343,7 +343,7 @@ public final class StringToObjectMap<T> extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
+    @SuppressWarnings({ "unchecked" })
     @Override
     protected void copy(PrimitiveMap uncast)
     {
@@ -356,7 +356,7 @@ public final class StringToObjectMap<T> extends PrimitiveMap
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings({ "unchecked", "SpellCheckingInspection" })
+    @SuppressWarnings({ "unchecked" })
     @Override
     protected void copyEntries(PrimitiveMap uncast, ProgressReporter reporter)
     {

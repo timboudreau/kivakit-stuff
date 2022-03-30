@@ -21,7 +21,6 @@ package com.telenav.kivakit.data.compression.codecs.huffman.tree;
 import com.telenav.kivakit.conversion.StringConverter;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.map.CountMap;
-import com.telenav.kivakit.core.messaging.Listener;
 import com.telenav.kivakit.core.string.Strings;
 import com.telenav.kivakit.core.value.count.Count;
 import com.telenav.kivakit.core.value.count.Maximum;
@@ -49,7 +48,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensure;
  * <p>
  * Once a set of symbols has been constructed, it can be converted to a {@link PropertyMap} object with {@link
  * #asProperties(StringConverter, Function)}  and saved to a file with {@link PropertyMap#save(WritableResource)}. The
- * properties can later be loaded with {@link PropertyMap#load(Listener, Resource)} and passed to {@link
+ * properties can later be loaded with {@link PropertyMap#load(Resource)} and passed to {@link
  * #load(PropertyMap, Object, StringConverter)} along with the escape symbol and a converter that can convert property
  * keys into symbols.
  * <p>

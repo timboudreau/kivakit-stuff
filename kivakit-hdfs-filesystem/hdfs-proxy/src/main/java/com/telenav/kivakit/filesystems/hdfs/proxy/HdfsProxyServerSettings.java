@@ -43,15 +43,15 @@ public class HdfsProxyServerSettings
     private UserGroupInformation user;
 
     /** Container of HDFS site configuration resources */
-    private ResourceFolder configurationFolder;
+    private ResourceFolder<?> configurationFolder;
 
-    public ResourceFolder configurationFolder()
+    public ResourceFolder<?> configurationFolder()
     {
         return configurationFolder;
     }
 
     @KivaKitConverted(ResourceFolder.Converter.class)
-    public HdfsProxyServerSettings configurationFolder(ResourceFolder configuration)
+    public HdfsProxyServerSettings configurationFolder(ResourceFolder<?> configuration)
     {
         configurationFolder = configuration;
         return this;

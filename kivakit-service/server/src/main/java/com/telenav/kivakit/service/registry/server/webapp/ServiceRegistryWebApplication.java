@@ -32,7 +32,7 @@ import static org.apache.wicket.RuntimeConfigurationType.DEVELOPMENT;
  *
  * @author jonathanl (shibo)
  */
-@LexakaiJavadoc(complete = true)
+@SuppressWarnings("DuplicatedCode") @LexakaiJavadoc(complete = true)
 public class ServiceRegistryWebApplication extends WebApplication
 {
     @Override

@@ -54,7 +54,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see SplitByteArray
  * @see SplitLongArray
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveSplitArray.class)
 public final class SplitPackedArray extends PrimitiveSplitArray implements
         LongList,
         PackedPrimitiveArray

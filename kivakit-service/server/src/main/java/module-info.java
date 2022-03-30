@@ -1,18 +1,12 @@
 open module kivakit.service.server
 {
     // KivaKit
-    requires kivakit.microservice;
+    requires kivakit.application;
     requires kivakit.service.client;
     requires kivakit.web.jetty;
     requires kivakit.web.wicket;
     requires kivakit.web.jersey;
     requires kivakit.web.swagger;
-
-    // Java
-    requires java.prefs;
-
-    // Serialization
-    requires org.danekja.jdk.serializable.functional;
 
     // Swagger annotations
     requires io.swagger.v3.oas.annotations;

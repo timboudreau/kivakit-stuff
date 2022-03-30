@@ -20,7 +20,6 @@ package com.telenav.kivakit.service.viewer;
 
 import com.telenav.kivakit.application.Application;
 import com.telenav.kivakit.commandline.SwitchParser;
-import com.telenav.kivakit.core.KivaKit;
 import com.telenav.kivakit.core.collections.list.ObjectList;
 import com.telenav.kivakit.core.collections.list.StringList;
 import com.telenav.kivakit.core.collections.set.ObjectSet;

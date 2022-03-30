@@ -53,7 +53,7 @@ import java.util.Arrays;
  * @see KryoSerializable
  * @see CompressibleCollection
  */
-@UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
+@SuppressWarnings("DuplicatedCode") @UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
 public final class ShortArray extends PrimitiveArray implements ShortList
 {
     /**
