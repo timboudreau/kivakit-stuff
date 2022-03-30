@@ -32,7 +32,9 @@ import static com.telenav.kivakit.serialization.core.SerializationSession.Sessio
 /**
  * @author jonathanl (shibo)
  */
-@SuppressWarnings("unused") public class SessionStore extends BaseComponent
+@SuppressWarnings("unused")
+public class
+SessionStore extends BaseComponent
 {
     private static final Lazy<SessionStore> store = Lazy.of(SessionStore::new);
 
