@@ -28,11 +28,10 @@ import com.telenav.kivakit.core.thread.KivaKitThread;
 import com.telenav.kivakit.core.thread.Monitor;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Time;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.proxy.converters.UserGroupInformationConverter;
 import com.telenav.kivakit.filesystems.hdfs.proxy.lexakai.DiagramHdfsProxy;
-import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
 import org.apache.hadoop.fs.FileStatus;
@@ -62,6 +61,7 @@ import java.util.Map;
 
 import static com.telenav.kivakit.core.collections.set.ObjectSet.objectSet;
 import static com.telenav.kivakit.core.ensure.Ensure.fail;
+import static com.telenav.kivakit.resource.FileName.parseFileName;
 
 /**
  * This server application is compiled into an executable JAR file that is launched by the *kivakit-filesystems-hdfs*
@@ -401,7 +401,7 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
             FilePath file;
             do
             {
-                file = path.file(FileName.parse(this, baseName).withSuffix("-" + sequenceNumber + ".tmp"));
+                file = path.file(parseFileName(this, baseName).withSuffix("-" + sequenceNumber + ".tmp"));
                 sequenceNumber++;
             }
             while (exists(file.toString()));
@@ -429,7 +429,7 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
             FilePath folder;
             do
             {
-                folder = path.withChild(FileName.parse(this, baseName).withSuffix("-" + sequenceNumber + ".tmp").name());
+                folder = path.withChild(parseFileName(this, baseName).withSuffix("-" + sequenceNumber + ".tmp").name());
                 sequenceNumber++;
             }
             while (exists(pathAsString));

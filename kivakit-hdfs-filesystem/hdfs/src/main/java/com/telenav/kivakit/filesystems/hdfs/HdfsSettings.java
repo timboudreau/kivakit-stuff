@@ -59,7 +59,7 @@ public class HdfsSettings
     private String clusterName;
 
     /** Container of HDFS site configuration resources */
-    private ResourceFolder configurationFolder;
+    private ResourceFolder<?> configurationFolder;
 
     public String clusterName()
     {
@@ -74,7 +74,7 @@ public class HdfsSettings
     }
 
     @KivaKitConverted(ResourceFolder.Converter.class)
-    public HdfsSettings configurationFolder(ResourceFolder configuration)
+    public HdfsSettings configurationFolder(ResourceFolder<?> configuration)
     {
         configurationFolder = configuration;
         return this;
@@ -101,7 +101,7 @@ public class HdfsSettings
         return this;
     }
 
-    ResourceFolder configurationFolder()
+    ResourceFolder<?> configurationFolder()
     {
         return configurationFolder;
     }

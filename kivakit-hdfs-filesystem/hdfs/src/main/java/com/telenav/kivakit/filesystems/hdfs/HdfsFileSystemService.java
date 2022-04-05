@@ -19,6 +19,7 @@
 package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.filesystem.File;
+import com.telenav.kivakit.filesystem.FilePath;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystem.spi.DiskService;
 import com.telenav.kivakit.filesystem.spi.FileService;
@@ -26,7 +27,6 @@ import com.telenav.kivakit.filesystem.spi.FileSystemService;
 import com.telenav.kivakit.filesystem.spi.FolderService;
 import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.resource.Resource;
-import com.telenav.kivakit.resource.path.FilePath;
 import com.telenav.lexakai.annotations.LexakaiJavadoc;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 import com.telenav.lexakai.annotations.associations.UmlRelation;
@@ -49,6 +49,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.unsupported;
  * @see File
  * @see Folder
  */
+@SuppressWarnings("NullableProblems")
 @UmlClassDiagram(diagram = DiagramHdfs.class)
 @UmlNotPublicApi
 @LexakaiJavadoc(complete = true)

@@ -19,13 +19,12 @@
 package com.telenav.kivakit.filesystems.hdfs;
 
 import com.telenav.kivakit.core.test.SlowTest;
-import com.telenav.kivakit.test.UnitTest
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.network.core.EmailAddress;
 import com.telenav.kivakit.network.core.NetworkPath;
 import com.telenav.kivakit.network.http.HttpNetworkLocation;
-import com.telenav.kivakit.resource.Package;
 import com.telenav.kivakit.settings.Settings;
+import com.telenav.kivakit.test.UnitTest;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -38,6 +37,7 @@ public class HdfsFileSystemTest extends UnitTest
     /**
      * The navhacluster doesn't seem to work from the EU, so we can turn off the relevant tests here
      */
+    @SuppressWarnings("SpellCheckingInspection")
     private static final boolean TEST_NAVTEAM_CLUSTER = false;
 
     /** Only run the tests about one in every ten times to speed up the build */
@@ -49,7 +49,7 @@ public class HdfsFileSystemTest extends UnitTest
         var kivakitVersion = kivakitVersion();
         var settings = new HdfsSettings()
                 .clusterName("cluster1ns")
-                .configurationFolder(Package.packageFrom(this, getClass(), "settings/cluster1ns"))
+                .configurationFolder(relativePackage("settings/cluster1ns"))
                 .contactEmail(EmailAddress.parseEmail(this, "jonathanl@telenav.com"))
                 .username("automation")
                 .proxyJar(new HttpNetworkLocation(NetworkPath.parseNetworkPath(this,
@@ -130,6 +130,7 @@ public class HdfsFileSystemTest extends UnitTest
         }
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private Folder navteamHdfs()
     {
         return Folder.parse(this, "hdfs://navhacluster");

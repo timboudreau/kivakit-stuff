@@ -28,9 +28,8 @@ import com.telenav.kivakit.core.vm.ShutdownHook;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.filesystems.hdfs.lexakai.DiagramHdfs;
 import com.telenav.kivakit.filesystems.hdfs.proxy.spi.HdfsProxy;
+import com.telenav.kivakit.launcher.JarLauncher;
 import com.telenav.kivakit.network.core.Port;
-import com.telenav.kivakit.resource.path.FileName;
-import com.telenav.kivakit.resource.JarLauncher;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceMetadata;
 import com.telenav.kivakit.service.registry.ServiceType;
@@ -45,7 +44,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.LAST;
-import static com.telenav.kivakit.resource.JarLauncher.ProcessType.CHILD;
+import static com.telenav.kivakit.launcher.JarLauncher.ProcessType.CHILD;
+import static com.telenav.kivakit.resource.FileName.parseFileName;
 
 /**
  * <b>Not public API</b>
@@ -62,6 +62,7 @@ import static com.telenav.kivakit.resource.JarLauncher.ProcessType.CHILD;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 @UmlNotPublicApi
 @UmlClassDiagram(diagram = DiagramHdfs.class)
 @UmlRelation(label = "configures with", referent = HdfsSettings.class)
@@ -77,11 +78,11 @@ public class HdfsProxyClient extends BaseComponent
         return client.get();
     }
 
-    @UmlAggregation
-    private HdfsProxy proxy;
-
     @UmlAggregation(label = "data access")
     private Port dataPort;
+
+    @UmlAggregation
+    private HdfsProxy proxy;
 
     @UmlAggregation(label = "RMI")
     private Port rmiObjectPort;
@@ -97,7 +98,7 @@ public class HdfsProxyClient extends BaseComponent
 
     public Folder logFolder()
     {
-        return Folder.kivakitTemporary().folder(FileName.parse(this, "hdfs-proxy-log")).mkdirs();
+        return Folder.kivakitTemporary().folder(parseFileName(this, "hdfs-proxy-log")).mkdirs();
     }
 
     public HdfsProxy proxy()

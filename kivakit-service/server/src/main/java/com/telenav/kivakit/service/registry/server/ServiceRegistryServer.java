@@ -24,7 +24,7 @@ import com.telenav.kivakit.commandline.SwitchParsers;
 import com.telenav.kivakit.core.collections.set.ObjectSet;
 import com.telenav.kivakit.core.language.reflection.Type;
 import com.telenav.kivakit.core.object.Lazy;
-import com.telenav.kivakit.resource.Package;
+import com.telenav.kivakit.resource.packages.Package;
 import com.telenav.kivakit.resource.ResourceFolder;
 import com.telenav.kivakit.service.registry.Scope;
 import com.telenav.kivakit.service.registry.ServiceRegistry;
@@ -61,6 +61,7 @@ import static com.telenav.kivakit.core.ensure.Ensure.ensureNotNull;
  *
  * @author jonathanl (shibo)
  */
+@SuppressWarnings("unused")
 @UmlClassDiagram(diagram = DiagramServer.class)
 @UmlRelation(label = "persists to", referent = ServiceRegistryStore.class)
 @UmlRelation(label = "creates", referent = ServiceRegistry.class)
@@ -139,8 +140,6 @@ public class ServiceRegistryServer extends Server
     @Override
     protected void onRun()
     {
-        showCommandLine();
-
         // Determine what port to use for the server,
         var settings = require(ServiceRegistrySettings.class);
         var port = isNetwork()
@@ -167,10 +166,10 @@ public class ServiceRegistryServer extends Server
      * annotations. For example, a microservice might want to include an OAS .yaml file. If this method is not
      * overridden, the default folder will be the "assets" sub-package of the rest application's package.
      */
-    protected ResourceFolder openApiAssetsFolder()
+    protected ResourceFolder<?> openApiAssetsFolder()
     {
         var type = ensureNotNull(Type.forName("com.telenav.kivakit.web.swagger.SwaggerJettyPlugin"));
-        return Package.packageFrom(this, type.type(), "assets/openapi");
+        return Package.parsePackage(this, type.type(), "assets/openapi");
     }
 
     @Override
