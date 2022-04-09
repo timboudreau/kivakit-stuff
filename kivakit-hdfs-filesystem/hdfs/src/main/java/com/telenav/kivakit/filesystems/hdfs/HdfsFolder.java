@@ -205,7 +205,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     @Override
     public Time lastModified()
     {
-        return retry(() -> Time.milliseconds(proxy().lastModified(pathAsString())))
+        return retry(() -> Time.epochMilliseconds(proxy().lastModified(pathAsString())))
                 .orDefault(null, "Unable to determine modification time of $", this);
     }
 
@@ -231,7 +231,6 @@ public class HdfsFolder extends BaseComponent implements FolderService
     {
         return retry(() -> matching(proxy().nestedFiles(pathAsString()), matchAll())).orDefault(new ArrayList<>(), "Unable to locate files in $", this);
     }
-
 
     @Override
     public List<FileService> nestedFiles(Matcher<FilePath> matcher)

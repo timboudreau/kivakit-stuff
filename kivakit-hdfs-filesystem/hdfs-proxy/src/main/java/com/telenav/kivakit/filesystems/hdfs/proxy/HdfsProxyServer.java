@@ -84,14 +84,6 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
             .required()
             .build();
 
-    private final SwitchParser<UserGroupInformation> USERNAME = SwitchParser
-            .builder(UserGroupInformation.class)
-            .name("username")
-            .description("HDFS remote user name")
-            .converter(new UserGroupInformationConverter(this))
-            .required()
-            .build();
-
     private final SwitchParser<Integer> DATA_PORT = SwitchParsers
             .integerSwitchParser(this, "data-port", "The port to use when responding to data requests")
             .required()
@@ -102,16 +94,24 @@ public class HdfsProxyServer extends Server implements com.telenav.kivakit.files
             .required()
             .build();
 
-    private Time lastRequest = Time.now();
+    private final SwitchParser<UserGroupInformation> USERNAME = SwitchParser
+            .builder(UserGroupInformation.class)
+            .name("username")
+            .description("HDFS remote user name")
+            .converter(new UserGroupInformationConverter(this))
+            .required()
+            .build();
 
     private final Map<StreamHandle, InputStream> hdfsIns = new HashMap<>();
 
     private final Map<StreamHandle, OutputStream> hdfsOuts = new HashMap<>();
 
+    private Time lastRequest = Time.now();
+
     public HdfsProxyServer()
     {
         // Shut the proxy server down when it hasn't been used in a while to prevent stuck proxy servers
-        Duration.minutes(1).repeat(timer ->
+        Duration.minutes(1).every(timer ->
         {
             if (lastRequest.elapsedSince().isGreaterThan(Duration.minutes(5)))
             {
