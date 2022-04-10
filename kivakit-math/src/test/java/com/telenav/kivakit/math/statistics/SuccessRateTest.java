@@ -29,10 +29,10 @@ public class SuccessRateTest extends CoreUnitTest
     {
         var rate = new SuccessRate();
         rate.attempt();
-        ensureEqual(Percent.of(0), rate.successRate());
+        ensureEqual(Percent.percent(0), rate.successRate());
         rate.success();
-        ensureEqual(Percent.of(100), rate.successRate());
+        ensureEqual(Percent.percent(100), rate.successRate());
         rate.attempt();
-        ensureEqual(Percent.of(50), rate.successRate());
+        ensureEqual(Percent.percent(50), rate.successRate());
     }
 }

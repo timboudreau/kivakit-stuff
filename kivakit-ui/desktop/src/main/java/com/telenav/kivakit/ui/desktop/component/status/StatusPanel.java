@@ -77,7 +77,7 @@ public class StatusPanel extends JPanel implements
         var style = theme().styleMessage(message.getClass());
         if (message instanceof Problem)
         {
-            status(Duration.MAXIMUM, style, message.description());
+            status(Duration.FOREVER, style, message.description());
         }
         if (message instanceof Warning)
         {
@@ -125,7 +125,7 @@ public class StatusPanel extends JPanel implements
 
     private void linger(Duration stayFor, String formatted, Timer timer)
     {
-        if (stayFor != null && !stayFor.equals(Duration.MAXIMUM))
+        if (stayFor != null && !stayFor.equals(Duration.FOREVER))
         {
             timer.schedule(new TimerTask()
             {

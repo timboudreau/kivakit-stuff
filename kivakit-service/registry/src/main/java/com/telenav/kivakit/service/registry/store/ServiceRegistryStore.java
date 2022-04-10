@@ -70,7 +70,7 @@ public class ServiceRegistryStore extends BaseComponent
         if (file.exists())
         {
             // and if the data is not too old
-            var lastModified = file.lastModified();
+            var lastModified = file.modifiedAt();
             var expirationTime = settings().serviceRegistryStoreExpirationTime();
             if (lastModified.elapsedSince().isLessThan(expirationTime))
             {
@@ -79,21 +79,21 @@ public class ServiceRegistryStore extends BaseComponent
                 try (var input = file.openForReading())
                 {
                     // create a serialization object and read the serialized registry
-                   try (var session = new KryoSerializationSession(new CoreKryoTypes()))
-                   {
-                       session.open(input);
-                       var object = session.read();
-                       if (object != null)
-                       {
-                           // then unregister the loaded class with the Debug class so the debug flag
-                           // is re-considered for the newly loaded instance
-                           Debug.unregister(object.object().getClass());
+                    try (var session = new KryoSerializationSession(new CoreKryoTypes()))
+                    {
+                        session.open(input);
+                        var object = session.read();
+                        if (object != null)
+                        {
+                            // then unregister the loaded class with the Debug class so the debug flag
+                            // is re-considered for the newly loaded instance
+                            Debug.unregister(object.object().getClass());
 
-                           // and add the listener to the registry.
-                           trace("Loaded service registry");
-                           return listenTo((ServiceRegistry) object.object());
-                       }
-                   }
+                            // and add the listener to the registry.
+                            trace("Loaded service registry");
+                            return listenTo((ServiceRegistry) object.object());
+                        }
+                    }
                 }
                 catch (Exception e)
                 {

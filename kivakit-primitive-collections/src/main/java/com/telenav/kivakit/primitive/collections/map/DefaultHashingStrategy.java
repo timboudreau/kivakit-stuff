@@ -28,31 +28,31 @@ import com.telenav.lexakai.annotations.UmlClassDiagram;
 @UmlClassDiagram(diagram = DiagramPrimitiveMap.class)
 public final class DefaultHashingStrategy implements HashingStrategy
 {
-    public static HashingStrategy DEFAULT = of(Estimate._1024);
+    public static HashingStrategy DEFAULT = defaultHashingStrategy(Estimate._1024);
 
-    public static Percent defaultMaximumOccupancy()
-    {
-        return Percent.of(70);
-    }
-
-    public static DefaultHashingStrategy of(Estimate capacity)
-    {
-        return of(capacity, defaultMaximumOccupancy());
-    }
-
-    public static DefaultHashingStrategy of(Estimate capacity, Percent maximumOccupancy)
+    public static DefaultHashingStrategy defaultHashingStrategy(Estimate capacity, Percent maximumOccupancy)
     {
         return new DefaultHashingStrategy(capacity, maximumOccupancy);
     }
+
+    public static DefaultHashingStrategy defaultHashingStrategy(Estimate capacity)
+    {
+        return defaultHashingStrategy(capacity, defaultMaximumOccupancy());
+    }
+
+    public static Percent defaultMaximumOccupancy()
+    {
+        return Percent.percent(70);
+    }
+
+    /** The maximum occupancy, used internally when increasing capacity */
+    private Percent maximumOccupancy;
 
     /** The capacity to allocate */
     private Estimate recommendedSize;
 
     /** The threshold at which we should resize */
     private Count rehashThreshold;
-
-    /** The maximum occupancy, used internally when increasing capacity */
-    private Percent maximumOccupancy;
 
     private DefaultHashingStrategy()
     {

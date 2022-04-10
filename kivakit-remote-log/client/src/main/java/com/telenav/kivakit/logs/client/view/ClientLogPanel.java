@@ -61,6 +61,7 @@ import java.awt.Toolkit;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.telenav.kivakit.core.time.Duration.FOREVER;
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 import static com.telenav.kivakit.ui.desktop.component.panel.output.OutputPanel.Type.FIXED_WIDTH;
 import static com.telenav.kivakit.ui.desktop.component.progress.ProgressPanel.CompletionStatus.CANCELLED;
@@ -79,27 +80,27 @@ public class ClientLogPanel extends KivaKitPanel
         LogsClientTheme.initialize();
     }
 
+    private Session connectedSession;
+
+    private ConnectionPanel connectionPanel;
+
+    private final Connector connector;
+
+    private OutputPanel consolePanel;
+
     private final ClientLogFrame frame;
 
     private final ClientLog log;
 
-    private ConnectionPanel connectionPanel;
-
-    private SessionPanel sessionPanel;
+    private final Receiver receiver;
 
     private SearchPanel searchPanel;
 
-    private TablePanel tablePanel;
-
-    private OutputPanel consolePanel;
+    private SessionPanel sessionPanel;
 
     private StatusPanel statusPanel;
 
-    private final Connector connector;
-
-    private final Receiver receiver;
-
-    private Session connectedSession;
+    private TablePanel tablePanel;
 
     public ClientLogPanel(ClientLogFrame frame, ClientLog log, Maximum maximumEntries)
     {
@@ -291,7 +292,7 @@ public class ClientLogPanel extends KivaKitPanel
             {
                 if (status == CANCELLED)
                 {
-                    receiver.stop();
+                    receiver.stop(FOREVER);
                 }
             });
             progress.setVisible(true);

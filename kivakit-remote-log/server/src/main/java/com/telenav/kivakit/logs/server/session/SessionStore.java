@@ -43,9 +43,9 @@ SessionStore extends BaseComponent
         return store.get();
     }
 
-    private Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
-
     private final Map<Session, LinkedList<LogEntry>> sessionNameToEntries = new HashMap<>();
+
+    private Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
 
     private SessionStore()
     {
@@ -129,7 +129,7 @@ SessionStore extends BaseComponent
                 var time = new LocalDateTimeConverter(this).convert(parts[1]);
                 if (!Strings.isEmpty(name) && time != null)
                 {
-                    sessions.add(new Session(name, time, file.sizeInBytes()));
+                    sessions.add(new Session(name, time.asTime(), file.sizeInBytes()));
                 }
             }
         }

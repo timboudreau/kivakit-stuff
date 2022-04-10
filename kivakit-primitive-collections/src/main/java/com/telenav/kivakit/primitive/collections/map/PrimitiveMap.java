@@ -166,8 +166,8 @@ public abstract class PrimitiveMap extends PrimitiveCollection
             // We temporarily use a maximum occupancy of 100% during rehashing  to ensure that
             // adding elements during the rehash for trimming a collection does not cause another resize.
             var maximumOccupancy = hashingStrategy().maximumOccupancy();
-            rehash(DefaultHashingStrategy.of(count().asEstimate(), Percent._100));
-            hashingStrategy(DefaultHashingStrategy.of(count().asEstimate(), maximumOccupancy));
+            rehash(DefaultHashingStrategy.defaultHashingStrategy(count().asEstimate(), Percent._100));
+            hashingStrategy(DefaultHashingStrategy.defaultHashingStrategy(count().asEstimate(), maximumOccupancy));
             return Method.RESIZE;
         }
 
@@ -178,7 +178,7 @@ public abstract class PrimitiveMap extends PrimitiveCollection
     @MustBeInvokedByOverriders
     public void onInitialize()
     {
-        hashingStrategy = DefaultHashingStrategy.of(initialSize());
+        hashingStrategy = DefaultHashingStrategy.defaultHashingStrategy(initialSize());
         initialSize(hashingStrategy.recommendedSize());
         rehashThreshold = hashingStrategy.rehashThreshold().asInt();
 

@@ -81,6 +81,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Matching.SUBCLASS;
 import static com.telenav.kivakit.core.messaging.context.CallStack.Proximity.IMMEDIATE;
 import static com.telenav.kivakit.core.project.Project.resolveProject;
+import static com.telenav.kivakit.core.time.Duration.FOREVER;
 import static com.telenav.kivakit.core.vm.ShutdownHook.Order.FIRST;
 
 /**
@@ -206,7 +207,7 @@ public abstract class PrimitiveCollection implements
             }
 
             DEBUG.trace("Compressed collections by $:\n$", Bytes.bytes(totalDelta), compressionRecords.bulleted());
-            LOGGER.flush();
+            LOGGER.flush(FOREVER);
         });
     }
 
@@ -247,14 +248,6 @@ public abstract class PrimitiveCollection implements
      */
     private static class CompressionRecord implements Comparable<CompressionRecord>
     {
-        final Class<?> type;
-
-        final String objectName;
-
-        final int before;
-
-        final int after;
-
         CompressionRecord(Class<?> type, String objectName, int before, int after)
         {
             this.type = type;
@@ -312,6 +305,14 @@ public abstract class PrimitiveCollection implements
         {
             return type + "-" + objectName;
         }
+
+        final Class<?> type;
+
+        final String objectName;
+
+        final int before;
+
+        final int after;
     }
 
     /** Any compression method that has been applied to this collection (see {@link CompressibleCollection}) */
@@ -502,21 +503,6 @@ public abstract class PrimitiveCollection implements
         return compressionMethod;
     }
 
-    /**
-     * Copies the sizes and null values from the given collection
-     */
-    @MustBeInvokedByOverriders
-    public void copySettings(PrimitiveCollection that)
-    {
-        initialSize = that.initialSize;
-        maximumSize = that.maximumSize;
-
-        initialChildSize = that.initialChildSize;
-        maximumChildSize = that.maximumChildSize;
-
-        copyNullValues(that);
-    }
-
     public void copyNullValues(PrimitiveCollection that)
     {
         hasNullLong = that.hasNullLong;
@@ -530,6 +516,21 @@ public abstract class PrimitiveCollection implements
         nullShort = that.nullShort;
         nullChar = that.nullChar;
         nullByte = that.nullByte;
+    }
+
+    /**
+     * Copies the sizes and null values from the given collection
+     */
+    @MustBeInvokedByOverriders
+    public void copySettings(PrimitiveCollection that)
+    {
+        initialSize = that.initialSize;
+        maximumSize = that.maximumSize;
+
+        initialChildSize = that.initialChildSize;
+        maximumChildSize = that.maximumChildSize;
+
+        copyNullValues(that);
     }
 
     /**
@@ -792,7 +793,6 @@ public abstract class PrimitiveCollection implements
     {
         return -1;
     }
-
 
     public final int nullInt()
     {

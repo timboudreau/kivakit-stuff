@@ -34,6 +34,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Shape;
 
+import static com.telenav.kivakit.core.value.level.Percent.percent;
 import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
 
 /**
@@ -58,6 +59,7 @@ import static com.telenav.kivakit.ui.desktop.theme.KivaKitColors.TRANSPARENT;
  *     <li>{@link #withTextFontSize(int)} - A copy of this style with the given font size</li>
  * </ul>
  */
+@SuppressWarnings("UnusedReturnValue")
 public class Style
 {
     /**
@@ -68,15 +70,15 @@ public class Style
         return new Style();
     }
 
-    // Filling
-    private Color fillColor = TRANSPARENT;
-
-    private Stroke fillStroke = Stroke.defaultStroke();
-
     // Drawing
     private Color drawColor = TRANSPARENT;
 
     private Stroke drawStroke = Stroke.defaultStroke();
+
+    // Filling
+    private Color fillColor = TRANSPARENT;
+
+    private Stroke fillStroke = Stroke.defaultStroke();
 
     // Text
     private Color textColor = TRANSPARENT;
@@ -162,7 +164,7 @@ public class Style
 
     public Style darkened()
     {
-        return darkened(Percent.of(10));
+        return darkened(Percent.percent(10));
     }
 
     public Style darkened(Percent percent)
@@ -198,7 +200,7 @@ public class Style
 
     public Style lightened()
     {
-        return lightened(Percent.of(10));
+        return lightened(percent(10));
     }
 
     public Style lightened(Percent percent)

@@ -72,7 +72,7 @@ public class HdfsFile extends BaseWritableResource implements FileService
     }
 
     @Override
-    public Time created()
+    public Time createdAt()
     {
         return unsupported();
     }
@@ -111,17 +111,17 @@ public class HdfsFile extends BaseWritableResource implements FileService
     }
 
     @Override
-    public Time lastModified()
-    {
-        return retry(() -> Time.epochMilliseconds(proxy().lastModified(pathAsString())))
-                .orDefault(this, null, "Unable to get last modified time of $", this);
-    }
-
-    @Override
     public boolean lastModified(Time modified)
     {
         return retry(() -> proxy().lastModified(pathAsString(), modified.asMilliseconds()))
                 .orDefault(this, false, "Unable to set last modified time of $ to $", this, modified);
+    }
+
+    @Override
+    public Time modifiedAt()
+    {
+        return retry(() -> Time.epochMilliseconds(proxy().lastModified(pathAsString())))
+                .orDefault(this, null, "Unable to get last modified time of $", this);
     }
 
     @Override

@@ -31,9 +31,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @LexakaiJavadoc(complete = true)
 public class SuccessRate
 {
-    private final AtomicInteger successes = new AtomicInteger();
-
     private final AtomicInteger attempts = new AtomicInteger();
+
+    private final AtomicInteger successes = new AtomicInteger();
 
     /**
      * An attempt is being made
@@ -56,6 +56,6 @@ public class SuccessRate
      */
     public Percent successRate()
     {
-        return Percent.of(100.0 * successes.get() / attempts.get());
+        return Percent.percent(100.0 * successes.get() / attempts.get());
     }
 }

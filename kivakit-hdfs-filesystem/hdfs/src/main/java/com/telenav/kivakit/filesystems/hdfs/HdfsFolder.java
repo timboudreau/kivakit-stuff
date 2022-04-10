@@ -97,7 +97,7 @@ public class HdfsFolder extends BaseComponent implements FolderService
     }
 
     @Override
-    public Time created()
+    public Time createdAt()
     {
         return unsupported();
     }
@@ -203,13 +203,6 @@ public class HdfsFolder extends BaseComponent implements FolderService
     }
 
     @Override
-    public Time lastModified()
-    {
-        return retry(() -> Time.epochMilliseconds(proxy().lastModified(pathAsString())))
-                .orDefault(null, "Unable to determine modification time of $", this);
-    }
-
-    @Override
     public HdfsFolder mkdirs()
     {
         return retry(() ->
@@ -220,6 +213,13 @@ public class HdfsFolder extends BaseComponent implements FolderService
             }
             return null;
         }).orDefault(null, "Unable to create folder path $", this);
+    }
+
+    @Override
+    public Time modifiedAt()
+    {
+        return retry(() -> Time.epochMilliseconds(proxy().lastModified(pathAsString())))
+                .orDefault(null, "Unable to determine modification time of $", this);
     }
 
     public String name()
