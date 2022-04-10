@@ -159,7 +159,7 @@ import static com.telenav.kivakit.ui.desktop.layout.Spacing.MANUAL_SPACING;
     {
         if (searchField == null)
         {
-            var coalescer = new EventCoalescer(Frequency.every(Duration.duration(150)),
+            var coalescer = new EventCoalescer(Frequency.every(Duration.milliseconds(150)),
                     () -> SwingUtilities.invokeLater(this::search));
 
             searchField = KivaKitTheme.get().newTextField();

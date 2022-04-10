@@ -245,7 +245,7 @@ public class Color
     public Color brighter(Percent percent)
     {
         var copy = new Color(this);
-        var scaleFactor = 1.0 + percent.asZeroToOne();
+        var scaleFactor = 1.0 + percent.unitValue();
         copy.red = Math.min((int) (red() * scaleFactor), 255);
         copy.green = Math.min((int) (green() * scaleFactor), 255);
         copy.blue = Math.min((int) (blue() * scaleFactor), 255);
@@ -260,7 +260,7 @@ public class Color
     public Color darker(Percent percent)
     {
         var copy = new Color(this);
-        var scaleFactor = 1.0 - percent.asZeroToOne();
+        var scaleFactor = 1.0 - percent.unitValue();
         copy.red = Math.max((int) (red() * scaleFactor), 0);
         copy.green = Math.max((int) (green() * scaleFactor), 0);
         copy.blue = Math.max((int) (blue() * scaleFactor), 0);

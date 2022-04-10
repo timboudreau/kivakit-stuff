@@ -83,7 +83,7 @@ public class TablePanel extends KivaKitPanel
         addListeners();
 
         // and create an event coalescer that adds to the session no more frequently than every 100ms.
-        var frequency = Frequency.every(Duration.duration(100));
+        var frequency = Frequency.every(Duration.milliseconds(100));
         addCoalescer = new EventCoalescer(frequency, () ->
                 SwingUtilities.invokeLater(() ->
                 {

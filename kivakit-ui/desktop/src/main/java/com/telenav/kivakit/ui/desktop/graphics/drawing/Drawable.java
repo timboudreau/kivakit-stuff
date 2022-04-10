@@ -43,7 +43,7 @@ public interface Drawable
      */
     default Drawable scaledBy(Percent scaleFactor)
     {
-        return copy().scaledBy(scaleFactor.asZeroToOne());
+        return copy().scaledBy(scaleFactor.unitValue());
     }
 
     /**
