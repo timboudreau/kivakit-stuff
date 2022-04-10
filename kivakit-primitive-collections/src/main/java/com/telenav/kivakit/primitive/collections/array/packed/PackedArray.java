@@ -30,8 +30,8 @@ import com.telenav.kivakit.primitive.collections.CompressibleCollection;
 import com.telenav.kivakit.primitive.collections.PrimitiveCollection;
 import com.telenav.kivakit.primitive.collections.array.PrimitiveArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.LongArray;
-import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveArray;
+import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import static com.telenav.kivakit.core.ensure.Ensure.ensure;
@@ -63,32 +63,32 @@ import static com.telenav.kivakit.primitive.collections.array.packed.PackedPrimi
 @UmlClassDiagram(diagram = DiagramPrimitiveArray.class)
 public final class PackedArray extends PrimitiveArray implements LongList, PackedPrimitiveArray
 {
+    /** Number of bits per packed element */
+    private int bits;
+
+    /** The index at which adding takes place */
+    private int cursor;
+
     /** Data storage */
     private LongArray data;
 
-    /** Number of bits per packed element */
-    private int bits;
+    private long[] firstMask = new long[Long.SIZE];
 
     // Shifts and masks for first and second long
     private int[] firstShift = new int[Long.SIZE];
 
-    private long[] firstMask = new long[Long.SIZE];
-
-    private int[] secondShift = new int[Long.SIZE];
-
-    private long[] secondMask = new long[Long.SIZE];
-
     /** The largest value in this packed array */
     private long largestValue;
-
-    /** The smallest value in this packed array */
-    private long smallestValue;
 
     /** The maximum allowed value based on how overflow is handled */
     private long maximumAllowedValue;
 
-    /** The index at which adding takes place */
-    private int cursor;
+    private long[] secondMask = new long[Long.SIZE];
+
+    private int[] secondShift = new int[Long.SIZE];
+
+    /** The smallest value in this packed array */
+    private long smallestValue;
 
     public PackedArray(String objectName)
     {
@@ -127,7 +127,7 @@ public final class PackedArray extends PrimitiveArray implements LongList, Packe
     {
         ensure(bits != null);
         ensure(!bits.isZero());
-        ensure(!bits.isGreaterThan(Count._64));
+        ensure(!bits.isGreaterThan(BitCount._64));
         this.bits = bits.asInt();
         maximumAllowedValue = maximumAllowedValue(bits, overflow);
         return this;

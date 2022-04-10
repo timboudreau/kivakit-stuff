@@ -32,8 +32,8 @@ import com.telenav.kivakit.primitive.collections.array.scalars.SplitByteArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitIntArray;
 import com.telenav.kivakit.primitive.collections.array.scalars.SplitLongArray;
 import com.telenav.kivakit.primitive.collections.iteration.LongIterator;
-import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.kivakit.primitive.collections.lexakai.DiagramPrimitiveSplitArray;
+import com.telenav.kivakit.primitive.collections.list.LongList;
 import com.telenav.lexakai.annotations.UmlClassDiagram;
 
 import java.util.Arrays;
@@ -62,18 +62,18 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
     // Bit count of packed arrays
     private BitCount bits;
 
+    private int childSize;
+
     // PrimitiveArray of packed arrays
     private PackedArray[] children;
+
+    /** The index at which adding takes place */
+    private int cursor;
 
     // True if unused elements should be initialized to the null value
     private boolean initializeElements;
 
     private PackedPrimitiveArray.OverflowHandling overflow;
-
-    private int childSize;
-
-    /** The index at which adding takes place */
-    private int cursor;
 
     public SplitPackedArray(String objectName)
     {
@@ -101,7 +101,7 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
     {
         ensure(bits != null);
         ensure(!bits.isZero());
-        ensure(!bits.isGreaterThan(Count._64));
+        ensure(!bits.isGreaterThan(BitCount._64));
         this.bits = bits;
         this.overflow = overflow;
         return this;
@@ -236,8 +236,6 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
     {
         return new LongIterator()
         {
-            final int index = 0;
-
             @Override
             public boolean hasNext()
             {
@@ -249,6 +247,8 @@ public final class SplitPackedArray extends PrimitiveSplitArray implements
             {
                 return get(index);
             }
+
+            final int index = 0;
         };
     }
 
