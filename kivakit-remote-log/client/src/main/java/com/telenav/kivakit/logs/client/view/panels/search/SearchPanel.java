@@ -1,8 +1,8 @@
 package com.telenav.kivakit.logs.client.view.panels.search;
 
+import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.core.time.Duration;
 import com.telenav.kivakit.core.time.Frequency;
-import com.telenav.kivakit.core.logging.LogEntry;
 import com.telenav.kivakit.logs.client.view.ClientLogPanel;
 import com.telenav.kivakit.ui.desktop.component.KivaKitPanel;
 import com.telenav.kivakit.ui.desktop.component.icon.search.MagnifyingGlass;
@@ -37,19 +37,19 @@ import static com.telenav.kivakit.ui.desktop.layout.Spacing.MANUAL_SPACING;
 
     public static final String ALL_TYPES = "All Message Types";
 
-    private JComboBox<String> threadDropDown;
-
     private JComboBox<String> contextDropDown;
-
-    private JComboBox<String> messageTypeDropDown;
-
-    private final Set<String> threadNames = new HashSet<>();
 
     private final Set<String> contexts = new HashSet<>();
 
-    private JTextField searchField;
+    private JComboBox<String> messageTypeDropDown;
 
     private final ClientLogPanel parent;
+
+    private JTextField searchField;
+
+    private JComboBox<String> threadDropDown;
+
+    private final Set<String> threadNames = new HashSet<>();
 
     public SearchPanel(ClientLogPanel parent)
     {
@@ -159,7 +159,7 @@ import static com.telenav.kivakit.ui.desktop.layout.Spacing.MANUAL_SPACING;
     {
         if (searchField == null)
         {
-            var coalescer = new EventCoalescer(Frequency.every(Duration.milliseconds(150)),
+            var coalescer = new EventCoalescer(Frequency.every(Duration.duration(150)),
                     () -> SwingUtilities.invokeLater(this::search));
 
             searchField = KivaKitTheme.get().newTextField();
