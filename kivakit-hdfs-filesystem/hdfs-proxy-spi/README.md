@@ -30,14 +30,14 @@ Service provider interface for HDFS proxy.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.kivakit</groupId>
         <artifactId>kivakit-filesystems-hdfs-proxy-spi</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1-SNAPSHOT</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -54,14 +54,14 @@ Service provider interface for HDFS proxy.
 
 ### Class Diagrams <a name="class-diagrams"></a> &nbsp; &nbsp; <img src="https://www.kivakit.org/images/diagram-40.png" srcset="https://www.kivakit.org/images/diagram-40-2x.png 2x"/>
 
-[*HDFS Proxy Service Provider Interface (SPI)*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/diagram-hdfs-spi.svg)
+[*HDFS Proxy Service Provider Interface (SPI)*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/diagram-hdfs-spi.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.kivakit.filesystems.hdfs.proxy.spi*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/com.telenav.kivakit.filesystems.hdfs.proxy.spi.svg)  
-[*com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai.svg)
+[*com.telenav.kivakit.filesystems.hdfs.proxy.spi*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/com.telenav.kivakit.filesystems.hdfs.proxy.spi.svg)  
+[*com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-hdfs-filesystem/hdfs-proxy-spi/documentation/diagrams/com.telenav.kivakit.filesystems.hdfs.proxy.spi.lexakai.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -76,8 +76,8 @@ Javadoc coverage for this project is 75.0%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*DiagramHdfsSpi*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.filesystems.hdfs.proxy.spi/com/telenav/kivakit/filesystems/hdfs/proxy/spi/lexakai/DiagramHdfsSpi.html) |  |  
-| [*HdfsProxy*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.filesystems.hdfs.proxy.spi/com/telenav/kivakit/filesystems/hdfs/proxy/spi/HdfsProxy.html) |  |  
+| [*DiagramHdfsSpi*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.filesystems.hdfs.proxy.spi/com/telenav/kivakit/filesystems/hdfs/proxy/spi/lexakai/DiagramHdfsSpi.html) |  |  
+| [*HdfsProxy*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.filesystems.hdfs.proxy.spi/com/telenav/kivakit/filesystems/hdfs/proxy/spi/HdfsProxy.html) |  |  
 
 [//]: # (start-user-text)
 

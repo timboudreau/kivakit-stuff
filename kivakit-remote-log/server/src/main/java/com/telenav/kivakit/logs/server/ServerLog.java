@@ -131,7 +131,7 @@ public class ServerLog extends BaseTextLog implements ComponentMixin
         var maximum = properties.get("maximum-entries");
         if (maximum != null)
         {
-            maximumEntries = Maximum.parseMaximum(Listener.console(), maximum);
+            maximumEntries = Maximum.parseMaximum(Listener.consoleListener(), maximum);
         }
         listen(BroadcastingProgressReporter.create(LOGGER, "bytes"));
     }

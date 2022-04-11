@@ -34,11 +34,11 @@ import static com.telenav.kivakit.logs.client.ClientLogFrame.ExitMode.EXIT_ON_CL
 
 public class ClientLog extends BaseLog
 {
+    private ClientLogFrame frame;
+
     private Maximum maximumEntries;
 
     private final CompletionLatch session = new CompletionLatch();
-
-    private ClientLogFrame frame;
 
     public ClientLog()
     {
@@ -60,7 +60,7 @@ public class ClientLog extends BaseLog
         var maximum = properties.get("maximum-entries");
         if (maximum != null)
         {
-            maximumEntries = Maximum.parseMaximum(Listener.console(), maximum);
+            maximumEntries = Maximum.parseMaximum(Listener.consoleListener(), maximum);
         }
     }
 

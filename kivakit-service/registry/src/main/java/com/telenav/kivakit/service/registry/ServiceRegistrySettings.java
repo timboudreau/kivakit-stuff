@@ -68,14 +68,11 @@ import com.telenav.lexakai.annotations.LexakaiJavadoc;
 @LexakaiJavadoc(complete = true)
 public class ServiceRegistrySettings
 {
-    /** Path to REST API */
-    private String restApiPath;
+    /** The port used by the local service registry */
+    private int localServiceRegistryPort;
 
-    /** The version of this build of service registry code */
-    private Version version;
-
-    /** The time-to-live of stored data before it is discarded */
-    private Duration serviceRegistryStoreExpirationTime;
+    /** The host and port used by the network service registry */
+    private Port networkServiceRegistryPort;
 
     /**
      * Ports will not be re-allocated after expiring for this amount of time. This allows a server to lose contact with
@@ -84,17 +81,20 @@ public class ServiceRegistrySettings
      */
     private Duration portReservationExpirationTime;
 
-    /** Registry bindings expire after this amount of time */
-    private Duration serviceRegistrationExpirationTime;
-
-    /** The host and port used by the network service registry */
-    private Port networkServiceRegistryPort;
-
-    /** The port used by the local service registry */
-    private int localServiceRegistryPort;
+    /** Path to REST API */
+    private String restApiPath;
 
     /** The frequency at which clients should renew leases */
     private Frequency serviceLeaseRenewalFrequency;
+
+    /** Registry bindings expire after this amount of time */
+    private Duration serviceRegistrationExpirationTime;
+
+    /** The time-to-live of stored data before it is discarded */
+    private Duration serviceRegistryStoreExpirationTime;
+
+    /** The version of this build of service registry code */
+    private Version version;
 
     /**
      * <b>Not public API</b>
@@ -133,7 +133,7 @@ public class ServiceRegistrySettings
 
         if (port != null)
         {
-            return Port.parsePort(Listener.console(), port);
+            return Port.parsePort(Listener.consoleListener(), port);
         }
 
         return networkServiceRegistryPort();

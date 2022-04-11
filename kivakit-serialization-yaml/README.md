@@ -30,14 +30,14 @@ This project contains support for serializing objects to YAML.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-serialization-yaml/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-serialization-yaml/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.kivakit</groupId>
         <artifactId>kivakit-serialization-yaml</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1-SNAPSHOT</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -60,7 +60,7 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.kivakit.serialization.yaml*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-serialization-yaml/documentation/diagrams/com.telenav.kivakit.serialization.yaml.svg)
+[*com.telenav.kivakit.serialization.yaml*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-serialization-yaml/documentation/diagrams/com.telenav.kivakit.serialization.yaml.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -77,8 +77,8 @@ The following significant classes are undocumented:
 
 | Class | Documentation Sections |
 |---|---|
-| [*YamlObjectSerializer*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.serialization.yaml/com/telenav/kivakit/serialization/yaml/YamlObjectSerializer.html) |  |  
-| [*YamlSerializationProject*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.serialization.yaml/com/telenav/kivakit/serialization/yaml/YamlSerializationProject.html) |  |  
+| [*YamlObjectSerializer*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.serialization.yaml/com/telenav/kivakit/serialization/yaml/YamlObjectSerializer.html) |  |  
+| [*YamlSerializationProject*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.serialization.yaml/com/telenav/kivakit/serialization/yaml/YamlSerializationProject.html) |  |  
 
 [//]: # (start-user-text)
 

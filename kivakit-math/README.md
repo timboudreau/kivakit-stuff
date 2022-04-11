@@ -30,14 +30,14 @@ This module contains packages for some common math operations.
 
 ### Dependencies <a name="dependencies"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/dependencies-32.png" srcset="https://www.kivakit.org/images/dependencies-32-2x.png 2x"/>
 
-[*Dependency Diagram*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/dependencies.svg)
+[*Dependency Diagram*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/dependencies.svg)
 
 #### Maven Dependency
 
     <dependency>
         <groupId>com.telenav.kivakit</groupId>
         <artifactId>kivakit-math</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1-SNAPSHOT</version>
     </dependency>
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
@@ -60,8 +60,8 @@ None
 
 ### Package Diagrams <a name="package-diagrams"></a> &nbsp;&nbsp; <img src="https://www.kivakit.org/images/box-32.png" srcset="https://www.kivakit.org/images/box-32-2x.png 2x"/>
 
-[*com.telenav.kivakit.math.statistics*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/com.telenav.kivakit.math.statistics.svg)  
-[*com.telenav.kivakit.math.trigonometry*](https://www.kivakit.org/1.5.0/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/com.telenav.kivakit.math.trigonometry.svg)
+[*com.telenav.kivakit.math.statistics*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/com.telenav.kivakit.math.statistics.svg)  
+[*com.telenav.kivakit.math.trigonometry*](https://www.kivakit.org/1.5.1-SNAPSHOT/lexakai/kivakit-stuff/kivakit-math/documentation/diagrams/com.telenav.kivakit.math.trigonometry.svg)
 
 <img src="https://www.kivakit.org/images/horizontal-line-128.png" srcset="https://www.kivakit.org/images/horizontal-line-128-2x.png 2x"/>
 
@@ -76,9 +76,9 @@ Javadoc coverage for this project is 61.9%.
 
 | Class | Documentation Sections |
 |---|---|
-| [*StandardDeviation*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/statistics/StandardDeviation.html) |  |  
-| [*SuccessRate*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/statistics/SuccessRate.html) |  |  
-| [*Trigonometry*](https://www.kivakit.org/1.5.0/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/trigonometry/Trigonometry.html) |  |  
+| [*StandardDeviation*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/statistics/StandardDeviation.html) |  |  
+| [*SuccessRate*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/statistics/SuccessRate.html) |  |  
+| [*Trigonometry*](https://www.kivakit.org/1.5.1-SNAPSHOT/javadoc/kivakit-stuff/kivakit.math/com/telenav/kivakit/math/trigonometry/Trigonometry.html) |  |  
 
 [//]: # (start-user-text)
 

@@ -89,7 +89,7 @@ public class Session implements Comparable<Session>
     @Override
     public String toString()
     {
-        return name + " - " + new HumanizedLocalDateTimeConverter(Listener.throwing())
+        return name + " - " + new HumanizedLocalDateTimeConverter(Listener.throwingListener())
                 .unconvert(started.asLocalTime());
     }
 }
