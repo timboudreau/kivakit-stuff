@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.math.trigonometry;
 
-import com.telenav.kivakit.core.test.CoreUnitTest;
+import com.telenav.kivakit.core.test.support.CoreUnitTest;
 import org.junit.Test;
 
 /**

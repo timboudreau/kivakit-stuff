@@ -25,8 +25,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.telenav.kivakit.core.test.CoreUnitTest.Repeats.ALLOW_REPEATS;
-import static com.telenav.kivakit.core.test.CoreUnitTest.Repeats.NO_REPEATS;
+import static com.telenav.kivakit.core.test.Repeats.ALLOW_REPEATS;
+import static com.telenav.kivakit.core.test.Repeats.NO_REPEATS;
 
 public class LongToLongMapTest extends PrimitiveCollectionsUnitTest
 {

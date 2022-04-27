@@ -18,7 +18,6 @@
 
 package com.telenav.kivakit.primitive.collections;
 
-import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 

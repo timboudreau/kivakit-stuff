@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.math.statistics;
 
-import com.telenav.kivakit.core.test.CoreUnitTest;
+import com.telenav.kivakit.core.test.support.CoreUnitTest;
 import com.telenav.kivakit.core.value.level.Percent;
 import org.junit.Test;
 

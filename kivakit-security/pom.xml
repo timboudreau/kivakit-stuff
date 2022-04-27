@@ -22,13 +22,23 @@
 
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
+            <artifactId>kivakit-conversion</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.telenav.lexakai</groupId>
+            <artifactId>lexakai-annotations</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.telenav.kivakit</groupId>
             <artifactId>kivakit-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.telenav.kivakit</groupId>
-            <artifactId>kivakit-conversion</artifactId>
+            <artifactId>kivakit-test-internal</artifactId>
+            <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 </project>

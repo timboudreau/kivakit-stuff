@@ -18,7 +18,7 @@
 
 package com.telenav.kivakit.filesystems.hdfs;
 
-import com.telenav.kivakit.core.test.SlowTest;
+import com.telenav.kivakit.core.test.support.SlowTest;
 import com.telenav.kivakit.filesystem.Folder;
 import com.telenav.kivakit.network.core.EmailAddress;
 import com.telenav.kivakit.network.core.NetworkPath;

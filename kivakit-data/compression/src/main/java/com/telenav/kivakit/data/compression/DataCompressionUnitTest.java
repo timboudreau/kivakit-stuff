@@ -28,7 +28,6 @@ import com.telenav.kivakit.data.compression.codecs.huffman.tree.Symbols;
 import com.telenav.kivakit.primitive.collections.array.scalars.ByteArray;
 import com.telenav.kivakit.primitive.collections.list.ByteList;
 import com.telenav.kivakit.properties.PropertyMap;
-import com.telenav.kivakit.serialization.kryo.KryoUnitTest;
 import com.telenav.kivakit.serialization.kryo.types.CoreKryoTypes;
 import com.telenav.kivakit.serialization.kryo.types.KryoTypes;
 import org.jetbrains.annotations.NotNull;
